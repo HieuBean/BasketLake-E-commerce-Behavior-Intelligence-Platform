@@ -1,0 +1,71 @@
+version: "3.8"
+
+# =============================================================================
+# Spark standalone cluster: 1 master + 2 workers + History Server
+# Ghim image cụ thể — KHÔNG dùng :latest
+# =============================================================================
+
+x-spark-common: &spark-common
+  image: bitnami/spark:3.5.3          # TODO: đổi sang 4.1.x khi image ổn định
+  environment:
+    - SPARK_MODE=worker
+    - SPARK_MASTER_URL=spark://spark-master:7077
+    - SPARK_WORKER_MEMORY=${SPARK_WORKER_MEMORY:-2G}
+    - SPARK_WORKER_CORES=${SPARK_WORKER_CORES:-2}
+    - SPARK_RPC_AUTHENTICATION_ENABLED=no
+    - SPARK_RPC_ENCRYPTION_ENABLED=no
+    - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+    - SPARK_SSL_ENABLED=no
+  volumes:
+    - ../:/app                         # mount toàn bộ repo vào /app
+    - spark-events:/opt/spark-events
+    - spark-data:/app/data
+  depends_on:
+    - spark-master
+
+services:
+  spark-master:
+    image: bitnami/spark:3.5.3
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - "8080:8080"    # Spark Master UI
+      - "7077:7077"    # Spark submit endpoint
+    volumes:
+      - ../:/app
+      - spark-events:/opt/spark-events
+      - spark-data:/app/data
+
+  spark-worker-1:
+    <<: *spark-common
+    container_name: spark-worker-1
+    ports:
+      - "8081:8081"
+
+  spark-worker-2:
+    <<: *spark-common
+    container_name: spark-worker-2
+    ports:
+      - "8082:8082"
+
+  spark-history:
+    image: bitnami/spark:3.5.3
+    container_name: spark-history
+    command: >
+      bash -c "/opt/bitnami/spark/sbin/start-history-server.sh &&
+               tail -f /opt/bitnami/spark/logs/*"
+    environment:
+      - SPARK_HISTORY_FS_LOG_DIRECTORY=file:///opt/spark-events
+    ports:
+      - "18080:18080"  # History Server UI
+    volumes:
+      - spark-events:/opt/spark-events
+
+volumes:
+  spark-events:
+  spark-data:

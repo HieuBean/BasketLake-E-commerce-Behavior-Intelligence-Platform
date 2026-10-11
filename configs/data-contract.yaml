@@ -1,0 +1,37 @@
+# Data Contract — Bronze Events
+# Phiên bản: 1
+# Người duy trì: B (Processing 1)
+# Reviewer: A (Lead)
+
+dataset: bronze_events
+version: 1
+format: parquet
+compression: snappy
+path: /app/data/lake/bronze/events
+partition_by: [source_month]
+
+columns:
+  - {name: event_time,    type: string,    nullable: false, note: "giữ nguyên chuỗi gốc; parse ở silver"}
+  - {name: event_type,    type: string,    nullable: false}
+  - {name: product_id,    type: long,      nullable: false}
+  - {name: category_id,   type: long,      nullable: true}
+  - {name: category_code, type: string,    nullable: true}
+  - {name: brand,         type: string,    nullable: true}
+  - {name: price,         type: double,    nullable: true}
+  - {name: user_id,       type: long,      nullable: false}
+  - {name: user_session,  type: string,    nullable: true}
+  - {name: source_file,   type: string,    nullable: false, note: "tên file CSV gốc"}
+  - {name: ingest_ts,     type: timestamp, nullable: false, note: "thời điểm ingest"}
+
+guarantees:
+  - schema-enforced
+  - no-dedupe      # chưa làm sạch ở tầng này
+  - no-cleaning
+
+# Silver contract (tóm tắt — chi tiết ở mục silver)
+silver_output:
+  path: /app/data/lake/silver/events
+  partition_by: [event_date]
+  adds: [event_ts, event_date, event_hour, category_l1, category_l2, category_l3,
+         brand_missing, price_valid]
+  removes: [event_time]   # đã parse thành event_ts

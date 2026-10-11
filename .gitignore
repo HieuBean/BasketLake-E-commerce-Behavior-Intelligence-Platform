@@ -1,0 +1,34 @@
+# Dữ liệu lớn — KHÔNG commit
+data/raw/
+data/lake/
+
+# Kết quả thí nghiệm dạng Parquet — commit CSV, không commit Parquet kết quả
+results/*.parquet
+results/tmp/
+
+# Bí mật
+.env
+docker/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# Spark event logs (lớn)
+spark-events/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp

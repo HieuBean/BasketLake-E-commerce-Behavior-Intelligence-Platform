@@ -1,0 +1,2 @@
+# CSV kết quả thí nghiệm (experiment_log.csv, kpi_summary.csv, ...) được commit.
+# Parquet và thư mục tmp/ bị .gitignore.

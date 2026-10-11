@@ -1,0 +1,39 @@
+# pipeline.yaml — tham số pipeline (không hard-code trong mã)
+# Đọc bằng src/common/config.py
+
+paths:
+  raw:         /app/data/raw
+  bronze:      /app/data/lake/bronze/events
+  silver:      /app/data/lake/silver/events
+  quarantine:  /app/data/lake/quarantine/events
+  gold:        /app/data/lake/gold
+  results:     /app/results
+
+tiers:
+  S:
+    sample_fraction: 0.025   # ~1 triệu dòng từ tháng 10
+    seed: 42
+    months: ["2019-10"]
+  M:
+    months: ["2019-10"]
+  L:
+    months: ["2019-10", "2019-11"]
+  XL:
+    months: ["2019-10", "2019-11"]
+    amplify_factor: 5        # nhân bản có biến đổi id (synthetic)
+
+spark:
+  shuffle_partitions: 200
+  broadcast_threshold_bytes: 10485760
+  aqe_enabled: true
+
+cleaning:
+  valid_event_types: ["view", "cart", "purchase", "remove_from_cart"]
+  session_gap_minutes: 30     # khoảng nghỉ để tách phiên
+  price_min: 0.0
+
+analytics:
+  rfm_as_of: "2019-11-30"
+  kmeans_k_range: [2, 10]
+  kmeans_seed: 42
+  kmeans_max_iter: 20
