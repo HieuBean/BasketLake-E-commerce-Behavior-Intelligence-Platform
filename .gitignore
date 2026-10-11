@@ -10,6 +10,9 @@ results/tmp/
 .env
 docker/.env
 
+# Excel reports / temporary files
+*.xlsx
+
 # Python
 __pycache__/
 *.py[cod]
