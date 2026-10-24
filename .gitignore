@@ -3,8 +3,13 @@ data/raw/
 data/lake/
 
 # Kết quả thí nghiệm dạng Parquet — commit CSV, không commit Parquet kết quả
-results/*.parquet
+results/**/*.parquet
 results/tmp/
+
+# File phụ do Spark sinh ra và manifest gắn với dữ liệu của lần chạy hiện tại
+results/**/_SUCCESS
+results/**/*.crc
+results/**/kpi_summary.manifest.json
 
 # Bí mật
 .env

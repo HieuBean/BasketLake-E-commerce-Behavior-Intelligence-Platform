@@ -6,7 +6,7 @@ version: "3.8"
 # =============================================================================
 
 x-spark-common: &spark-common
-  image: bitnami/spark:3.5.3          # TODO: đổi sang 4.1.x khi image ổn định
+  image: bitnamilegacy/spark:3.5.3          # TODO: đổi sang 4.1.x khi image ổn định
   environment:
     - SPARK_MODE=worker
     - SPARK_MASTER_URL=spark://spark-master:7077
@@ -16,16 +16,16 @@ x-spark-common: &spark-common
     - SPARK_RPC_ENCRYPTION_ENABLED=no
     - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
     - SPARK_SSL_ENABLED=no
+    - PYTHONPATH=/app
   volumes:
     - ../:/app                         # mount toàn bộ repo vào /app
     - spark-events:/opt/spark-events
-    - spark-data:/app/data
   depends_on:
     - spark-master
 
 services:
   spark-master:
-    image: bitnami/spark:3.5.3
+    image: bitnamilegacy/spark:3.5.3
     container_name: spark-master
     environment:
       - SPARK_MODE=master
@@ -33,13 +33,13 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
+      - PYTHONPATH=/app
     ports:
       - "8080:8080"    # Spark Master UI
       - "7077:7077"    # Spark submit endpoint
     volumes:
       - ../:/app
       - spark-events:/opt/spark-events
-      - spark-data:/app/data
 
   spark-worker-1:
     <<: *spark-common
@@ -54,13 +54,14 @@ services:
       - "8082:8082"
 
   spark-history:
-    image: bitnami/spark:3.5.3
+    image: bitnamilegacy/spark:3.5.3
     container_name: spark-history
     command: >
-      bash -c "/opt/bitnami/spark/sbin/start-history-server.sh &&
+      bash -c "mkdir -p /opt/spark-events &&
+               /opt/bitnami/spark/sbin/start-history-server.sh &&
                tail -f /opt/bitnami/spark/logs/*"
     environment:
-      - SPARK_HISTORY_FS_LOG_DIRECTORY=file:///opt/spark-events
+      - SPARK_HISTORY_OPTS=-Dspark.history.fs.logDirectory=file:///opt/spark-events
     ports:
       - "18080:18080"  # History Server UI
     volumes:
@@ -68,4 +69,3 @@ services:
 
 volumes:
   spark-events:
-  spark-data:

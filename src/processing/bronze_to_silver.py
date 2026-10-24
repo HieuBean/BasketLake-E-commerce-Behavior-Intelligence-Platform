@@ -13,13 +13,15 @@ from __future__ import annotations
 
 import argparse
 
-from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 from pyspark.sql.types import TimestampType
+from pyspark.sql.window import Window
 
-from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths
+from src.common.config import get_paths, load_config
+from src.common.input_manifest import write_silver_manifest
 from src.common.logger import get_logger
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 
@@ -57,14 +59,14 @@ def apply_r2_event_type(df: DataFrame, valid_types: set[str]):
 
 def apply_r3_parse_timestamp(df: DataFrame):
     """R3: Parse event_time → event_ts (UTC). Lỗi parse → quarantine."""
-    df = df.withColumn(
+    df_with_ts = df.withColumn(
         "event_ts",
-        F.try_to_timestamp(F.col("event_time"), "yyyy-MM-dd HH:mm:ss z").cast(TimestampType()),
+        F.try_to_timestamp(F.col("event_time"), F.lit("yyyy-MM-dd HH:mm:ss z")).cast(TimestampType()),
     )
     mask = F.col("event_ts").isNull()
     return (
-        df.filter(~mask).drop("event_time"),
-        df.filter(mask).withColumn("reject_reason", F.lit("timestamp_parse_error")),
+        df_with_ts.filter(~mask).drop("event_time"),
+        df_with_ts.filter(mask).drop("event_ts").withColumn("reject_reason", F.lit("timestamp_parse_error")),
     )
 
 
@@ -101,13 +103,17 @@ def apply_r6_category(df: DataFrame):
 
 
 def apply_r7_dedupe(df: DataFrame):
-    """R7: Xóa dòng trùng hoàn toàn (quyết định có lập luận — xem ADR)."""
+    """R7: Xóa dòng trùng hoàn toàn, chuyển dòng trùng vào quarantine."""
     cols = [c for c in df.columns if c not in ("source_file", "ingest_ts")]
-    before = df.count()
-    df_deduped = df.dropDuplicates(cols)
-    after = df_deduped.count()
-    log.info(f"R7 dedupe: {before - after:,} dòng trùng bị xóa ({before:,} → {after:,})")
-    return df_deduped, None
+    window_spec = Window.partitionBy(cols).orderBy(F.lit(1))
+    df_ranked = df.withColumn("_row_num", F.row_number().over(window_spec))
+    clean = df_ranked.filter(F.col("_row_num") == 1).drop("_row_num")
+    quarantine = (
+        df_ranked.filter(F.col("_row_num") > 1)
+        .drop("_row_num")
+        .withColumn("reject_reason", F.lit("duplicate_row"))
+    )
+    return clean, quarantine
 
 
 def apply_r8_out_of_month(df: DataFrame):
@@ -174,7 +180,8 @@ def run(tier: str) -> None:
     df, _ = apply_r6_category(df)
 
     # R7
-    df, _ = apply_r7_dedupe(df)
+    df, q = apply_r7_dedupe(df)
+    quarantine_parts.append(q)
 
     # R8
     df, _ = apply_r8_out_of_month(df)
@@ -196,10 +203,14 @@ def run(tier: str) -> None:
 
     # Ghi quarantine
     from functools import reduce
-    quarantine = reduce(
-        DataFrame.union,
-        [q for q in quarantine_parts if q is not None],
-    )
+    valid_q = [q for q in quarantine_parts if q is not None]
+    if valid_q:
+        quarantine = reduce(
+            lambda a, b: a.unionByName(b, allowMissingColumns=True),
+            valid_q,
+        )
+    else:
+        quarantine = df.limit(0).withColumn("reject_reason", F.lit(""))
     log.info(f"Ghi quarantine → {paths['quarantine']}")
     quarantine.write.mode("overwrite").parquet(paths["quarantine"])
 
@@ -208,6 +219,7 @@ def run(tier: str) -> None:
     log.info(f"Silver out: {total_out:,} | Quarantine: {total_q:,}")
     assert total_in == total_out + total_q, \
         f"Bất biến lỗi: {total_in} ≠ {total_out} + {total_q}"
+    write_silver_manifest(paths["silver"], tier)
 
     spark.stop()
 

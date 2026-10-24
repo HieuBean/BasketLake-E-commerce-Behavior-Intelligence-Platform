@@ -4,8 +4,11 @@
 # =============================================================================
 
 TIER         ?= S
+PIPELINE_CONFIG ?= /app/configs/pipeline.yaml
+E5_CONFIG    ?= $(PIPELINE_CONFIG)
 COMPOSE      := docker compose -f docker/docker-compose.yml
-SPARK_SUBMIT := $(COMPOSE) exec spark-master spark-submit
+SPARK_SUBMIT := $(COMPOSE) exec -e CONFIG_PATH=$(PIPELINE_CONFIG) spark-master spark-submit
+PYSPARK_PATH := /app:/opt/bitnami/spark/python/lib/pyspark.zip:/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip
 
 .PHONY: help up down logs profile bronze silver gold analytics plots all \
         experiments test lint clean
@@ -23,6 +26,8 @@ help:
 	@echo "  make plots                Sinh biểu đồ từ results/ -> docs/figures/"
 	@echo "  make all      TIER=S      Chạy toàn bộ pipeline (bronze -> analytics)"
 	@echo "  make experiments          Chạy E1-E7"
+	@echo "  make experiment-e5 TIER=M E5_CONFIG=/app/configs/pipeline-m5-tier-m.yaml"
+	@echo "  make bronze TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml"
 	@echo "  make test                 pytest trên tier S"
 	@echo "  make lint                 ruff check toàn bộ src/, experiments/, tests/"
 	@echo "  make clean                Xoá silver/gold/quarantine (giữ raw, bronze)"
@@ -78,14 +83,14 @@ analytics:
 		/app/src/analytics/run_analytics.py --tier $(TIER)
 
 plots:
-	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python src/analytics/plots.py"
+	$(COMPOSE) exec -e CONFIG_PATH=$(PIPELINE_CONFIG) spark-master bash -c \
+		"cd /app && python src/analytics/plots.py --tier $(TIER)"
 
 all: bronze silver gold analytics plots
 	@echo ""
 	@echo "Pipeline hoàn thành (TIER=$(TIER))"
 	@echo "Biểu đồ: docs/figures/"
-	@echo "KPI:     results/kpi_summary.csv"
+	@echo "KPI:     cấu hình $(PIPELINE_CONFIG) → paths.results/kpi_summary.csv"
 	@echo ""
 
 # ---------- Thí nghiệm ----------
@@ -113,12 +118,12 @@ experiment-e4:
 		/app/experiments/e4_tuning.py --tier $(TIER)
 
 experiment-e5:
-	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python experiments/e5_crossover.py --tier $(TIER)"
+	$(COMPOSE) exec -e CONFIG_PATH=$(E5_CONFIG) spark-master spark-submit \
+		--master local[*] /app/experiments/e5_crossover.py --tier $(TIER)
 
 experiment-e6:
-	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python experiments/e6_correctness.py"
+	$(COMPOSE) exec -e CONFIG_PATH=$(PIPELINE_CONFIG) spark-master bash -c \
+		"cd /app && python experiments/e6_correctness.py --tier $(TIER)"
 
 experiment-e7:
 	$(COMPOSE) exec spark-master bash -c \
@@ -131,19 +136,19 @@ plot-experiments:
 # ---------- Test & Lint ----------
 
 test:
-	$(COMPOSE) exec spark-master bash -c \
+	$(COMPOSE) exec -e PYTHONPATH=$(PYSPARK_PATH) spark-master bash -c \
 		"cd /app && python -m pytest tests/ -v --tb=short"
 
 test-cleaning:
-	$(COMPOSE) exec spark-master bash -c \
+	$(COMPOSE) exec -e PYTHONPATH=$(PYSPARK_PATH) spark-master bash -c \
 		"cd /app && python -m pytest tests/test_cleaning_rules.py -v"
 
 test-kpi:
-	$(COMPOSE) exec spark-master bash -c \
+	$(COMPOSE) exec -e PYTHONPATH=$(PYSPARK_PATH) spark-master bash -c \
 		"cd /app && python -m pytest tests/test_kpi.py -v"
 
 test-invariants:
-	$(COMPOSE) exec spark-master bash -c \
+	$(COMPOSE) exec -e PYTHONPATH=$(PYSPARK_PATH) spark-master bash -c \
 		"cd /app && python -m pytest tests/test_invariants.py -v"
 
 lint:

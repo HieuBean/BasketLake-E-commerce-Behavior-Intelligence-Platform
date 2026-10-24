@@ -90,16 +90,18 @@ Thư mục data/raw/ bị .gitignore — không lo commit nhầm.
 
 ### Bước 4 — Chạy pipeline
 
+Các lệnh `make` cần GNU Make; PowerShell thuần trên Windows có thể chưa cài công cụ này. Có thể chạy cùng lệnh trong môi trường có GNU Make hoặc dùng trực tiếp `docker compose` như trong các target của [Makefile](Makefile).
+
 ```bash
 # Toàn bộ pipeline bằng 1 lệnh (tier S ≈ 1 triệu dòng, chạy ~15 phút)
 make all TIER=S
 
 # Từng bước (linh hoạt hơn)
 make profile  TIER=S    # profiling bronze → results/dq_report_bronze_null.csv
-make bronze   TIER=M    # CSV → Parquet bronze
-make silver   TIER=M    # bronze → silver (làm sạch R1–R9)
-make gold     TIER=M    # silver → gold (sessionization, dim/fact, agg)
-make analytics TIER=M   # gold → KPI, funnel, RFM, KMeans
+make bronze   TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml    # CSV → Parquet bronze_m
+make silver   TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml    # bronze_m → silver_m
+make gold     TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml    # silver_m → gold_m
+make analytics TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml   # gold_m → KPI, RFM, KMeans
 make plots              # sinh biểu đồ → docs/figures/
 ```
 
@@ -114,13 +116,16 @@ make experiment-e1 TIER=L   # scale data
 make experiment-e2 TIER=M   # scale resource
 make experiment-e3 TIER=M   # format comparison
 make experiment-e4 TIER=M   # tuning (shuffle, AQE, skew, join)
-make experiment-e5 TIER=M   # crossover Pandas/DuckDB/Spark
-make experiment-e6           # correctness oracle
+make experiment-e5 TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml   # crossover Pandas/DuckDB/Spark
+make experiment-e6 TIER=S    # correctness oracle tier S
+make experiment-e6 TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml
 make experiment-e7           # MapReduce simulation
 
 # Vẽ biểu đồ thí nghiệm
 make plot-experiments
 ```
+
+Để giữ nguyên lake tier S khi chạy tier M, truyền `PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml` cho từng lệnh `make bronze`, `make silver`, `make gold`, `make analytics`, `make plots` và `make experiment-e6`; hoặc dùng `make all TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml`. E5 cũng nhận cấu hình này qua `make experiment-e5 TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml`. E5 kiểm tra manifest Silver trước khi chạy và từ chối nếu tier không khớp. Analytics M ghi vào `results/tier_m/`, biểu đồ M ghi vào `docs/figures/tier_m/`; kết quả S ở thư mục gốc được giữ nguyên. Có thể đối chiếu từng người mua bằng `docker compose -f docker/docker-compose.yml exec -e CONFIG_PATH=/app/configs/pipeline-m5-tier-m.yaml spark-master python /app/experiments/validate_rfm.py --tier M`.
 
 ### Bước 6 — Chạy test
 
@@ -221,22 +226,24 @@ bigdata-ecom/
 | E2 — Scale resource | Speedup: local[1]→local[4]→cluster | *(điền)* |
 | E3 — Format | CSV vs Parquet snappy vs zstd | *(điền)* |
 | E4 — Tuning | Shuffle partitions, AQE, skew salting | *(điền)* |
-| E5 — Crossover | Điểm giao Pandas/DuckDB/Spark | *(điền)* |
-| E6 — Correctness | Lệch KPI oracle vs Spark | *(điền)* |
+| E5 — Crossover | Điểm giao Pandas/DuckDB/Spark | Trong phép đo thời gian truy vấn tier M, Spark Local vượt DuckDB ở 100% (0.982 s so với 1.459 s), còn ở 50% thì chậm hơn; chưa xác định ngưỡng chính xác. Spark Cluster chưa vượt baseline. Xem [báo cáo M5](docs/baocao_chuong2_chuong6_m5.md). |
+| E6 — Correctness | Lệch KPI oracle vs Spark | Tier S và M: mỗi tier đạt 3/3 KPI trong ngưỡng 0.1% ở độ chính xác đã lưu. |
 | E7 — MapReduce | Số intermediate pairs: combiner giảm X% | *(điền)* |
 
 ---
 
-## KPI chính *(điền sau khi chạy analytics)*
+## KPI chính (tier S)
 
 | KPI | Giá trị | Ghi chú |
 |-----|---------|---------|
-| Total Revenue | *(điền)* | Proxy (qty=1) |
-| Total Sessions | *(điền)* | |
-| Conversion Rate | *(điền)* | Sessions có purchase / sessions có view |
-| Cart Abandonment | *(điền)* | |
-| AOV Proxy | *(điền)* | Revenue / converted sessions |
-| KMeans clusters | *(điền)* | k tốt nhất theo silhouette |
+| Total Revenue | 5,813,952.29 | Proxy (qty=1) |
+| Total Sessions | 921,388 | |
+| Conversion Rate | 0.0207 | Sessions có purchase / sessions có view |
+| Cart Abandonment | 0.9812 | |
+| AOV Proxy | 316.65 | Revenue / converted sessions |
+| KMeans clusters | 2 | Sau khi tính Recency từ lần mua cuối, silhouette lớn nhất 0.835945; kiểm tra seed cho thấy phân cụm còn nhạy với khởi tạo. |
+
+[Biên bản kiểm toán M5](docs/kiem-toan-m5.md) đối chiếu bảng, hình, mã và dữ liệu gốc trên tier S và M.
 
 ---
 

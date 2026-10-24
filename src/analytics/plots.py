@@ -16,8 +16,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 RESULTS = Path("results")
 FIGURES = Path("docs/figures")
@@ -361,7 +361,13 @@ PLOTTERS = {
 }
 
 
-def main(targets: list[str] | None = None) -> None:
+def main(targets: list[str] | None = None, tier: str = "S") -> None:
+    from src.common.config import get_paths, load_config
+
+    global RESULTS, FIGURES
+    RESULTS = Path(get_paths(load_config())["results"])
+    figures_root = Path(__file__).resolve().parents[2] / "docs" / "figures"
+    FIGURES = figures_root if tier == "S" else figures_root / f"tier_{tier.lower()}"
     run = targets or list(PLOTTERS.keys())
     print(f"Đang vẽ {len(run)} biểu đồ → {FIGURES}/")
     for name in run:
@@ -386,5 +392,6 @@ if __name__ == "__main__":
         choices=list(PLOTTERS.keys()),
         help="Biểu đồ cần vẽ (mặc định: tất cả)",
     )
+    parser.add_argument("--tier", default="S", choices=["S", "M", "L", "XL"])
     args = parser.parse_args()
-    main(args.targets)
+    main(args.targets, args.tier)

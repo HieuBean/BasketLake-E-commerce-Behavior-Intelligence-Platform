@@ -44,9 +44,27 @@ RAW_SCHEMA = StructType([
 ])
 
 
+MONTH_ALIASES = {
+    "2019-10": ["2019-Oct", "2019-10"],
+    "2019-11": ["2019-Nov", "2019-11"],
+}
+
+
+def _resolve_file(raw_path: str, month: str) -> str:
+    import os
+    aliases = MONTH_ALIASES.get(month, [month])
+    for alias in aliases:
+        for ext in [".csv", ".csv.gz"]:
+            candidate = f"{raw_path}/{alias}{ext}"
+            local_cand = candidate.replace("/app/", "")
+            if os.path.exists(candidate) or os.path.exists(local_cand):
+                return candidate
+    return f"{raw_path}/{month}.csv"
+
+
 def read_csv(spark: SparkSession, raw_path: str, months: list[str]) -> DataFrame:
-    """Đọc CSV của các tháng cần thiết."""
-    files = [f"{raw_path}/{m}.csv" for m in months]
+    """Đọc CSV của các tháng cần thiết (hỗ trợ cả 2019-10.csv và 2019-Oct.csv)."""
+    files = [_resolve_file(raw_path, m) for m in months]
     log.info(f"Đọc {len(files)} file(s): {files}")
     df = spark.read.schema(RAW_SCHEMA).option("header", "true").csv(files)
 
@@ -54,10 +72,12 @@ def read_csv(spark: SparkSession, raw_path: str, months: list[str]) -> DataFrame
     df = df.withColumn("source_file", F.input_file_name())
     df = df.withColumn("ingest_ts", F.current_timestamp())
 
-    # Trích source_month từ tên file (YYYY-MM)
+    # Trích source_month từ tên file (YYYY-MM hoặc YYYY-Oct -> YYYY-10, YYYY-Nov -> YYYY-11)
     df = df.withColumn(
         "source_month",
-        F.regexp_extract(F.col("source_file"), r"(\d{4}-\d{2})", 1),
+        F.when(F.col("source_file").rlike(r"2019-Oct"), F.lit("2019-10"))
+         .when(F.col("source_file").rlike(r"2019-Nov"), F.lit("2019-11"))
+         .otherwise(F.regexp_extract(F.col("source_file"), r"(\d{4}-\d{2})", 1)),
     )
     return df
 
