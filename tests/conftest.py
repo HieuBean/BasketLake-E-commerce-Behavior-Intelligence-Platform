@@ -14,6 +14,7 @@ def spark():
         .appName("test")
         .config("spark.sql.shuffle.partitions", "4")
         .config("spark.sql.ansi.enabled", "true")
+        .config("spark.sql.session.timeZone", "UTC")
         .getOrCreate()
     )
     session.sparkContext.setLogLevel("ERROR")

@@ -1,0 +1,17 @@
+run_id,git_sha,timestamp,experiment,engine,engine_version,tier,row_count,cores,executors,ram_gb,shuffle_partitions,aqe_enabled,wall_time_s,shuffle_read_bytes,shuffle_write_bytes,spill_bytes,peak_ram_bytes,success,notes
+PIPE_silver_S_1791976986,unknown,2026-10-14T11:23:06,PIPE_silver,spark,3.5.3,S,1060392,0,0,0.0,200,True,30.616,0,0,0,0,True,in=1060438;quarantine=46
+E3_csv_Q1-run1-d6b9fa,unknown,2026-10-14T11:23:50,E3_csv_Q1,spark_csv,3.5.3,S,3,0,0,0.0,4,True,2.557,0,0,0,0,True,
+E3_csv_Q2-run1-0fdf16,unknown,2026-10-14T11:23:53,E3_csv_Q2,spark_csv,3.5.3,S,13,0,0,0.0,4,True,2.422,0,0,0,0,True,
+E3_csv_Q3-run1-bc2c09,unknown,2026-10-14T11:23:55,E3_csv_Q3,spark_csv,3.5.3,S,33139,0,0,0.0,4,True,2.392,0,0,0,0,True,
+E3_parquet_snappy_Q1-run1-f4f7b7,unknown,2026-10-14T11:24:01,E3_parquet_snappy_Q1,spark_parquet,3.5.3,S,3,0,0,0.0,4,True,0.385,0,0,0,0,True,
+E3_parquet_snappy_Q2-run1-7c1b45,unknown,2026-10-14T11:24:01,E3_parquet_snappy_Q2,spark_parquet,3.5.3,S,13,0,0,0.0,4,True,0.484,0,0,0,0,True,
+E3_parquet_snappy_Q3-run1-6c4883,unknown,2026-10-14T11:24:02,E3_parquet_snappy_Q3,spark_parquet,3.5.3,S,33139,0,0,0.0,4,True,0.27,0,0,0,0,True,
+E3_parquet_snappy_p_Q1-run1-9fc004,unknown,2026-10-14T11:24:13,E3_parquet_snappy_p_Q1,spark_parquet,3.5.3,S,3,0,0,0.0,4,True,1.818,0,0,0,0,True,
+E3_parquet_snappy_p_Q2-run1-ef0c68,unknown,2026-10-14T11:24:15,E3_parquet_snappy_p_Q2,spark_parquet,3.5.3,S,13,0,0,0.0,4,True,2.041,0,0,0,0,True,
+E3_parquet_snappy_p_Q3-run1-ba89aa,unknown,2026-10-14T11:24:16,E3_parquet_snappy_p_Q3,spark_parquet,3.5.3,S,33139,0,0,0.0,4,True,1.171,0,0,0,0,True,
+E3_parquet_zstd_Q1-run1-c6f1df,unknown,2026-10-14T11:24:21,E3_parquet_zstd_Q1,spark_parquet,3.5.3,S,3,0,0,0.0,4,True,0.299,0,0,0,0,True,
+E3_parquet_zstd_Q2-run1-bf586a,unknown,2026-10-14T11:24:21,E3_parquet_zstd_Q2,spark_parquet,3.5.3,S,13,0,0,0.0,4,True,0.32,0,0,0,0,True,
+E3_parquet_zstd_Q3-run1-742f7f,unknown,2026-10-14T11:24:21,E3_parquet_zstd_Q3,spark_parquet,3.5.3,S,33139,0,0,0.0,4,True,0.248,0,0,0,0,True,
+E3_parquet_zstd_p_Q1-run1-6a4878,unknown,2026-10-14T11:24:31,E3_parquet_zstd_p_Q1,spark_parquet,3.5.3,S,3,0,0,0.0,4,True,1.935,0,0,0,0,True,
+E3_parquet_zstd_p_Q2-run1-80724e,unknown,2026-10-14T11:24:33,E3_parquet_zstd_p_Q2,spark_parquet,3.5.3,S,13,0,0,0.0,4,True,1.873,0,0,0,0,True,
+E3_parquet_zstd_p_Q3-run1-befe88,unknown,2026-10-14T11:24:34,E3_parquet_zstd_p_Q3,spark_parquet,3.5.3,S,33139,0,0,0.0,4,True,1.171,0,0,0,0,True,

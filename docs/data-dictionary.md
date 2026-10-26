@@ -30,21 +30,26 @@
 | event_ts | timestamp | No | Timestamp UTC đã parse từ event_time |
 | event_date | date | No | Ngày của event_ts |
 | event_hour | int | No | Giờ trong ngày (0–23) |
-| event_type | string | No | Như bronze |
+| event_type | string | No | Như bronze, đã trim + lower |
 | product_id | long | No | Như bronze |
 | category_id | long | Yes | Như bronze |
+| category_code | string | Yes | Như bronze (giữ để truy vết) |
 | category_l1 | string | No | Cấp 1 của category_code (hoặc "unknown") |
 | category_l2 | string | Yes | Cấp 2 |
 | category_l3 | string | Yes | Cấp 3 |
-| brand | string | No | Như bronze; null → "unknown" |
-| brand_missing | boolean | No | True nếu brand gốc là null |
+| category_missing | boolean | No | True nếu category_code gốc null/rỗng (R6) |
+| brand | string | No | Như bronze (lower); null → "unknown" |
+| brand_missing | boolean | No | True nếu brand gốc là null/rỗng |
 | price | double | Yes | Như bronze |
-| price_valid | boolean | No | True nếu price > 0 |
+| price_valid | boolean | No | True nếu price > 0 (false khi = 0 hoặc null) |
 | user_id | long | No | Như bronze |
 | user_session | string | Yes | Như bronze |
+| session_id | string | No | = user_session; nếu null → `gen_<user_id>_<n>` sinh bằng gap 30 phút (R9) |
+| session_generated | boolean | No | True nếu session_id được sinh (R9) |
 | out_of_month | boolean | No | True nếu event nằm ngoài tháng của file |
 | source_file | string | No | Như bronze |
 | source_month | string | No | Như bronze |
+| ingest_ts | timestamp | No | Như bronze |
 
 **Partition**: `event_date`
 
@@ -55,7 +60,8 @@
 | Cột | Kiểu | Mô tả |
 |-----|------|-------|
 | *(tất cả cột bronze)* | — | Dòng gốc |
-| reject_reason | string | Lý do bị loại (null_key_field, invalid_event_type, timestamp_parse_error, negative_price) |
+| reject_rule | string | Luật loại dòng (R1/R2/R3/R4/R7) — cũng là partition key |
+| reject_reason | string | Lý do bị loại (null_key_field, invalid_event_type, timestamp_parse_error, negative_price, duplicate_row) |
 
 **Bất biến**: `count(bronze) = count(silver) + count(quarantine)`
 
