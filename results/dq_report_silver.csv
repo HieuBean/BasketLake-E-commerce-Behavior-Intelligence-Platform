@@ -1,0 +1,8 @@
+rule,rule_name,rows_in,rows_out,rows_quarantine,quarantine_pct,duration_seconds
+R1,null_key_field,1060438,1060438,0,0.0,3.07
+R2,invalid_event_type,1060438,1060438,0,0.0,2.72
+R3,timestamp_parse_error,1060438,1060438,0,0.0,3.07
+R4,negative_price,1060438,1060438,0,0.0,2.43
+R5,brand_missing,1060438,1060438,0,0.0,0.02
+R6,category_split,1060438,1060438,0,0.0,0.04
+R7,duplicate_row,1060438,1060392,46,0.0043,10.43
