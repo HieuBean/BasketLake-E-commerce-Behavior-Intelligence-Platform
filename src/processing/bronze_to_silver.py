@@ -111,7 +111,8 @@ def apply_r6_category(df: DataFrame):
 def apply_r7_dedupe(df: DataFrame):
     """R7: Xóa dòng trùng hoàn toàn, chuyển các bản ghi trùng vào quarantine."""
     cols = [c for c in df.columns if c not in ("source_file", "ingest_ts")]
-    window = Window.partitionBy(cols).orderBy("ingest_ts")
+    order_col = "ingest_ts" if "ingest_ts" in df.columns else F.lit(1)
+    window = Window.partitionBy(cols).orderBy(order_col)
     df_numbered = df.withColumn("_row_num", F.row_number().over(window))
 
     clean = df_numbered.filter(F.col("_row_num") == 1).drop("_row_num")

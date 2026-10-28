@@ -26,8 +26,8 @@ SCHEMA = StructType([
 ])
 
 
-def make_row(user_id=1, price=10.0, event_type="view"):
-    return ("2019-10-01 00:00:00 UTC", event_type, 1, 100, "cat", "brand", price, user_id, "s", "f.csv", "2019-10")
+def make_row(user_id=1, price=10.0, event_type="view", product_id=1):
+    return ("2019-10-01 00:00:00 UTC", event_type, product_id, 100, "cat", "brand", price, user_id, "s", "f.csv", "2019-10")
 
 
 def test_r1_invariant(spark: SparkSession):
