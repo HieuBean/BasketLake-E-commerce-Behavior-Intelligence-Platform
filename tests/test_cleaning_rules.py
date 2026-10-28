@@ -123,3 +123,18 @@ def test_r6_handles_null_category(spark: SparkSession):
     clean, _ = apply_r6_category(df)
     row = clean.collect()[0]
     assert row["category_l1"] == "unknown"
+
+
+# ---- R7 ----
+
+def test_r7_dedupe(spark: SparkSession):
+    from src.processing.bronze_to_silver import apply_r7_dedupe
+    row1 = make_row(user_id=1, product_id=100)
+    row2 = make_row(user_id=1, product_id=100)  # duplicate of row1
+    row3 = make_row(user_id=2, product_id=200)
+    df = spark.createDataFrame([row1, row2, row3], schema=SCHEMA)
+    clean, q = apply_r7_dedupe(df)
+    assert clean.count() == 2
+    assert q.count() == 1
+    assert q.collect()[0]["reject_reason"] == "duplicate_row"
+

@@ -40,8 +40,22 @@ def test_r1_invariant(spark: SparkSession):
 
 
 def test_r4_invariant(spark: SparkSession):
-    rows = [make_row(price=50.0), make_row(price=-1.0), make_row(price=0.0)]
+    rows = [make_row(price=50.0), make_row(price=-1.0), make_row(price=0.0), make_row(price=None)]
     df = spark.createDataFrame(rows, schema=SCHEMA)
     total_in = df.count()
     clean, q = apply_r4_price(df)
     assert total_in == clean.count() + q.count(), "Bất biến R4 vi phạm"
+
+
+def test_r7_invariant(spark: SparkSession):
+    from src.processing.bronze_to_silver import apply_r7_dedupe
+    rows = [
+        make_row(user_id=1, product_id=10),
+        make_row(user_id=1, product_id=10),  # duplicate
+        make_row(user_id=2, product_id=20),
+    ]
+    df = spark.createDataFrame(rows, schema=SCHEMA)
+    total_in = df.count()
+    clean, q = apply_r7_dedupe(df)
+    assert total_in == clean.count() + q.count(), "Bất biến R7 vi phạm"
+
