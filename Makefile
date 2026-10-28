@@ -5,7 +5,8 @@
 
 TIER         ?= S
 COMPOSE      := docker compose -f docker/docker-compose.yml
-SPARK_SUBMIT := $(COMPOSE) exec spark-master spark-submit
+SPARK_SUBMIT := $(COMPOSE) exec spark-master /opt/spark/bin/spark-submit
+PYTHON       := $(COMPOSE) exec spark-master python3
 
 .PHONY: help up down logs profile bronze silver gold analytics plots all \
         experiments test lint clean
@@ -79,7 +80,7 @@ analytics:
 
 plots:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python src/analytics/plots.py"
+		"cd /app && python3 src/analytics/plots.py"
 
 all: bronze silver gold analytics plots
 	@echo ""
@@ -114,41 +115,41 @@ experiment-e4:
 
 experiment-e5:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python experiments/e5_crossover.py --tier $(TIER)"
+		"cd /app && python3 experiments/e5_crossover.py --tier $(TIER)"
 
 experiment-e6:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python experiments/e6_correctness.py"
+		"cd /app && python3 experiments/e6_correctness.py"
 
 experiment-e7:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python experiments/e7_mapreduce.py"
+		"cd /app && python3 experiments/e7_mapreduce.py"
 
 plot-experiments:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python experiments/plot.py"
+		"cd /app && python3 experiments/plot.py"
 
 # ---------- Test & Lint ----------
 
 test:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python -m pytest tests/ -v --tb=short"
+		"cd /app && python3 -m pytest tests/ -v --tb=short"
 
 test-cleaning:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python -m pytest tests/test_cleaning_rules.py -v"
+		"cd /app && python3 -m pytest tests/test_cleaning_rules.py -v"
 
 test-kpi:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python -m pytest tests/test_kpi.py -v"
+		"cd /app && python3 -m pytest tests/test_kpi.py -v"
 
 test-invariants:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python -m pytest tests/test_invariants.py -v"
+		"cd /app && python3 -m pytest tests/test_invariants.py -v"
 
 lint:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python -m ruff check src/ experiments/ tests/"
+		"cd /app && python3 -m ruff check src/ experiments/ tests/"
 
 # ---------- Dọn dẹp ----------
 

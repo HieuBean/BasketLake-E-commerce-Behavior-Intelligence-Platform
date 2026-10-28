@@ -1,45 +1,38 @@
-version: "3.8"
-
 # =============================================================================
 # Spark standalone cluster: 1 master + 2 workers + History Server
-# Ghim image cụ thể — KHÔNG dùng :latest
+# Image: apache/spark:3.5.4 (chính thức từ Apache)
 # =============================================================================
 
 x-spark-common: &spark-common
-  image: bitnami/spark:3.5.3          # TODO: đổi sang 4.1.x khi image ổn định
+  image: apache/spark:3.5.4
+  user: root                             # quyền ghi vào /app/data/lake
   environment:
-    - SPARK_MODE=worker
-    - SPARK_MASTER_URL=spark://spark-master:7077
     - SPARK_WORKER_MEMORY=${SPARK_WORKER_MEMORY:-2G}
     - SPARK_WORKER_CORES=${SPARK_WORKER_CORES:-2}
-    - SPARK_RPC_AUTHENTICATION_ENABLED=no
-    - SPARK_RPC_ENCRYPTION_ENABLED=no
-    - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-    - SPARK_SSL_ENABLED=no
+    - PYTHONPATH=/app
   volumes:
-    - ../:/app                         # mount toàn bộ repo vào /app
+    - ../:/app                           # mount toàn bộ repo vào /app (bao gồm data/)
     - spark-events:/opt/spark-events
-    - spark-data:/app/data
+    - ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
   depends_on:
     - spark-master
+  command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
 
 services:
   spark-master:
-    image: bitnami/spark:3.5.3
+    image: apache/spark:3.5.4
     container_name: spark-master
+    user: root
     environment:
-      - SPARK_MODE=master
-      - SPARK_RPC_AUTHENTICATION_ENABLED=no
-      - SPARK_RPC_ENCRYPTION_ENABLED=no
-      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-      - SPARK_SSL_ENABLED=no
+      - PYTHONPATH=/app
     ports:
       - "8080:8080"    # Spark Master UI
       - "7077:7077"    # Spark submit endpoint
     volumes:
       - ../:/app
       - spark-events:/opt/spark-events
-      - spark-data:/app/data
+      - ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master", "--ip", "0.0.0.0", "--port", "7077", "--webui-port", "8080"]
 
   spark-worker-1:
     <<: *spark-common
@@ -54,18 +47,17 @@ services:
       - "8082:8082"
 
   spark-history:
-    image: bitnami/spark:3.5.3
+    image: apache/spark:3.5.4
     container_name: spark-history
-    command: >
-      bash -c "/opt/bitnami/spark/sbin/start-history-server.sh &&
-               tail -f /opt/bitnami/spark/logs/*"
+    user: root
     environment:
-      - SPARK_HISTORY_FS_LOG_DIRECTORY=file:///opt/spark-events
+      - SPARK_HISTORY_OPTS=-Dspark.history.fs.logDirectory=file:///opt/spark-events
     ports:
       - "18080:18080"  # History Server UI
     volumes:
       - spark-events:/opt/spark-events
+      - ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.history.HistoryServer"]
 
 volumes:
   spark-events:
-  spark-data:
