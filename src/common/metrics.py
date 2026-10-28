@@ -6,15 +6,11 @@ Dùng bởi harness thí nghiệm và pipeline jobs.
 from __future__ import annotations
 
 import csv
-import os
+import subprocess
 import time
 from contextlib import contextmanager
-from dataclasses import dataclass, asdict, field
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Optional
-
-import subprocess
-
 
 RESULTS_DIR = Path(__file__).parent.parent.parent / "results"
 LOG_FILE = RESULTS_DIR / "experiment_log.csv"

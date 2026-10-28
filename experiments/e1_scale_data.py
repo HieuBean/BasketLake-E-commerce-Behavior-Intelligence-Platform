@@ -16,15 +16,17 @@ Tác vụ đại diện (giống nhau cho mọi fraction để so sánh công b�
 from __future__ import annotations
 
 import argparse
+import statistics
+import time
+import uuid
 
-from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 
-from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths
+from src.common.config import get_paths, load_config
 from src.common.logger import get_logger
 from src.common.metrics import RunRecord, write_record
-import time, uuid, statistics
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 
@@ -41,10 +43,6 @@ def _spark_metrics(spark: SparkSession) -> dict:
     Lấy shuffle read/write bytes và spill từ SparkContext StatusTracker.
     Trả về dict rỗng nếu không có stage nào hoàn thành.
     """
-    sc = spark.sparkContext
-    stage_ids = sc.statusTracker().getActiveStageIds()
-    all_ids = list(sc.statusTracker().getActiveJobIds())
-
     # Dùng accumulators phía Python vì PySpark không expose
     # toàn bộ metrics qua public API — thu từ UI REST nếu cần chi tiết
     return {}  # TODO W3: đọc từ Spark History REST API (GET /api/v1/applications/<id>/stages)

@@ -11,10 +11,10 @@ from __future__ import annotations
 import statistics
 import time
 import uuid
-from typing import Callable, Any
+from typing import Any, Callable
 
-from src.common.metrics import write_record, RunRecord
 from src.common.logger import get_logger
+from src.common.metrics import RunRecord, write_record
 
 log = get_logger(__name__)
 

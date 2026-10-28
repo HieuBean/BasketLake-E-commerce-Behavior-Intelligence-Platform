@@ -3,18 +3,22 @@ tests/test_kpi.py
 Owner: D
 Test định nghĩa KPI, funnel, cohort trên dữ liệu tay.
 """
-import pytest
 from pyspark.sql import SparkSession
-from pyspark.sql.types import (
-    StructType, StructField,
-    StringType, LongType, DoubleType, BooleanType, IntegerType, TimestampType,
-)
 from pyspark.sql import functions as F
+from pyspark.sql.types import (
+    BooleanType,
+    DoubleType,
+    IntegerType,
+    LongType,
+    StringType,
+    StructField,
+    StructType,
+)
 
 from src.analytics.kpi import (
+    compute_cohort_retention,
     compute_kpi_summary,
     funnel_by_category,
-    compute_cohort_retention,
 )
 
 # ---- Schemas ----
@@ -134,7 +138,6 @@ def test_cohort_week0_is_full(spark: SparkSession):
     """
     Week 0 (cùng tuần mua đầu tiên) luôn có retention = 1.0.
     """
-    from datetime import datetime
 
     rows = [
         # user 1: mua tuần 2019-10-07 (cohort), rồi mua lại tuần 2019-10-14

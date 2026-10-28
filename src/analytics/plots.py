@@ -16,8 +16,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 RESULTS = Path("results")
 FIGURES = Path("docs/figures")

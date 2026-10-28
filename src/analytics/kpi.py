@@ -11,7 +11,7 @@ Không có side-effect (ghi file) — việc ghi do run_analytics.py xử lý.
 """
 from __future__ import annotations
 
-from pyspark.sql import SparkSession, DataFrame, Window
+from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 
 from src.common.logger import get_logger

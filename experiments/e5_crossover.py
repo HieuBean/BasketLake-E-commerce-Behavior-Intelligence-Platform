@@ -15,19 +15,18 @@ Mỗi engine × fraction chạy 3 lần.
 from __future__ import annotations
 
 import argparse
+import statistics
 import time
 import uuid
-import statistics
 
 import duckdb
 import pandas as pd
 import pyarrow.parquet as pq
-import pyarrow as pa
 
-from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths
+from src.common.config import get_paths, load_config
 from src.common.logger import get_logger
 from src.common.metrics import RunRecord, write_record
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 

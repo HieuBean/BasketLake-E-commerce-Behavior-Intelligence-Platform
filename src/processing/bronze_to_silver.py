@@ -16,14 +16,14 @@ import csv
 import time
 from pathlib import Path
 
-from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 from pyspark.sql.types import TimestampType
 from pyspark.sql.window import Window
 
-from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths
+from src.common.config import get_paths, load_config
 from src.common.logger import get_logger
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 

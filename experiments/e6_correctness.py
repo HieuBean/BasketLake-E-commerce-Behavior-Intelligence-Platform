@@ -10,7 +10,6 @@ So sánh với kết quả từ Spark pipeline.
 from __future__ import annotations
 
 import duckdb
-from pathlib import Path
 
 from src.common.logger import get_logger
 
@@ -67,7 +66,7 @@ def compare(oracle: dict, spark_results: dict, tolerance: float = 0.001) -> bool
 
 
 if __name__ == "__main__":
-    from src.common.config import load_config, get_paths
+    from src.common.config import get_paths, load_config
     cfg = load_config()
     paths = get_paths(cfg)
     oracle = run_oracle(paths["silver"])

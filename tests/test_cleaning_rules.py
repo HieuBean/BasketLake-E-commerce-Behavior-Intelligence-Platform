@@ -3,17 +3,16 @@ tests/test_cleaning_rules.py
 Owner: B
 Test từng luật R1–R9 trên dữ liệu tay.
 """
-import pytest
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType
+from pyspark.sql.types import DoubleType, LongType, StringType, StructField, StructType
 
 from src.processing.bronze_to_silver import (
+    VALID_EVENT_TYPES,
     apply_r1_null_keys,
     apply_r2_event_type,
     apply_r4_price,
     apply_r5_brand,
     apply_r6_category,
-    VALID_EVENT_TYPES,
 )
 
 SCHEMA = StructType([

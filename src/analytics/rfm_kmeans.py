@@ -8,11 +8,11 @@ Chỉ áp dụng cho user có ít nhất 1 purchase.
 """
 from __future__ import annotations
 
-from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql import functions as F
-from pyspark.ml.feature import VectorAssembler, StandardScaler
 from pyspark.ml.clustering import KMeans
 from pyspark.ml.evaluation import ClusteringEvaluator
+from pyspark.ml.feature import StandardScaler, VectorAssembler
+from pyspark.sql import DataFrame
+from pyspark.sql import functions as F
 
 from src.common.logger import get_logger
 

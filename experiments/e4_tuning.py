@@ -15,17 +15,17 @@ Tác vụ cố định: Silver → group by product_id → sum revenue + count.
 from __future__ import annotations
 
 import argparse
+import statistics
 import time
 import uuid
-import statistics
 
-from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 
-from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths
+from src.common.config import get_paths, load_config
 from src.common.logger import get_logger
 from src.common.metrics import RunRecord, write_record
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 
@@ -226,7 +226,7 @@ def run(tier: str = "M") -> None:
     _time_job(
         "E4_T4_no_salt", tier,
         lambda: job_skew_no_salt(df),
-        engine_note=f"salt=none,buckets=0",
+        engine_note="salt=none,buckets=0",
     )
     _time_job(
         f"E4_T4_salt{SALT_BUCKETS}", tier,

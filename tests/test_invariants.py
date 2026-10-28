@@ -3,9 +3,8 @@ tests/test_invariants.py
 Owner: A
 Kiểm tra bất biến pipeline: row_in = row_clean + row_quarantine.
 """
-import pytest
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType
+from pyspark.sql.types import DoubleType, LongType, StringType, StructField, StructType
 
 from src.processing.bronze_to_silver import (
     apply_r1_null_keys,

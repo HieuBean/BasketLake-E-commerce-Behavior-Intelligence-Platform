@@ -3,15 +3,13 @@ tests/test_prepare_input.py
 Owner: M1 (Hiếu)
 Test module prepare_input: schema, sampling, amplification, month extraction.
 """
-import pytest
 from pyspark.sql import SparkSession
-from pyspark.sql import functions as F
-from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType
+from pyspark.sql.types import DoubleType, LongType, StringType, StructField, StructType
 
 from src.prepare_input.main import (
     RAW_SCHEMA,
-    sample_tier_s,
     amplify_xl,
+    sample_tier_s,
 )
 
 SCHEMA = StructType([

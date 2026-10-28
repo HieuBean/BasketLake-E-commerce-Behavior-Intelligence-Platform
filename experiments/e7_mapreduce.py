@@ -10,12 +10,11 @@ from __future__ import annotations
 
 import time
 from collections import defaultdict
-from pathlib import Path
 
 import pyarrow.parquet as pq
 
 from src.common.logger import get_logger
-from src.common.metrics import write_record, RunRecord
+from src.common.metrics import RunRecord, write_record
 
 log = get_logger(__name__)
 
@@ -98,7 +97,7 @@ def run(silver_path: str) -> None:
 
 
 if __name__ == "__main__":
-    from src.common.config import load_config, get_paths
+    from src.common.config import get_paths, load_config
     cfg = load_config()
     paths = get_paths(cfg)
     run(paths["silver"])

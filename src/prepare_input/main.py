@@ -15,18 +15,20 @@ Chạy:
 from __future__ import annotations
 
 import argparse
-from datetime import datetime
 
-from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import (
-    StructType, StructField,
-    StringType, LongType, DoubleType, TimestampType,
+    DoubleType,
+    LongType,
+    StringType,
+    StructField,
+    StructType,
 )
 
-from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths, get_tier_config
+from src.common.config import get_paths, get_tier_config, load_config
 from src.common.logger import get_logger
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 
