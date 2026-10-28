@@ -13,13 +13,13 @@ tiers:
   S:
     sample_fraction: 0.025   # ~1 triệu dòng từ tháng 10
     seed: 42
-    months: ["2019-10"]
+    months: ["2019-Oct"]
   M:
-    months: ["2019-10"]
+    months: ["2019-Oct"]
   L:
-    months: ["2019-10", "2019-11"]
+    months: ["2019-Oct", "2019-Nov"]
   XL:
-    months: ["2019-10", "2019-11"]
+    months: ["2019-Oct", "2019-Nov"]
     amplify_factor: 5        # nhân bản có biến đổi id (synthetic)
 
 spark:
