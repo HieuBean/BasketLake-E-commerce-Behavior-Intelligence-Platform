@@ -1,8 +1,11 @@
-rule,rule_name,rows_in,rows_out,rows_quarantine,quarantine_pct,duration_seconds
-R1,null_key_field,1060438,1060438,0,0.0,3.07
-R2,invalid_event_type,1060438,1060438,0,0.0,2.72
-R3,timestamp_parse_error,1060438,1060438,0,0.0,3.07
-R4,negative_price,1060438,1060438,0,0.0,2.43
-R5,brand_missing,1060438,1060438,0,0.0,0.02
-R6,category_split,1060438,1060438,0,0.0,0.04
-R7,duplicate_row,1060438,1060392,46,0.0043,10.43
+rule,name,action,rows_in,rows_out,rejected,reject_rate_pct,flagged,flag_rate_pct,time_s
+R1,null_key_field,quarantine,1060438,1060438,0,0.0,0,0.0,
+R2,invalid_event_type,quarantine,1060438,1060438,0,0.0,0,0.0,
+R3,timestamp_parse_error,quarantine,1060438,1060438,0,0.0,0,0.0,
+R4,negative_price,quarantine (<0); flag price_valid=false (=0/null),1060438,1060438,0,0.0,1674,0.1579,
+R5,brand_missing,fill 'unknown' + flag,1060438,1060438,0,0.0,153054,14.4337,
+R6,category_missing,category_l1='unknown' + flag,1060438,1060438,0,0.0,338266,31.9001,
+R7,duplicate_row,"quarantine (dedupe, giữ 1 bản)",1060438,1060392,46,0.0043,0,0.0,
+R8,out_of_month,flag,1060392,1060392,0,0.0,0,0.0,
+R9,session_generated,sinh session_id bằng gap,1060392,1060392,0,0.0,0,0.0,
+TOTAL,,,1060438,1060392,46,0.0043,,,

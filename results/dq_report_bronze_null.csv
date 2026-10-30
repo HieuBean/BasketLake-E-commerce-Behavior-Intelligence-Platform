@@ -1,0 +1,13 @@
+column,dtype,total,null_count,empty_count,null_rate
+event_time,string,1060438,0,0,0.0
+event_type,string,1060438,0,0,0.0
+product_id,bigint,1060438,0,0,0.0
+category_id,bigint,1060438,0,0,0.0
+category_code,string,1060438,338270,0,31.8991
+brand,string,1060438,153056,0,14.4333
+price,double,1060438,0,0,0.0
+user_id,bigint,1060438,0,0,0.0
+user_session,string,1060438,0,0,0.0
+source_file,string,1060438,0,0,0.0
+ingest_ts,timestamp,1060438,0,0,0.0
+source_month,string,1060438,0,0,0.0

@@ -1,0 +1,2 @@
+price_min,price_max,price_avg,price_p25,price_p50,price_p75,price_p99,count_negative,count_zero,count_null
+0.0,2574.07,290.7372859139385,66.15,163.62,358.57,1741.34,0,1674,0

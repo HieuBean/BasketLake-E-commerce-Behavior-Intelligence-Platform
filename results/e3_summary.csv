@@ -1,0 +1,6 @@
+fmt,Q1_median_s,Q1_speedup_vs_csv,Q2_median_s,Q2_speedup_vs_csv,Q3_median_s,Q3_speedup_vs_csv
+csv,2.557,1.0,2.422,1.0,2.392,1.0
+parquet_snappy,0.385,6.64,0.484,5.0,0.27,8.86
+parquet_snappy_p,1.818,1.41,2.041,1.19,1.171,2.04
+parquet_zstd,0.299,8.55,0.32,7.57,0.248,9.65
+parquet_zstd_p,1.935,1.32,1.873,1.29,1.171,2.04

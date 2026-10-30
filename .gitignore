@@ -5,6 +5,7 @@ data/lake/
 # Kết quả thí nghiệm dạng Parquet — commit CSV, không commit Parquet kết quả
 results/*.parquet
 results/tmp/
+results/*_tmp/
 
 # Bí mật
 .env

@@ -26,7 +26,7 @@ def _save(fig: plt.Figure, name: str) -> None:
     out = FIGURES_DIR / name
     fig.savefig(out, bbox_inches="tight")
     plt.close(fig)
-    print(f"✓ {out}")
+    print(f"[OK] {out}")
 
 
 def load_log() -> pd.DataFrame:
@@ -115,16 +115,17 @@ def plot_e3(df: pd.DataFrame) -> None:
         print("E3: chưa có dữ liệu.")
         return
 
-    # Tách label và query
-    e3["fmt_label"] = e3["experiment"].str.extract(r"E3_(.+)_(Q\d)")
+    # Tách label và query (VD: E3_parquet_snappy_p_Q3 → parquet_snappy_p, Q3)
     e3[["fmt", "query"]] = e3["experiment"].str.extract(r"E3_(.+)_(Q\d)")
 
+    order = ["csv", "parquet_snappy", "parquet_snappy_p", "parquet_zstd", "parquet_zstd_p"]
     agg = (
         e3.groupby(["fmt", "query"])["wall_time_s"]
           .median()
           .unstack("query")
-          .reset_index()
     )
+    agg = agg.reindex([f for f in order if f in agg.index] +
+                      [f for f in agg.index if f not in order]).reset_index()
 
     fig, ax = plt.subplots(figsize=(10, 5))
     x = range(len(agg))
@@ -132,7 +133,10 @@ def plot_e3(df: pd.DataFrame) -> None:
     queries = [c for c in ["Q1", "Q2", "Q3"] if c in agg.columns]
     colors = ["#4c72b0", "#dd8452", "#55a868"]
     for i, (q, color) in enumerate(zip(queries, colors)):
-        ax.bar([xi + i * width for xi in x], agg[q], width, label=q, color=color)
+        bars = ax.bar([xi + i * width for xi in x], agg[q], width, label=q, color=color)
+        for bar, val in zip(bars, agg[q]):
+            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(),
+                    f"{val:.1f}", ha="center", va="bottom", fontsize=7)
 
     ax.set_xticks([xi + width for xi in x])
     ax.set_xticklabels(agg["fmt"], rotation=20, ha="right")
@@ -141,6 +145,52 @@ def plot_e3(df: pd.DataFrame) -> None:
     ax.legend(title="Truy vấn")
     ax.grid(True, axis="y", linestyle="--", alpha=0.4)
     _save(fig, "e3_format_time.png")
+
+    # Bảng tóm tắt cho báo cáo: speedup so với CSV và partition vs không partition
+    summary = agg.set_index("fmt")
+    rows = []
+    for fmt in summary.index:
+        row = {"fmt": fmt}
+        for q in queries:
+            row[f"{q}_median_s"] = round(summary.loc[fmt, q], 3)
+            if "csv" in summary.index:
+                row[f"{q}_speedup_vs_csv"] = round(summary.loc["csv", q] / summary.loc[fmt, q], 2)
+        rows.append(row)
+    pd.DataFrame(rows).to_csv(RESULTS_DIR / "e3_summary.csv", index=False)
+    print(f"[OK] {RESULTS_DIR / 'e3_summary.csv'}")
+
+    for base in ("parquet_snappy", "parquet_zstd"):
+        if base in summary.index and f"{base}_p" in summary.index and "Q3" in summary.columns:
+            ratio = summary.loc[base, "Q3"] / summary.loc[f"{base}_p", "Q3"]
+            print(f"  Q3 {base}: partition nhanh hon {ratio:.2f}x so voi khong partition")
+    if "csv" in summary.index and "parquet_snappy" in summary.index and "Q2" in summary.columns:
+        ratio = summary.loc["csv", "Q2"] / summary.loc["parquet_snappy", "Q2"]
+        print(f"  Q2: parquet_snappy nhanh hon CSV {ratio:.2f}x")
+
+    # Dung lượng (từ results/e3_sizes.csv do e3_format.py ghi)
+    sizes_file = RESULTS_DIR / "e3_sizes.csv"
+    if sizes_file.exists():
+        sizes = pd.read_csv(sizes_file)
+        sizes["label"] = pd.Categorical(
+            sizes["label"],
+            categories=[f for f in order if f in set(sizes["label"])] +
+                       [f for f in sizes["label"] if f not in order],
+            ordered=True,
+        )
+        sizes = sizes.sort_values("label")
+        fig, ax = plt.subplots(figsize=(8, 4.5))
+        bars = ax.bar(sizes["label"].astype(str), sizes["size_mb"], color="#8172b2")
+        for bar, mb, ratio in zip(bars, sizes["size_mb"], sizes.get("ratio_vs_csv", [""] * len(sizes))):
+            label = f"{mb:,.0f} MB" + (f"\n({ratio}×)" if str(ratio) not in ("", "nan") else "")
+            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(),
+                    label, ha="center", va="bottom", fontsize=8)
+        ax.set_ylabel("Dung lượng (MB)")
+        ax.set_title("E3 — Dung lượng lưu trữ theo định dạng (tỷ lệ nén so với CSV)")
+        ax.tick_params(axis="x", rotation=20)
+        ax.grid(True, axis="y", linestyle="--", alpha=0.4)
+        _save(fig, "e3_format_size.png")
+    else:
+        print("E3: chưa có results/e3_sizes.csv — bỏ qua biểu đồ dung lượng.")
 
 
 # =============================================================================
