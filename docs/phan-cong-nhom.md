@@ -1102,14 +1102,11 @@ Chạy KMeans với nhiều seed khác nhau (42, 0, 123). Nếu cluster profiles
 ```python
 import pyarrow.parquet as pq
 
-dataset = pq.ParquetDataset("data/lake/silver/events", use_legacy_dataset=False)
-fragments = list(dataset.get_fragments())
-
-# Xử lý từng fragment (thường 1 file = 1 fragment)
-for frag in fragments:
-    table = frag.to_table(columns=["event_type", "category_l1", "price"])
-    df_chunk = table.to_pandas()
-    # xử lý df_chunk...
+parquet = pq.ParquetFile("sample.parquet")
+for batch in parquet.iter_batches(batch_size=65536,
+                                  columns=["event_type", "category_l1", "price"]):
+    df_chunk = batch.to_pandas()
+    # xử lý và cộng dồn kết quả của batch...
 ```
 
 **DuckDB** — query thẳng Parquet không cần load:
@@ -1126,7 +1123,7 @@ result = con.execute("""
 """).df()  # .df() trả về pandas DataFrame
 ```
 
-DuckDB thường **rất nhanh** ở dữ liệu vừa (dưới RAM). E5 có thể cho thấy DuckDB thắng Spark ở tier S/M → ghi nhận trung thực, giải thích tại sao (overhead Spark, JVM startup).
+DuckDB nhanh nhất ở tier S mức 100% và tier M mức 5–50% trong kết quả E5 đã đo; Spark Local nhanh nhất ở tier M mức 100%. Phép đo không tính thời gian khởi tạo SparkSession, nên không dùng JVM startup để giải thích trực tiếp số liệu trên hình.
 
 #### 5. Oracle và E6 — đảm bảo kết quả đúng
 
@@ -1183,13 +1180,13 @@ EOF
 #### Tuần 2 (W2): Chạy RFM + KMeans
 
 ```bash
-make analytics TIER=M
+make analytics TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml
 ```
 
 Kiểm tra cluster profiles:
 ```python
 import pandas as pd, glob
-files = glob.glob("results/cluster_profiles/*.csv")
+files = glob.glob("results/tier_m/cluster_profiles/*.csv")
 df = pd.concat([pd.read_csv(f) for f in files])
 print(df.sort_values("median_monetary", ascending=False))
 # Đặt tên cho từng cụm dựa trên profile
@@ -1205,13 +1202,11 @@ Kiểm tra ổn định:
 #### Tuần 3 (W3): E5 và E6
 
 ```bash
-# E5: Chạy từng engine
-python experiments/e5_crossover.py --tier M --engines duckdb
-python experiments/e5_crossover.py --tier M --engines pandas_chunk
-python experiments/e5_crossover.py --tier M --engines spark_local
+# E5: Chạy bốn engine trên cùng cấu hình tier M
+make experiment-e5 TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml
 
-# E6
-python experiments/e6_correctness.py
+# E6 đã kiểm chứng trên S và M; chạy lại sau Gold và analytics của tier tương ứng
+make experiment-e6 TIER=M PIPELINE_CONFIG=/app/configs/pipeline-m5-tier-m.yaml
 ```
 
 Ghi lại:
@@ -1220,7 +1215,7 @@ Ghi lại:
 - E6 có lệch không? Nếu lệch → tìm nguyên nhân và commit fix
 
 ```bash
-python experiments/plot.py --experiments E5
+make plot-experiments
 # Xem docs/figures/e5_crossover.png
 ```
 
@@ -1374,7 +1369,7 @@ make test         # phải xanh
 ### Câu hỏi về kiến trúc
 
 **"Tại sao không dùng Pandas?"**
-> Trình bày E5: ở tier S/M DuckDB nhanh hơn Spark. Nhưng ở tier L/XL Pandas hết RAM (MemoryError). Spark spill ra đĩa nên vẫn chạy được. Nêu điểm giao cụ thể (fraction nào, kích thước nào).
+> Trình bày đúng E5 đã đo: tier S, Pandas chunk nhanh nhất ở 5–50%, DuckDB nhanh nhất ở 100%; tier M, DuckDB nhanh nhất đến 50%, Spark Local nhanh nhất ở 100%. Điểm giao DuckDB/Spark Local chỉ được khoanh giữa 50% và 100% tier M trong phép đo truy vấn đã chuẩn bị mẫu. Chưa đo tier L/XL hoặc chứng minh Pandas hết RAM; nêu mục tiêu dùng Spark cho pipeline phân tán và giới hạn của benchmark hiện tại.
 
 **"Cluster Docker của nhóm có thực sự phân tán không?"**
 > Nói thẳng: Không. Tất cả container chạy trên cùng 1 máy vật lý, chia sẻ CPU/RAM/đĩa. E2 đo speedup nhưng không phản ánh tăng tốc phân tán thật sự. Đây là hạn chế, đã nêu trong mục 8 báo cáo.
@@ -1388,7 +1383,7 @@ make test         # phải xanh
 > Shuffle = phân phối lại dữ liệu theo key qua mạng/đĩa để thực hiện groupBy/join. Đắt vì: (1) ghi dữ liệu trung gian ra đĩa, (2) đọc lại theo key mới, (3) network I/O giữa các executor. Chỉ ra shuffle bytes trong Spark UI của E1/E4.
 
 **"Narrow vs wide transformation khác nhau thế nào?"**
-> Narrow: filter, select, map — mỗi partition đầu ra chỉ cần 1 partition đầu vào, không shuffle. Wide: groupBy, join, distinct — cần dữ liệu từ nhiều partition, gây shuffle và tạo ranh giới stage mới.
+> Narrow: filter, select, map — mỗi partition đầu ra thường chỉ cần một partition đầu vào. Wide: tổng hợp theo key có thể cần dữ liệu từ nhiều partition và tạo shuffle. Join có nhiều kế hoạch vật lý; broadcast join có thể tránh shuffle ở một phía.
 
 **"Skew là gì, nhóm xử lý thế nào?"**
 > Skew = một số key có lượng dữ liệu lớn hơn nhiều. Ví dụ product_id hot. Biểu hiện: 1 task chạy rất lâu trong Spark UI kéo cả stage. Nhóm xử lý bằng salting (E4 T4): thêm cột salt ngẫu nhiên vào key, group 2 lần. Nêu kết quả đo: task max giảm từ Xs xuống Ys.
@@ -1399,16 +1394,16 @@ make test         # phải xanh
 ### Câu hỏi về dữ liệu
 
 **"Dedupe quyết định thế nào?"**
-> Xóa dòng trùng hoàn toàn (tất cả 9 cột gốc giống hệt). Sensitivity analysis từ E6: KPI revenue thay đổi [X]% khi có/không dedupe → quyết định dedupe vì dòng trùng là artifact của dataset, không phải sự kiện thật.
+> Nêu quy tắc dedupe trong mã làm sạch và số dòng bị loại đã đo. E6 hiện chỉ đối chiếu ba KPI trên Silver sau làm sạch; chưa có sensitivity analysis trước/sau dedupe nên không được viện dẫn E6 để khẳng định phần trăm tác động doanh thu hoặc nguyên nhân tạo dòng trùng.
 
 **"Doanh thu tính ra sao khi không có số lượng?"**
 > Revenue = SUM(price) WHERE event_type='purchase'. Giả định số lượng = 1 vì dataset không có cột quantity. Đây là proxy, không phải revenue thật. AOV cũng là proxy. Đã ghi rõ giả định này trong báo cáo mục 3 và 8.
 
 **"Kết quả đúng xác nhận bằng cách nào?"**
-> E6: tính 3 KPI bằng DuckDB (oracle đơn giản, ít bug) → so sánh với Spark → lệch [X]% < 0.1% threshold. Thêm vào đó: unit test `test_invariants.py` kiểm tra `count_bronze = count_silver + count_quarantine`, `test_kpi.py` kiểm tra định nghĩa KPI trên dữ liệu tay.
+> E6 trên tier S và M tính ba KPI bằng DuckDB từ cùng Silver rồi so sánh với đầu ra Spark: cả ba đều đạt ngưỡng 0.1% ở mỗi tier. Conversion rate lệch 0.0392% (S) và 0.0177% (M) do Spark lưu bốn chữ số thập phân. Bất biến số dòng được đối chiếu riêng: S `1,060,438 = 1,060,392 + 46`, M `42,448,764 = 42,418,544 + 30,220`. Unit test kiểm tra các trường hợp mẫu; E6 chỉ xác nhận ba KPI đã nêu.
 
 **"KMeans chọn k bằng cách nào?"**
-> Kết hợp 3 phương pháp: (1) Silhouette score tối đa tại k=[X], (2) Elbow method giảm chậm sau k=[X], (3) Diễn giải nghiệp vụ: k=[X] cụm có ý nghĩa rõ ràng. Kiểm tra ổn định với 3 seed → profile các cụm tương tự nhau.
+> Pipeline thử $k=2..10$, ở mỗi $k$ chọn nghiệm có inertia thấp nhất trong ba seed rồi so sánh silhouette. Tier S có silhouette lớn nhất 0.835945 tại $k=2$, nhưng quy mô hai nhóm thay đổi mạnh giữa các seed; $k=4$ có profile tổng hợp gần nhau hơn dù silhouette chỉ 0.549776. Tier M có silhouette lớn nhất 0.580124 tại $k=2$, chia 79.098 và 268.020 người; ba lần fit riêng có quy mô gần nhau. Đường elbow không cho điểm uốn duy nhất rõ ràng; chưa kiểm tra mức trùng khớp thành viên cụm hay kiểm định nhãn nghiệp vụ.
 
 ---
 

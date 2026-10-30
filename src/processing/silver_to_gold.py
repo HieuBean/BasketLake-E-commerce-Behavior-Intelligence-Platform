@@ -43,6 +43,9 @@ def build_fact_sessions(df: DataFrame) -> DataFrame:
     sessions = df.groupBy("user_id", "user_session").agg(
         F.min("event_ts").alias("session_start"),
         F.max("event_ts").alias("session_end"),
+        F.max(F.when(F.col("event_type") == "purchase", F.col("event_ts"))).alias(
+            "last_purchase_ts"
+        ),
         F.count("*").alias("event_count"),
         F.sum(F.when(F.col("event_type") == "view",     1).otherwise(0)).alias("view_count"),
         F.sum(F.when(F.col("event_type") == "cart",     1).otherwise(0)).alias("cart_count"),

@@ -77,6 +77,7 @@
 | user_session | string | Session key |
 | session_start | timestamp | Sự kiện đầu tiên của phiên |
 | session_end | timestamp | Sự kiện cuối cùng của phiên |
+| last_purchase_ts | timestamp | Lần purchase cuối trong phiên; null nếu phiên không mua |
 | session_duration_s | long | Thời lượng phiên (giây) |
 | event_count | long | Tổng số sự kiện |
 | view_count | long | Số view |
@@ -141,7 +142,7 @@ Grain: `category_l1`
 | Cột | Kiểu | Mô tả |
 |-----|------|-------|
 | user_id | long | |
-| recency | int | Số ngày kể từ lần mua cuối đến as_of_date |
+| recency | int | Số ngày từ `last_purchase_ts` gần nhất đến `as_of_date` |
 | frequency | long | Số phiên mua |
 | monetary | double | Tổng doanh thu |
 | cluster | int | Nhãn cụm KMeans (0-indexed) |
@@ -153,7 +154,7 @@ Grain: `category_l1`
 | KPI | Định nghĩa chính xác |
 |-----|----------------------|
 | Revenue | `SUM(price) WHERE event_type='purchase' AND price > 0` |
-| Sessions | `COUNT(DISTINCT user_session)` |
+| Sessions | Số cặp `(user_id, user_session)` khác nhau, cùng grain với `fact_sessions` |
 | Conversion rate | `sessions có purchase / sessions có view` |
 | Cart abandonment | `sessions có cart nhưng không purchase / sessions có cart` |
 | AOV proxy | `Revenue / sessions_converted` (giả định qty=1) |

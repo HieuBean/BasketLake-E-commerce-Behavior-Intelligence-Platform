@@ -1,0 +1,4 @@
+metric,oracle_value,spark_value,diff_abs,diff_pct,tolerance_pct,status
+total_revenue,229933212.63,229933212.63,0.0,0.0,0.1,PASSED
+total_sessions,9244772.0,9244772.0,0.0,0.0,0.1,PASSED
+conversion_rate,0.06811208,0.0681,1.208e-05,0.0177,0.1,PASSED

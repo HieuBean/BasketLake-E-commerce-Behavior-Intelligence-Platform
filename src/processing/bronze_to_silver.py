@@ -28,7 +28,8 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import TimestampType
 
 from src.common.spark_session import get_spark
-from src.common.config import load_config, get_paths
+from src.common.config import get_paths, load_config
+from src.common.input_manifest import write_silver_manifest
 from src.common.logger import get_logger
 
 log = get_logger(__name__)
@@ -539,6 +540,10 @@ def run(tier: str, timed: bool = False) -> None:
     except Exception as exc:  # metrics không được làm hỏng pipeline
         log.warning(f"Không ghi được experiment_log: {exc}")
 
+    try:
+        write_silver_manifest(paths["silver"], tier)
+    except Exception as exc:
+        log.warning(f"Không ghi được silver manifest: {exc}")
     spark.stop()
     if not ok:
         raise RuntimeError(f"Bất biến lỗi: {total_in} ≠ {total_out} + {total_q}")

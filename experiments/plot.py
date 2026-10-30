@@ -8,6 +8,7 @@ Tất cả biểu đồ lưu vào docs/figures/.
 from __future__ import annotations
 
 import argparse
+import shutil
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -236,31 +237,59 @@ def plot_e4(df: pd.DataFrame) -> None:
 # =============================================================================
 
 def plot_e5(df: pd.DataFrame) -> None:
-    e5 = df[df["experiment"].str.startswith("E5_")].copy()
+    # Earlier E5 runs used different samples and Spark counted only groups.
+    # Their timings must not be mixed with the corrected benchmark.
+    e5 = df[
+        df["experiment"].str.startswith("E5_")
+        & df["notes"].fillna("").str.contains("validated_sample", regex=False)
+    ].copy()
     if e5.empty:
         print("E5: chưa có dữ liệu.")
         return
 
     e5["engine"] = e5["experiment"].str.extract(r"E5_(.+)_frac\d+")
     e5["fraction_pct"] = e5["experiment"].str.extract(r"E5_.+_frac(\d+)").astype(float)
+    # Keep the latest complete three repetitions per series; earlier smoke runs
+    # and reruns should not shift the reported median.
+    e5 = e5.groupby(["tier", "engine", "fraction_pct"], sort=False).tail(3)
     agg = (
-        e5.groupby(["engine", "fraction_pct"])["wall_time_s"]
+        e5.groupby(["tier", "engine", "fraction_pct"])["wall_time_s"]
           .median()
           .reset_index()
           .sort_values("fraction_pct")
     )
 
-    fig, ax = plt.subplots(figsize=(9, 5))
-    for engine, grp in agg.groupby("engine"):
-        ax.plot(grp["fraction_pct"], grp["wall_time_s"], marker="o", label=engine)
-
-    ax.set_xlabel("Dữ liệu (%)")
-    ax.set_ylabel("Wall time (s) — trung vị")
-    ax.set_title("E5 — Crossover: Pandas / DuckDB / Spark")
-    ax.legend()
-    ax.xaxis.set_major_formatter(ticker.PercentFormatter())
-    ax.grid(True, linestyle="--", alpha=0.4)
-    _save(fig, "e5_crossover.png")
+    colors = {
+        "duckdb": "#1f77b4", "pandas_chunk": "#ff7f0e",
+        "spark_local": "#d62728", "spark_cluster": "#2ca02c",
+    }
+    panels = [
+        ("Tất cả engine", list(colors)),
+        ("Chi tiết: trừ Spark Cluster", ["duckdb", "pandas_chunk", "spark_local"]),
+        ("Chi tiết: DuckDB và Pandas", ["duckdb", "pandas_chunk"]),
+    ]
+    for tier, tier_rows in agg.groupby("tier"):
+        fig, axes = plt.subplots(1, 3, figsize=(18, 5), sharex=True)
+        for ax, (title, visible) in zip(axes, panels):
+            for engine in visible:
+                grp = tier_rows[tier_rows["engine"] == engine]
+                if not grp.empty:
+                    ax.plot(grp["fraction_pct"], grp["wall_time_s"], marker="o",
+                            color=colors[engine], label=engine)
+            ax.set_title(title)
+            ax.set_xlabel("Dữ liệu (%)")
+            ax.set_ylabel("Giây — trung vị 3 lần")
+            ax.set_xlim(0, 105)
+            ax.xaxis.set_major_formatter(ticker.PercentFormatter())
+            ax.grid(True, linestyle="--", alpha=0.4)
+            ax.legend(fontsize=8)
+        fig.suptitle(f"E5 — Thời gian truy vấn tier {tier} trên cùng tệp mẫu")
+        fig.text(0.5, 0.01, "Tạo mẫu và khởi tạo SparkSession nằm ngoài phép đo.",
+                 ha="center", fontsize=9)
+        fig.tight_layout(rect=(0, 0.04, 1, 0.95))
+        _save(fig, f"e5_crossover_{tier}.png")
+        if tier == "S":
+            shutil.copyfile(FIGURES_DIR / "e5_crossover_S.png", FIGURES_DIR / "e5_crossover.png")
 
 
 # =============================================================================

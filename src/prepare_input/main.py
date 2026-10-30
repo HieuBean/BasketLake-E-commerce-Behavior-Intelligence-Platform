@@ -46,25 +46,28 @@ RAW_SCHEMA = StructType([
 ])
 
 
-def read_csv(spark: SparkSession, raw_path: str, months: list[str]) -> DataFrame:
-    """Đọc CSV của các tháng cần thiết (tự động nhận diện 2019-Oct.csv hoặc 2019-10.csv)."""
-    import os
-    MONTH_ALT = {
-        "2019-10": "2019-Oct", "2019-Oct": "2019-10",
-        "2019-11": "2019-Nov", "2019-Nov": "2019-11",
-        "2019-12": "2019-Dec", "2019-Dec": "2019-12",
-    }
-    files = []
-    for m in months:
-        p1 = f"{raw_path}/{m}.csv"
-        p2 = f"{raw_path}/{MONTH_ALT.get(m, m)}.csv"
-        if os.path.exists(p1):
-            files.append(p1)
-        elif os.path.exists(p2):
-            files.append(p2)
-        else:
-            files.append(p1)  # Giữ path mặc định để Spark ném thông báo nếu chưa có file
+MONTH_ALIASES = {
+    "2019-10": ["2019-Oct", "2019-10"],
+    "2019-11": ["2019-Nov", "2019-11"],
+    "2019-12": ["2019-Dec", "2019-12"],
+}
 
+
+def _resolve_file(raw_path: str, month: str) -> str:
+    import os
+    aliases = MONTH_ALIASES.get(month, [month])
+    for alias in aliases:
+        for ext in [".csv", ".csv.gz"]:
+            candidate = f"{raw_path}/{alias}{ext}"
+            local_cand = candidate.replace("/app/", "")
+            if os.path.exists(candidate) or os.path.exists(local_cand):
+                return candidate
+    return f"{raw_path}/{month}.csv"
+
+
+def read_csv(spark: SparkSession, raw_path: str, months: list[str]) -> DataFrame:
+    """Đọc CSV của các tháng cần thiết (hỗ trợ cả 2019-10.csv và 2019-Oct.csv)."""
+    files = [_resolve_file(raw_path, m) for m in months]
     log.info(f"Đọc {len(files)} file(s): {files}")
     df = spark.read.schema(RAW_SCHEMA).option("header", "true").csv(files)
 
