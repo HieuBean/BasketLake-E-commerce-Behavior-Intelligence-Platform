@@ -27,10 +27,10 @@ from pyspark.sql import DataFrame, Window
 from pyspark.sql import functions as F
 from pyspark.sql.types import TimestampType
 
-from src.common.spark_session import get_spark
 from src.common.config import get_paths, load_config
 from src.common.input_manifest import write_silver_manifest
 from src.common.logger import get_logger
+from src.common.spark_session import get_spark
 
 log = get_logger(__name__)
 

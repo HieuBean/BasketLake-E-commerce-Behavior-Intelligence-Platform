@@ -5,7 +5,9 @@ Chạy trực tiếp qua spark-submit trong container:
     spark-submit tests/run_tests.py
 """
 import sys
+
 from pyspark.sql import SparkSession
+
 import tests.test_cleaning_rules as tcr
 import tests.test_invariants as ti
 

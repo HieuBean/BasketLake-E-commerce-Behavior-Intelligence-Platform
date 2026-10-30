@@ -50,7 +50,6 @@ def run_duckdb(path: str) -> tuple[float, dict]:
 
 
 def run_pandas_chunk(path: str) -> tuple[float, dict]:
-    import pyarrow.parquet as pq
 
     start = time.perf_counter()
     acc: dict = {}

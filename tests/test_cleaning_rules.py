@@ -4,9 +4,10 @@ Owner: M2
 Test từng luật R1–R9 + DQ report + bất biến toàn pipeline trên dữ liệu tay.
 """
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType
+from pyspark.sql.types import DoubleType, LongType, StringType, StructField, StructType
 
 from src.processing.bronze_to_silver import (
+    VALID_EVENT_TYPES,
     apply_r1_null_keys,
     apply_r2_event_type,
     apply_r3_parse_timestamp,
@@ -18,7 +19,6 @@ from src.processing.bronze_to_silver import (
     apply_r9_session,
     build_dq_report,
     clean_pipeline,
-    VALID_EVENT_TYPES,
 )
 
 SCHEMA = StructType([
