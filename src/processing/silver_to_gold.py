@@ -39,6 +39,8 @@ def build_fact_sessions(df: DataFrame) -> DataFrame:
     Mỗi phiên = (user_id, user_session).
     """
     log.info("Xây dựng fact_sessions...")
+    if "session_id" in df.columns:
+        df = df.withColumn("user_session", F.coalesce(F.col("user_session"), F.col("session_id")))
 
     sessions = df.groupBy("user_id", "user_session").agg(
         F.min("event_ts").alias("session_start"),
