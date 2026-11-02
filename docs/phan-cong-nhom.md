@@ -30,7 +30,7 @@
 | **M1 — Hiếu** | Hạ tầng, Docker, Bronze | E2 (scale resource), E7 (MapReduce) | Chương 1, 4, Phụ lục | Silver (M2) |
 | **M2** | Silver: làm sạch R1–R9, DQ report | E3 (định dạng) | Chương 3, 5 (DQ) | Gold (M3) |
 | **M3** | Gold: sessionization, dim/fact, agg | E1 (scale data), E4 (tuning) | Chương 5 (processing), 6 (perf) | Bronze (M1) |
-| **M4** | Analytics: KPI, funnel, cohort | Phân tích và vẽ biểu đồ | Chương 7 (demo kết quả) | RFM (M5) |
+| **M4- Khánh** | Analytics: KPI, funnel, cohort | Phân tích và vẽ biểu đồ | Chương 7 (demo kết quả) | RFM (M5) |
 | **M5** | RFM, KMeans, baseline Pandas/DuckDB | E5 (crossover), E6 (correctness) | Chương 2 (lý thuyết), 6 (E5/E6) | KPI (M4) |
 
 **Nguyên tắc**: Mỗi người sở hữu module đầu đến cuối.  
@@ -106,7 +106,8 @@ cp docker/.env.example docker/.env
 docker compose -f docker/docker-compose.yml up -d
 
 # Kiểm tra: mở trình duyệt
-# http://localhost:8080   → Spark Master UI (phải thấy 2 Workers)
+# http://localhost:8089   → Spark Master UI (phải thấy 2 Workers)
+#                          (8089 vì 8080 hay bị tiến trình khác chiếm)
 # http://localhost:18080  → History Server
 ```
 
@@ -186,7 +187,7 @@ spark-submit job.py
 - **Executor**: JVM process trên worker, chạy các task
 
 Xem Spark UI khi job đang chạy:
-- `http://localhost:8080` → xem Job và Stage
+- `http://localhost:8089` → xem Job và Stage
 - Click vào Stage → xem từng Task, thấy thời gian, shuffle read/write
 
 #### 3. spark-submit (30 phút)
@@ -767,7 +768,7 @@ docker compose exec spark-master \
   spark-submit /app/experiments/e1_scale_data.py --tier L --runs 3
 ```
 
-**Trong lúc E1 chạy**: giữ Spark UI mở tại `http://localhost:8080`
+**Trong lúc E1 chạy**: giữ Spark UI mở tại `http://localhost:8089`
 - Chụp ảnh tab "Stages" khi đang chạy fraction 100%
 - Xem "Shuffle Write" tăng tỷ lệ thuận với data không
 

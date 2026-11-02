@@ -14,7 +14,7 @@
 | M1 | Hiếu | Hạ tầng + Docker + Bronze | E2, E7 | Chương 1, 4, Phụ lục |
 | M2 | *(điền tên)* | Silver — làm sạch R1–R9, DQ report | E3 | Chương 3, 5 (DQ) |
 | M3 | Tea | Gold — sessionization, dim/fact | E1 hoàn tất; E4 chưa chạy | Chương 5 (proc), 6 (perf) |
-| M4 | *(điền tên)* | Analytics — KPI, Funnel, Cohort | Phân tích, biểu đồ | Chương 7 (demo) |
+| M4 | Khánh | Analytics — KPI, Funnel, Cohort | Phân tích, biểu đồ | Chương 7 (demo) |
 | M5 | *(điền tên)* | Analytics — RFM, KMeans, Baseline | E5, E6 | Chương 2 (lý thuyết), 6 |
 
 📖 **Hướng dẫn chi tiết từng người**: [`docs/phan-cong-nhom.md`](docs/phan-cong-nhom.md)
@@ -76,9 +76,14 @@ pip install -r requirements.txt   # chỉ cần cho E5/E6/plots chạy ngoài co
 ```bash
 make up
 # Mở trình duyệt:
-#   http://localhost:8080   → Spark Master UI (phải thấy 2 Workers)
+#   http://localhost:8089   → Spark Master UI (phải thấy 2 Workers)
 #   http://localhost:18080  → History Server
 ```
+
+> **Ghi chú cổng 8089**: Spark Master UI ánh xạ ra cổng **8089** trên host (không phải 8080)
+> vì 8080 thường bị tiến trình khác chiếm, khiến `docker compose up` báo
+> `bind: Only one usage of each socket address`. Đổi lại bằng cách sửa
+> `docker/docker-compose.yml` nếu máy bạn trống cổng 8080.
 
 ### Bước 3 — Tải dataset
 
@@ -235,16 +240,25 @@ bigdata-ecom/
 
 ## KPI chính (tier S)
 
+> ⚠️ **Đọc kèm cảnh báo**: tier S lấy mẫu **theo từng dòng** (`df.sample(0.025)`), nên các
+> phiên bị chia cắt — trung bình chỉ còn **1,15 sự kiện/phiên** so với **4,59** ở tier M.
+> Hệ quả: Cart Abandonment và Conversion Rate của tier S **bị thiên lệch nặng** và **không**
+> so sánh được với tier M. Số dùng để kết luận nghiệp vụ là **tier M**:
+> Revenue 229.933.212,63 · Sessions 9.244.772 · Conversion 0,0681 · Cart Abandonment 0,4907 ·
+> AOV proxy 365,23. Bảng dưới giữ nguyên để đối chiếu lịch sử và kiểm thử pipeline.
+> Chi tiết: [Chương 7 §7.2.4](docs/report/m4-chuong7-demo-ket-qua.md).
+
 | KPI | Giá trị | Ghi chú |
 |-----|---------|---------|
 | Total Revenue | 5,813,952.29 | Proxy (qty=1) |
 | Total Sessions | 921,388 | |
 | Conversion Rate | 0.0207 | Sessions có purchase / sessions có view |
-| Cart Abandonment | 0.9812 | |
+| Cart Abandonment | 0.9812 | ⚠️ Bị thiên lệch do lấy mẫu theo dòng — xem cảnh báo trên |
 | AOV Proxy | 316.65 | Revenue / converted sessions |
 | KMeans clusters | 2 | Sau khi tính Recency từ lần mua cuối, silhouette lớn nhất 0.835945; kiểm tra seed cho thấy phân cụm còn nhạy với khởi tạo. |
 
 [Biên bản kiểm toán M5](docs/kiem-toan-m5.md) đối chiếu bảng, hình, mã và dữ liệu gốc trên tier S và M.
+[Báo cáo M4 — Chương 7 (Demo kết quả)](docs/report/m4-chuong7-demo-ket-qua.md) phân tích KPI, funnel, DAU và cohort trên số liệu tier M.
 
 ---
 
@@ -257,7 +271,7 @@ bigdata-ecom/
 | 4. Thiết kế | `docker/`, `configs/`, `docs/adr/` |
 | 5. Cài đặt | `src/processing/bronze_to_silver.py`, `silver_to_gold.py` |
 | 6. Thực nghiệm | `experiments/`, `results/experiment_log.csv`, `docs/figures/e*.png` |
-| 7. Demo kết quả | `results/kpi_summary.csv`, `docs/figures/` |
+| 7. Demo kết quả | `results/kpi_summary.csv`, `docs/figures/`, `docs/report/m4-chuong7-demo-ket-qua.md` |
 
 ---
 
