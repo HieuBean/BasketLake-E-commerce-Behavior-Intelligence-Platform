@@ -17,6 +17,11 @@ from pyspark.ml.feature import StandardScaler, VectorAssembler
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 
+from src.analytics.kmeans_selection import (
+    DEFAULT_STABILITY_TOLERANCE,
+    select_k,
+    stability_spread,
+)
 from src.common.logger import get_logger
 
 log = get_logger(__name__)
@@ -43,16 +48,56 @@ def build_rfm(fact_sessions: DataFrame, as_of_date: str) -> DataFrame:
     return rfm
 
 
+def _cluster_sizes_by_rank(model, rfm_scaled: DataFrame) -> list[int]:
+    """
+    Kích thước các cụm của một model, sắp theo THỨ HẠNG median_monetary.
+
+    Cluster ID bị hoán vị giữa các seed (KMeans không đảm bảo thứ tự nhãn),
+    nên không so sánh được theo index. Thứ hạng theo Monetary là bất biến
+    duy nhất dùng được để ghép cụm giữa các lần fit.
+    """
+    rows = (
+        model.transform(rfm_scaled)
+             .select(F.col("prediction").alias("cluster"), "monetary")
+             .groupBy("cluster")
+             .agg(F.count("*").alias("n"),
+                  F.percentile_approx("monetary", 0.5).alias("m"))
+             .orderBy(F.desc("m"))
+             .collect()
+    )
+    return [int(r["n"]) for r in rows]
+
+
+def _stability_spread(sizes_by_seed: list[list[int]]) -> float:
+    """Alias tương thích ngược — logic thật nằm ở kmeans_selection.stability_spread."""
+    return stability_spread(sizes_by_seed)
+
+
 def run_kmeans(
     rfm: DataFrame,
     k_range: range,
     seed: int,
     max_iter: int,
     results_dir: Path | str | None = None,
+    stability_tolerance: float = DEFAULT_STABILITY_TOLERANCE,
 ) -> DataFrame:
     """
-    Chạy KMeans với nhiều k, chọn k tốt nhất theo silhouette.
-    Ghi elbow + silhouette scores vào results/kmeans_scores.csv.
+    Chạy KMeans với nhiều k, chọn k tốt nhất theo silhouette **có cổng ổn định**.
+
+    Vì sao cần cổng ổn định?
+    -----------------------
+    Chọn thuần `argmax(silhouette)` có thể chọn phải nghiệm "degenerate": một
+    cụm rất nhỏ tách hẳn ra xa làm silhouette trung bình tăng vọt, nhưng kích
+    thước cụm thay đổi nhiều lần giữa các seed → không tái lập được.
+
+    Đo trên tier S: k=2 có silhouette 0,8359 nhưng cụm chi tiêu cao chứa
+    904 / 7.411 / 7.447 người tùy seed (lệch 124,5%). k=4 chỉ có silhouette
+    0,5498 nhưng lệch tối đa 1,7%. Cổng này loại k=2 và chọn k=4.
+
+    Chỉ số ổn định tính từ chính các model đã fit (mỗi k fit 3 seed), không
+    fit thêm. Nếu không k nào đạt ngưỡng, quay về argmax(silhouette) và cảnh báo.
+
+    Ghi elbow + silhouette + độ ổn định vào results/kmeans_scores.csv.
     Trả về DataFrame với cột cluster.
     """
     import csv
@@ -73,7 +118,9 @@ def run_kmeans(
     scaler_model = scaler.fit(rfm_vec)
     rfm_scaled = scaler_model.transform(rfm_vec).cache()
 
-    best_k, best_score, best_model = None, -1.0, None
+    candidate_seeds = list(dict.fromkeys([seed, 0, 123]))
+    log.info(f"Số seed thử cho mỗi k: {len(candidate_seeds)} → {candidate_seeds}")
+
     evaluator = ClusteringEvaluator(featuresCol="features", metricName="silhouette")
 
     score_rows = []
@@ -82,31 +129,57 @@ def run_kmeans(
         candidates = [
             (KMeans(k=k, seed=initial_seed, maxIter=max_iter, featuresCol="features")
              .fit(rfm_scaled), initial_seed)
-            for initial_seed in dict.fromkeys([seed, 0, 123])
+            for initial_seed in candidate_seeds
         ]
         model, selected_seed = min(candidates, key=lambda pair: pair[0].summary.trainingCost)
         predictions = model.transform(rfm_scaled)
         silhouette = evaluator.evaluate(predictions)
         inertia = model.summary.trainingCost
-        log.info(f"KMeans k={k} | silhouette={silhouette:.4f} | inertia={inertia:.2f}")
+
+        # Độ ổn định: dùng lại model đã fit, chỉ thêm transform + groupBy
+        sizes_by_seed = [_cluster_sizes_by_rank(m, rfm_scaled) for m, _ in candidates]
+        spread = _stability_spread(sizes_by_seed)
+
+        log.info(f"KMeans k={k} | silhouette={silhouette:.4f} | "
+                 f"inertia={inertia:.2f} | stability_spread={spread:.2%}")
         score_rows.append({
             "k": k, "silhouette": round(silhouette, 6),
             "inertia": round(inertia, 4), "selected_seed": selected_seed,
+            "stability_spread": round(spread, 6),
         })
-        if silhouette > best_score:
-            best_score = silhouette
-            best_k = k
-            best_model = model
 
-    # Ghi scores để vẽ elbow + silhouette chart
+    # --- Chọn k: silhouette cao nhất trong các k ĐẠT cổng ổn định ---
+    best_row, excluded_ks = select_k(score_rows, tolerance=stability_tolerance)
+    if excluded_ks:
+        log.info(f"Bị loại bởi cổng ổn định (>{stability_tolerance:.0%}): k={excluded_ks}")
+    if not any(r["stability_spread"] <= stability_tolerance for r in score_rows):
+        log.warning(f"Không k nào đạt cổng ổn định {stability_tolerance:.0%}. "
+                    f"Quay về argmax(silhouette) — kết quả có thể không tái lập.")
+
+    best_k = best_row["k"]
+    best_score = best_row["silhouette"]
+    for r in score_rows:
+        r["selected"] = 1 if r["k"] == best_k else 0
+
+    # Fit lại đúng k đã chọn với seed đã chọn để lấy model cuối
+    best_model = (
+        KMeans(k=int(best_k), seed=int(best_row["selected_seed"]), maxIter=max_iter,
+               featuresCol="features")
+        .fit(rfm_scaled)
+    )
+
+    # Ghi scores để vẽ elbow + silhouette chart và để run_analytics đọc lại
     results_dir = Path(results_dir or os.getenv("RESULTS_DIR", "/app/results" if Path("/app").exists() else "results"))
     results_dir.mkdir(parents=True, exist_ok=True)
+    fieldnames = ["k", "silhouette", "inertia", "selected_seed",
+                  "stability_spread", "selected"]
     with open(results_dir / "kmeans_scores.csv", "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["k", "silhouette", "inertia", "selected_seed"])
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(score_rows)
 
-    log.info(f"Best k={best_k} | silhouette={best_score:.4f}")
+    log.info(f"Best k={best_k} | silhouette={best_score:.4f} | "
+             f"stability_spread={best_row['stability_spread']:.2%}")
     rfm_scaled.unpersist()
 
     final = best_model.transform(scaler_model.transform(assembler.transform(rfm)))
@@ -225,13 +298,19 @@ def plot_elbow_and_silhouette(
     log.info(f"Đã lưu biểu đồ Elbow & Silhouette tại: {output_path}")
 
 
-def check_kmeans_stability(rfm: DataFrame, k: int, seeds: list[int] | None = None) -> list[dict]:
+def check_kmeans_stability(rfm: DataFrame, k: int, seeds: list[int] | None = None,
+                           max_iter: int = 20) -> list[dict]:
     """
     Kiểm tra tính ổn định của thuật toán KMeans khi thay đổi seed khởi tạo.
     Nếu phân phối các cụm tương đồng thì thuật toán đạt độ ổn định cao.
+
+    `max_iter` phải được truyền từ cùng cấu hình với `run_kmeans`; nếu không,
+    phép kiểm tra ổn định được đo ở cấu hình khác với mô hình chính và không
+    còn so sánh được.
     """
     seeds = seeds or [42, 0, 123]
-    log.info(f"Kiểm tra tính ổn định KMeans với k={k} qua các seed {seeds}...")
+    log.info(f"Kiểm tra tính ổn định KMeans với k={k} qua các seed {seeds} "
+             f"(maxIter={max_iter})...")
     results = []
     features = ["recency", "frequency", "monetary"]
     for feat in features:
@@ -242,7 +321,7 @@ def check_kmeans_stability(rfm: DataFrame, k: int, seeds: list[int] | None = Non
     rfm_scaled = scaler_model.transform(assembler.transform(rfm)).cache()
 
     for seed in seeds:
-        km = KMeans(k=k, seed=seed, maxIter=20, featuresCol="features")
+        km = KMeans(k=k, seed=seed, maxIter=max_iter, featuresCol="features")
         model = km.fit(rfm_scaled)
         preds = model.transform(rfm_scaled)
         profiles = cluster_profiles(
