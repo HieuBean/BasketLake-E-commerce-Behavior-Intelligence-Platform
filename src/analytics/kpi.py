@@ -93,10 +93,63 @@ def hourly_pattern(agg_hourly: DataFrame) -> DataFrame:
 # Funnel
 # =============================================================================
 
+def compute_funnel_totals(fact_sessions: DataFrame) -> dict:
+    """
+    Funnel TOÀN CỤC ở grain phiên (mỗi phiên đếm đúng 1 lần).
+
+    Vì sao không cộng dồn `agg_funnel` theo category_l1?
+    ------------------------------------------------
+    `agg_funnel` có grain (user_session, category_l1): một phiên chạm nhiều
+    danh mục sẽ xuất hiện ở nhiều dòng. Cộng các dòng đó lại sẽ đếm trùng
+    cùng một phiên → tổng "số phiên" bị thổi phồng (tier S: 905.652 thay vì
+    886.657 phiên có view). Hàm này tính trực tiếp trên `fact_sessions`
+    (grain 1 dòng = 1 phiên) nên tổng luôn khớp `total_sessions`.
+
+    Lưu ý nghiệp vụ: 3 bước KHÔNG lồng nhau. Một phiên có purchase mà không
+    có cart (mua trực tiếp) là hợp lệ trong dataset, nên
+    `sessions_with_purchase` có thể lớn hơn `sessions_with_cart` ở một số
+    danh mục. Vì vậy chỉ tính tỷ lệ so với bước view, không suy ra drop-off
+    tuyến tính giữa cart và purchase.
+    """
+    row = fact_sessions.agg(
+        F.count(F.lit(1)).alias("total_sessions"),
+        F.sum(F.when(F.col("view_count") > 0, 1).otherwise(0)).alias("sessions_with_view"),
+        F.sum(F.when(F.col("cart_count") > 0, 1).otherwise(0)).alias("sessions_with_cart"),
+        F.sum(
+            F.when(
+                (F.coalesce(F.col("purchase_count"), F.lit(0)) > 0)
+                | (F.col("converted") == True),  # noqa: E712
+                1,
+            ).otherwise(0)
+        ).alias("sessions_with_purchase"),
+    ).collect()[0]
+
+    total = int(row["total_sessions"] or 0)
+    with_view = int(row["sessions_with_view"] or 0)
+    with_cart = int(row["sessions_with_cart"] or 0)
+    with_purchase = int(row["sessions_with_purchase"] or 0)
+
+    totals = {
+        "total_sessions":         total,
+        "sessions_with_view":     with_view,
+        "sessions_with_cart":     with_cart,
+        "sessions_with_purchase": with_purchase,
+        "view_to_cart_rate":      round(with_cart / with_view, 6) if with_view else 0.0,
+        "cart_to_purchase_rate":  round(with_purchase / with_cart, 6) if with_cart else 0.0,
+        "overall_conversion":     round(with_purchase / with_view, 6) if with_view else 0.0,
+    }
+    log.info(f"Funnel totals: {totals}")
+    return totals
+
+
 def funnel_by_category(agg_funnel: DataFrame) -> DataFrame:
     """
     Thêm tỷ lệ chuyển đổi từng bước.
     view→cart rate, cart→purchase rate, overall conversion.
+
+    ⚠ Grain là (user_session, category_l1) — một phiên chạm N danh mục sẽ
+    nằm ở N dòng. KHÔNG cộng dồn cột của hàm này để lấy funnel toàn hệ
+    thống; dùng `compute_funnel_totals(fact_sessions)` cho mục đích đó.
     """
     return (
         agg_funnel

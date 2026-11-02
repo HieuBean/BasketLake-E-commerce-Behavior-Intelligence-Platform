@@ -17,6 +17,7 @@ from pyspark.sql.types import (
 
 from src.analytics.kpi import (
     compute_cohort_retention,
+    compute_funnel_totals,
     compute_kpi_summary,
     funnel_by_category,
 )
@@ -128,6 +129,66 @@ def test_funnel_rates(spark: SparkSession):
     assert abs(elec["view_to_cart_rate"]    - 0.6)  < 0.001
     assert abs(elec["cart_to_purchase_rate"] - 0.5) < 0.001
     assert abs(elec["overall_conversion"]    - 0.3) < 0.001
+
+
+# =============================================================================
+# Funnel totals — grain PHIÊN (không cộng dồn theo danh mục)
+# =============================================================================
+
+def test_funnel_totals_counts_each_session_once(spark: SparkSession):
+    """
+    Mỗi phiên đếm đúng 1 lần. Đây là điểm khác biệt cốt lõi so với việc
+    cộng dồn `funnel_by_category` (grain phiên × danh mục → đếm trùng).
+    """
+    rows = [
+        (1, "s1", 3, 1, 1, 99.0, True,  "2019-10-01", "electronics"),
+        (2, "s2", 5, 0, 0,  0.0, False, "2019-10-01", "electronics"),
+        (3, "s3", 2, 2, 0,  0.0, False, "2019-10-01", "electronics"),
+    ]
+    fact = spark.createDataFrame(rows, schema=FACT_SCHEMA)
+
+    totals = compute_funnel_totals(fact)
+
+    assert totals["total_sessions"] == 3
+    assert totals["sessions_with_view"] == 3
+    assert totals["sessions_with_cart"] == 2
+    assert totals["sessions_with_purchase"] == 1
+    assert abs(totals["view_to_cart_rate"]   - (2 / 3)) < 1e-6
+    assert abs(totals["overall_conversion"]  - (1 / 3)) < 1e-6
+
+
+def test_funnel_totals_allows_direct_purchase_without_cart(spark: SparkSession):
+    """
+    Ba bước funnel KHÔNG lồng nhau: phiên mua trực tiếp không qua cart là hợp lệ.
+    (Thực tế tier M: Purchase 629.560 > Cart 573.099.)
+    """
+    rows = [
+        (1, "s1", 1, 0, 1, 50.0, True,  "2019-10-01", "cat"),  # mua, không cart
+        (2, "s2", 1, 0, 0,  0.0, False, "2019-10-01", "cat"),
+    ]
+    fact = spark.createDataFrame(rows, schema=FACT_SCHEMA)
+
+    totals = compute_funnel_totals(fact)
+
+    assert totals["sessions_with_cart"] == 0
+    assert totals["sessions_with_purchase"] == 1
+    # Không chia cho 0 khi không có phiên nào chứa cart
+    assert totals["cart_to_purchase_rate"] == 0.0
+
+
+def test_funnel_totals_empty(spark: SparkSession):
+    """DataFrame rỗng: không được chia cho 0, phải trả toàn 0."""
+    fact = spark.createDataFrame([], schema=FACT_SCHEMA)
+
+    totals = compute_funnel_totals(fact)
+
+    assert totals["total_sessions"] == 0
+    assert totals["sessions_with_view"] == 0
+    assert totals["sessions_with_cart"] == 0
+    assert totals["sessions_with_purchase"] == 0
+    assert totals["view_to_cart_rate"] == 0.0
+    assert totals["cart_to_purchase_rate"] == 0.0
+    assert totals["overall_conversion"] == 0.0
 
 
 # =============================================================================

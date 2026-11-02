@@ -12,12 +12,24 @@ Output: docs/figures/*.png
 from __future__ import annotations
 
 import glob
+import sys
 from pathlib import Path
 
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import numpy as np
-import pandas as pd
+import matplotlib
+
+matplotlib.use("Agg")  # headless: render ra file, không cần display
+
+import matplotlib.pyplot as plt  # noqa: E402
+import matplotlib.ticker as mticker  # noqa: E402
+import numpy as np  # noqa: E402
+import pandas as pd  # noqa: E402
+
+# Console Windows mặc định cp1252 → in tiếng Việt sẽ crash UnicodeEncodeError.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
 
 RESULTS = Path("results")
 FIGURES = Path("docs/figures")
@@ -53,12 +65,86 @@ def _save(fig: plt.Figure, name: str) -> None:
     print(f"  ✓ {out}")
 
 
+def _read_single_row(name: str) -> pd.Series | None:
+    """Đọc file CSV một dòng (kpi_summary.csv / funnel_totals.csv)."""
+    path = RESULTS / name
+    if not path.exists():
+        return None
+    return pd.read_csv(path).iloc[0]
+
+
+# =============================================================================
+# Funnel totals — grain PHIÊN, không cộng dồn theo danh mục
+# =============================================================================
+
+FUNNEL_SUM_COLUMNS = ("sessions_with_view", "sessions_with_cart", "sessions_with_purchase")
+
+
+def funnel_steps_from_totals(totals: dict) -> list[dict]:
+    """
+    Chuẩn hoá số liệu funnel toàn cục thành list các bước để vẽ.
+
+    Đầu vào là funnel ở grain phiên (mỗi phiên đếm 1 lần), KHÔNG phải tổng
+    cộng dồn của `funnel_by_category` — grain của bảng đó là
+    (user_session, category_l1) nên cộng lại sẽ đếm trùng phiên chạm nhiều
+    danh mục (tier S: 905.652 thay vì 886.657 phiên có view).
+
+    Trả về list các dict: name / count / share_of_view.
+    """
+    view = int(totals["sessions_with_view"])
+    cart = int(totals["sessions_with_cart"])
+    purchase = int(totals["sessions_with_purchase"])
+
+    def share(value: int) -> float:
+        return value / view if view else 0.0
+
+    return [
+        {"name": "View",     "count": view,     "share_of_view": share(view)},
+        {"name": "Cart",     "count": cart,     "share_of_view": share(cart)},
+        {"name": "Purchase", "count": purchase, "share_of_view": share(purchase)},
+    ]
+
+
+def _read_funnel_totals() -> tuple[dict, str]:
+    """
+    Lấy funnel toàn cục theo thứ tự ưu tiên:
+      1. results/funnel_totals.csv  (run_analytics.py ghi từ fact_sessions)
+      2. results/kpi_summary.csv    (cùng nguồn, tên cột khác)
+      3. tổng cộng dồn funnel_by_category (phương án cuối, CÓ đếm trùng)
+    """
+    row = _read_single_row("funnel_totals.csv")
+    if row is not None:
+        return {
+            "sessions_with_view":     int(row["sessions_with_view"]),
+            "sessions_with_cart":     int(row["sessions_with_cart"]),
+            "sessions_with_purchase": int(row["sessions_with_purchase"]),
+        }, "funnel_totals.csv"
+
+    row = _read_single_row("kpi_summary.csv")
+    if row is not None:
+        return {
+            "sessions_with_view":     int(row["sessions_with_view"]),
+            "sessions_with_cart":     int(row["sessions_with_cart"]),
+            "sessions_with_purchase": int(row["converted_sessions"]),
+        }, "kpi_summary.csv"
+
+    df = _read_csv_dir("funnel_by_category")
+    print("  ⚠ Không có funnel_totals.csv / kpi_summary.csv —"
+          " dùng tổng funnel_by_category (có thể đếm trùng phiên đa danh mục)")
+    return {
+        "sessions_with_view":     int(df["sessions_with_view"].sum()),
+        "sessions_with_cart":     int(df["sessions_with_cart"].sum()),
+        "sessions_with_purchase": int(df["sessions_with_purchase"].sum()),
+    }, "funnel_by_category (đếm trùng)"
+
+
+
 # =============================================================================
 # 1. Doanh thu theo ngày (line chart)
 # =============================================================================
 
 def plot_revenue_timeseries() -> None:
-    """Line chart: doanh thu theo ngày."""
+    """Line chart: doanh thu theo ngày (kèm số purchase, không cộng dồn phiên)."""
     df = _read_csv_dir("revenue_by_day")
     df["event_date"] = pd.to_datetime(df["event_date"])
     df = df.sort_values("event_date")
@@ -70,16 +156,19 @@ def plot_revenue_timeseries() -> None:
                  color="steelblue", linewidth=1.5, label="Revenue")
     axes[0].fill_between(df["event_date"], df["revenue"] / 1e6, alpha=0.15, color="steelblue")
     axes[0].set_ylabel("Doanh thu (triệu USD)")
-    axes[0].set_title("Doanh thu và số phiên theo ngày")
+    axes[0].set_title("Doanh thu và số lượt purchase theo ngày")
     axes[0].yaxis.set_major_formatter(mticker.FormatStrFormatter("$%.1fM"))
     axes[0].grid(True, linestyle="--", alpha=0.35)
 
-    # Subplot 2: Số phiên
-    axes[1].bar(df["event_date"], df["sessions"] / 1e3,
-                color="coral", alpha=0.7, label="Sessions (nghìn)")
-    axes[1].set_ylabel("Số phiên (nghìn)")
+    # Subplot 2: Số lượt purchase.
+    # Không dùng cột `sessions` ở đây: agg_daily có grain (event_date ×
+    # category_l1), nên cộng `sessions` theo ngày sẽ đếm trùng một phiên
+    # chạm nhiều danh mục (tier S: 941.133 thay vì 921.388 phiên duy nhất).
+    axes[1].bar(df["event_date"], df["purchases"],
+                color="coral", alpha=0.75, label="Purchases")
+    axes[1].set_ylabel("Lượt purchase")
     axes[1].set_xlabel("Ngày")
-    axes[1].yaxis.set_major_formatter(mticker.FormatStrFormatter("%.0fK"))
+    axes[1].yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{int(v):,}"))
     axes[1].grid(True, linestyle="--", alpha=0.35, axis="y")
 
     fig.autofmt_xdate(rotation=30)
@@ -128,18 +217,20 @@ def plot_hourly_heatmap() -> None:
         values="event_count", aggfunc="sum", fill_value=0,
     )
 
-    day_labels = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"]
-    pivot.index = [day_labels[i - 1] for i in pivot.index]
+    # Nhãn theo GIÁ TRỊ day_of_week (iso: 1=T2 … 7=CN), không theo vị trí
+    # index — nếu một thứ không có dữ liệu, map theo vị trí sẽ gán sai nhãn.
+    DAY_LABELS = {1: "T2", 2: "T3", 3: "T4", 4: "T5", 5: "T6", 6: "T7", 7: "CN"}
+    tick_labels = [DAY_LABELS.get(int(d), f"?{d}") for d in pivot.index]
 
     fig, ax = plt.subplots(figsize=(14, 4))
     im = ax.imshow(pivot.values, aspect="auto", cmap="YlOrRd",
                    interpolation="nearest")
     plt.colorbar(im, ax=ax, label="Số sự kiện")
 
-    ax.set_xticks(range(24))
-    ax.set_xticklabels(range(24), fontsize=8)
-    ax.set_yticks(range(len(pivot.index)))
-    ax.set_yticklabels(pivot.index)
+    ax.set_xticks(range(pivot.shape[1]))
+    ax.set_xticklabels([int(c) for c in pivot.columns], fontsize=8)
+    ax.set_yticks(range(len(tick_labels)))
+    ax.set_yticklabels(tick_labels)
     ax.set_xlabel("Giờ trong ngày")
     ax.set_ylabel("Thứ")
     ax.set_title("Phân phối sự kiện theo thứ và giờ (heatmap)")
@@ -152,30 +243,36 @@ def plot_hourly_heatmap() -> None:
 # =============================================================================
 
 def plot_funnel_by_category() -> None:
-    """Grouped bar: view → cart → purchase cho top 10 danh mục."""
+    """Bar: view / cart / purchase cho top 10 danh mục + tỷ lệ so với view."""
     df = _read_csv_dir("funnel_by_category")
     top10 = df.nlargest(10, "sessions_with_view").copy()
     top10 = top10.sort_values("sessions_with_view", ascending=False)
 
     cats = top10["category_l1"].tolist()
     x = np.arange(len(cats))
-    w = 0.25
+    w = 0.27
 
-    fig, ax = plt.subplots(figsize=(13, 5))
-    ax.bar(x - w,   top10["sessions_with_view"],    w, label="View",     color="#4c72b0")
-    ax.bar(x,       top10["sessions_with_cart"],     w, label="Cart",     color="#dd8452")
-    ax.bar(x + w,   top10["sessions_with_purchase"], w, label="Purchase", color="#55a868")
+    fig, ax = plt.subplots(figsize=(13, 5.5))
+    ax.bar(x - w, top10["sessions_with_view"],     w, label="View",     color="#4c72b0")
+    ax.bar(x,     top10["sessions_with_cart"],     w, label="Cart",     color="#dd8452")
+    ax.bar(x + w, top10["sessions_with_purchase"], w, label="Purchase", color="#55a868")
 
-    # Tỷ lệ overall conversion trên đỉnh bar purchase
+    # Nhãn = số phiên ở bước purchase + tỷ lệ purchase/view của chính danh mục.
+    # (Đây là tỷ lệ View→Purchase, KHÔNG phải cart→purchase: ở grain
+    #  (phiên, danh mục) một phiên có thể mua mà không qua cart, nên tỷ lệ
+    #  cart→purchase có thể > 1 ở một số danh mục.)
+    ymax = top10["sessions_with_view"].max()
     for i, row in enumerate(top10.itertuples()):
-        rate = row.sessions_with_purchase / max(row.sessions_with_view, 1) * 100
-        ax.text(i + w, row.sessions_with_purchase + 200,
-                f"{rate:.1f}%", ha="center", va="bottom", fontsize=7.5, color="#55a868")
+        rate = (row.sessions_with_purchase / row.sessions_with_view * 100
+                if row.sessions_with_view else 0.0)
+        ax.text(i + w, row.sessions_with_purchase + ymax * 0.012,
+                f"{rate:.2f}%", ha="center", va="bottom", fontsize=7.5, color="#3d7a4d")
 
     ax.set_xticks(x)
     ax.set_xticklabels(cats, rotation=30, ha="right", fontsize=9)
-    ax.set_ylabel("Số phiên")
-    ax.set_title("Funnel View → Cart → Purchase theo danh mục (Top 10)")
+    ax.set_ylabel("Số phiên (theo danh mục)")
+    ax.set_title("Funnel View → Cart → Purchase theo danh mục (Top 10)\n"
+                 "Nhãn xanh = tỷ lệ View→Purchase của danh mục", fontsize=11)
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{int(v):,}"))
     ax.legend()
     ax.grid(True, linestyle="--", alpha=0.35, axis="y")
@@ -188,39 +285,45 @@ def plot_funnel_by_category() -> None:
 # =============================================================================
 
 def plot_funnel_waterfall() -> None:
-    """Waterfall chart cho funnel tổng (tổng tất cả danh mục)."""
-    df = _read_csv_dir("funnel_by_category")
+    """Funnel tổng (toàn hệ thống) ở grain phiên — không cộng dồn danh mục."""
+    totals, source = _read_funnel_totals()
+    steps = funnel_steps_from_totals(totals)
 
-    total_view     = df["sessions_with_view"].sum()
-    total_cart     = df["sessions_with_cart"].sum()
-    total_purchase = df["sessions_with_purchase"].sum()
-
-    steps = ["View", "Cart", "Purchase"]
-    values = [total_view, total_cart, total_purchase]
+    names  = [s["name"] for s in steps]
+    values = [s["count"] for s in steps]
     colors = ["#4c72b0", "#dd8452", "#55a868"]
+    total_view = values[0]
 
-    fig, ax = plt.subplots(figsize=(7, 5))
-    bars = ax.bar(steps, values, color=colors, edgecolor="white", width=0.5)
+    fig, ax = plt.subplots(figsize=(8, 5.5))
+    bars = ax.bar(names, values, color=colors, edgecolor="white", width=0.55)
 
-    for bar, val in zip(bars, values):
+    for bar, step in zip(bars, steps):
         ax.text(bar.get_x() + bar.get_width() / 2,
-                bar.get_height() + total_view * 0.01,
-                f"{val:,.0f}", ha="center", va="bottom", fontsize=10)
+                bar.get_height() + total_view * 0.015,
+                f"{step['count']:,}  ({step['share_of_view']:.1%} của View)",
+                ha="center", va="bottom", fontsize=9)
 
-    # Drop-off rate giữa các bước
-    for i in range(len(values) - 1):
-        drop = (values[i] - values[i + 1]) / values[i] * 100
-        ax.annotate(
-            f"−{drop:.1f}%",
-            xy=(i + 0.5, (values[i] + values[i + 1]) / 2),
-            ha="center", va="center", fontsize=9,
-            color="crimson", fontweight="bold",
-        )
+    # Tỷ lệ chuyển đổi thực đo (không giả định lồng tuyến tính)
+    cart_rate     = steps[1]["count"] / steps[0]["count"] * 100 if steps[0]["count"] else 0.0
+    purchase_rate = steps[2]["count"] / steps[0]["count"] * 100 if steps[0]["count"] else 0.0
+    ax.annotate(f"View→Cart\n{cart_rate:.2f}%", xy=(0.5, total_view * 0.55),
+                ha="center", va="center", fontsize=9, color="crimson", fontweight="bold")
+    ax.annotate(f"View→Purchase\n{purchase_rate:.2f}%", xy=(1.5, total_view * 0.45),
+                ha="center", va="center", fontsize=9, color="crimson", fontweight="bold")
 
-    ax.set_ylabel("Số phiên")
-    ax.set_title("Funnel tổng: View → Cart → Purchase")
+    ax.set_ylabel("Số phiên (đếm 1 lần/phiên)")
+    ax.set_title(
+        "Funnel tổng: View → Cart → Purchase\n"
+        f"(grain phiên, nguồn: {source})",
+        fontsize=11,
+    )
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{int(v):,}"))
     ax.grid(True, linestyle="--", alpha=0.35, axis="y")
+    if steps[2]["count"] > steps[1]["count"]:
+        ax.text(0.5, -0.16,
+                "Lưu ý: có phiên mua trực tiếp không qua Cart nên Purchase > Cart "
+                "là hợp lệ — 3 bước không lồng nhau.",
+                transform=ax.transAxes, ha="center", fontsize=8, style="italic", color="0.35")
     fig.tight_layout()
     _save(fig, "funnel_waterfall.png")
 
@@ -318,7 +421,7 @@ def plot_kmeans_selection() -> None:
         print("    Hint: thêm log inertia + silhouette vào rfm_kmeans.py")
         return
 
-    df = pd.read_csv(score_file)  # columns: k, inertia, silhouette
+    df = pd.read_csv(score_file)  # k, silhouette, inertia, selected_seed[, stability_spread, selected]
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4))
 
@@ -329,15 +432,25 @@ def plot_kmeans_selection() -> None:
     ax1.set_title("Elbow Method — chọn k")
     ax1.grid(True, linestyle="--", alpha=0.35)
 
-    # Silhouette
-    best_k = df.loc[df["silhouette"].idxmax(), "k"]
+    # Silhouette.
+    # Ưu tiên cột `selected` do run_kmeans ghi (đã tính cả cổng ổn định).
+    # Chỉ fallback về argmax(silhouette) khi file cũ chưa có cột đó — argmax
+    # thuần có thể chọn nghiệm không tái lập được giữa các seed.
+    selected = df[df["selected"] == 1] if "selected" in df.columns else df.iloc[0:0]
+    if not selected.empty:
+        best_k = int(selected.iloc[0]["k"])
+        note = "k được chọn (silhouette + cổng ổn định)"
+    else:
+        best_k = int(df.loc[df["silhouette"].idxmax(), "k"])
+        note = "k=… (silhouette max — chưa có cổng ổn định)"
+
     ax2.plot(df["k"], df["silhouette"], marker="s", color="darkorange")
     ax2.axvline(best_k, color="crimson", linestyle="--",
-                label=f"k={int(best_k)} (silhouette max)")
+                label=f"k={best_k} — {note}")
     ax2.set_xlabel("k (số cụm)")
     ax2.set_ylabel("Silhouette score")
     ax2.set_title("Silhouette Score — chọn k")
-    ax2.legend(fontsize=9)
+    ax2.legend(fontsize=8)
     ax2.grid(True, linestyle="--", alpha=0.35)
 
     fig.suptitle("Lựa chọn k cho KMeans", fontsize=12, fontweight="bold")

@@ -18,6 +18,7 @@ from pathlib import Path
 from src.analytics.kpi import (
     compute_cohort_retention,
     compute_dau,
+    compute_funnel_totals,
     compute_kpi_summary,
     funnel_by_category,
     hourly_pattern,
@@ -45,9 +46,9 @@ def _write_csv_spark(df, name: str, results_dir: Path) -> None:
     log.info(f"→ {out}")
 
 
-def _write_kpi(summary: dict, results_dir: Path) -> None:
+def _write_kpi(summary: dict, results_dir: Path, filename: str = "kpi_summary.csv") -> None:
     results_dir.mkdir(parents=True, exist_ok=True)
-    out = results_dir / "kpi_summary.csv"
+    out = results_dir / filename
     with open(out, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=list(summary.keys()))
         writer.writeheader()
@@ -95,6 +96,8 @@ def run(tier: str) -> None:
     # ---- Funnel ----
     log.info("=== Funnel ===")
     _write_csv_spark(funnel_by_category(agg_funnel), "funnel_by_category", results_dir)
+    # Funnel toàn cục ở grain phiên (KHÔNG cộng dồn theo danh mục)
+    _write_kpi(compute_funnel_totals(fact_sessions), results_dir, "funnel_totals.csv")
 
     # ---- Cohort retention ----
     log.info("=== Cohort retention ===")
@@ -130,9 +133,15 @@ def run(tier: str) -> None:
         _write_csv_spark(profiles, "cluster_profiles", results_dir)
 
         # Cluster IDs may be permuted between seeds; store complete profiles.
+        # `run_kmeans` đã chọn k theo silhouette + cổng ổn định và đánh dấu bằng
+        # cột `selected` — đọc lại đúng lựa chọn đó, không tự argmax silhouette
+        # (argmax thuần có thể chọn nghiệm không tái lập được giữa các seed).
+        max_iter = analytics_cfg.get("kmeans_max_iter", 20)
         with open(results_dir / "kmeans_scores.csv", newline="", encoding="utf-8") as scores_file:
-            best = max(csv.DictReader(scores_file), key=lambda row: float(row["silhouette"]))
-        stability = check_kmeans_stability(rfm, k=int(best["k"]))
+            rows = list(csv.DictReader(scores_file))
+        chosen = [r for r in rows if str(r.get("selected", "")).strip() == "1"]
+        best = chosen[0] if chosen else max(rows, key=lambda row: float(row["silhouette"]))
+        stability = check_kmeans_stability(rfm, k=int(best["k"]), max_iter=max_iter)
         with open(results_dir / "kmeans_stability.csv", "w", newline="", encoding="utf-8") as stability_file:
             writer = csv.DictWriter(stability_file, fieldnames=list(stability[0]))
             writer.writeheader()
