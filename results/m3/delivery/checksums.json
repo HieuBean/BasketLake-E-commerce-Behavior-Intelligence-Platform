@@ -1,0 +1,13 @@
+{
+  "results/m3/delivery/e1-results.json": "3b88a3efb07b5ab4dee1b9263319e232cbec911726742d76a3d47a53b82e3e2e",
+  "results/m3/delivery/e1-summary.csv": "aa3c8fb7e5dc7470c79f2ec1bf3642cc09c0e7df8a4de63a1dd3f3fa099a89a7",
+  "results/m3/delivery/gold-summary.json": "071b9459b7dfc599892a08ed77f20563e134dd591dd2933d48ef8d95d0b11993",
+  "results/m3/delivery/tier-l-summary.json": "b8caea55db6f3c5f1aa9e76ccb3878fffbb6ac0e781218ffc34dee6033c1db59",
+  "docs/figures/m3/e1-task06b-final/scaling.png": "976e8752a811641a22456050960b3bfc7ecdf3b4ed6555fcce31f8933adccb45",
+  "docs/figures/m3/e1-task06b-final/shuffle.png": "cb1825882e9e5646262c734ababdaea30588804a75941ed922140e35bddbc934",
+  "docs/figures/m3/e1-task06b-final/spill.png": "245e47c53230ced8d3e9e6d450c2976cf0009a7e97d0ac703fda833cae324c90",
+  "docs/figures/m3/e1-task06b-final/throughput.png": "540b41128be36ea2b752692b617f5705cd94ed04cc9f28a81c60c5377d1213c2",
+  "docs/figures/m3/e1-task06b-final/wall-time.png": "bb3f0563422adb68551242254f0e4f44fda1594bf2a16001761ddbf5bbded6be",
+  "src/processing/silver_to_gold.py": "dcdc804af193f6a3aac86c7a6d355f8b498d1b850669a30a1303244b1157ec51",
+  "experiments/e1_scale_data.py": "eab37577ade975e68844c106727f1e581f0adaa719e6b7a417fbc23c19836ce3"
+}

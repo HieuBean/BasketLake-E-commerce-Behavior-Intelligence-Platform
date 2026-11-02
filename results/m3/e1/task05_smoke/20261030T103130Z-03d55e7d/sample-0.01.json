@@ -1,0 +1,58 @@
+{
+  "fraction": 0.01,
+  "seed": 42,
+  "rows": 10639,
+  "warmup_values": [
+    {
+      "category_l1": "electronics",
+      "revenue": 46585.78000000001,
+      "purchase_count": 114
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 4126.21,
+      "purchase_count": 40
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 3518.55,
+      "purchase_count": 13
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 991.7900000000001,
+      "purchase_count": 3
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 855.6800000000001,
+      "purchase_count": 5
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 832.4,
+      "purchase_count": 4
+    },
+    {
+      "category_l1": "kids",
+      "revenue": 725.6,
+      "purchase_count": 1
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 358.83,
+      "purchase_count": 4
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 321.5,
+      "purchase_count": 1
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 220.8,
+      "purchase_count": 3
+    }
+  ],
+  "timing": "Method B: sample count and one warmup excluded"
+}

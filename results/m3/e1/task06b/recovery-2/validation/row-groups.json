@@ -1,0 +1,620 @@
+[
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-01/part-00757-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1243715,
+    "uncompressed_bytes": 125608183,
+    "compressed_bytes": 110907570
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-02/part-00635-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1190853,
+    "uncompressed_bytes": 120441939,
+    "compressed_bytes": 106280034
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-03/part-00692-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1126624,
+    "uncompressed_bytes": 113991282,
+    "compressed_bytes": 100460643
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-04/part-00577-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1415939,
+    "uncompressed_bytes": 143705422,
+    "compressed_bytes": 126214079
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-05/part-00071-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1329334,
+    "uncompressed_bytes": 134298669,
+    "compressed_bytes": 118612379
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-06/part-00246-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1317164,
+    "uncompressed_bytes": 133056193,
+    "compressed_bytes": 117491964
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-07/part-00462-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1199974,
+    "uncompressed_bytes": 121325990,
+    "compressed_bytes": 107087375
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-08/part-00862-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1370077,
+    "uncompressed_bytes": 138210511,
+    "compressed_bytes": 122195650
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-09/part-00319-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1346934,
+    "uncompressed_bytes": 136000980,
+    "compressed_bytes": 120220209
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-10/part-00540-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1283355,
+    "uncompressed_bytes": 129712376,
+    "compressed_bytes": 114581125
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-11/part-00560-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1494572,
+    "uncompressed_bytes": 150850150,
+    "compressed_bytes": 133426878
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-12/part-00421-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1479143,
+    "uncompressed_bytes": 149312953,
+    "compressed_bytes": 131989445
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-13/part-00083-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1517650,
+    "uncompressed_bytes": 153153664,
+    "compressed_bytes": 135464423
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-13/part-00083-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 120640,
+    "uncompressed_bytes": 12945657,
+    "compressed_bytes": 11212391
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-14/part-00133-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1453355,
+    "uncompressed_bytes": 146858079,
+    "compressed_bytes": 129855779
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-15/part-00508-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152637605,
+    "compressed_bytes": 135056253
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-15/part-00508-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 30570,
+    "uncompressed_bytes": 3444160,
+    "compressed_bytes": 2943440
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-16/part-01015-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152575532,
+    "compressed_bytes": 135008928
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-16/part-01015-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 10885,
+    "uncompressed_bytes": 1280206,
+    "compressed_bytes": 1085552
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-17/part-00877-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1405852,
+    "uncompressed_bytes": 142122119,
+    "compressed_bytes": 125637168
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-18/part-00104-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1480459,
+    "uncompressed_bytes": 149547800,
+    "compressed_bytes": 132279353
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-19/part-00722-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1448038,
+    "uncompressed_bytes": 146357701,
+    "compressed_bytes": 129428560
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-20/part-00383-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1508757,
+    "uncompressed_bytes": 152388817,
+    "compressed_bytes": 134810051
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-21/part-00201-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1404141,
+    "uncompressed_bytes": 141930544,
+    "compressed_bytes": 125498491
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-22/part-00237-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1415885,
+    "uncompressed_bytes": 143124524,
+    "compressed_bytes": 126554905
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-23/part-00543-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1380024,
+    "uncompressed_bytes": 139535357,
+    "compressed_bytes": 123364769
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-24/part-00315-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1315309,
+    "uncompressed_bytes": 133021553,
+    "compressed_bytes": 117537438
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-25/part-00299-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1433865,
+    "uncompressed_bytes": 144960869,
+    "compressed_bytes": 128159549
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-26/part-00953-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1346157,
+    "uncompressed_bytes": 136183591,
+    "compressed_bytes": 120305558
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-27/part-00808-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1387400,
+    "uncompressed_bytes": 140319718,
+    "compressed_bytes": 123953149
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-28/part-00406-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1260192,
+    "uncompressed_bytes": 127519174,
+    "compressed_bytes": 112621443
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-29/part-00770-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1227001,
+    "uncompressed_bytes": 124175913,
+    "compressed_bytes": 109665112
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-30/part-00523-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1209557,
+    "uncompressed_bytes": 122453403,
+    "compressed_bytes": 108144065
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-10-31/part-00632-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1244923,
+    "uncompressed_bytes": 125980817,
+    "compressed_bytes": 111286081
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-01/part-00441-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1444754,
+    "uncompressed_bytes": 146004295,
+    "compressed_bytes": 129134812
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-02/part-00022-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152558337,
+    "compressed_bytes": 135013974
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-02/part-00022-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 44834,
+    "uncompressed_bytes": 5002745,
+    "compressed_bytes": 4283419
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-03/part-00127-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152548197,
+    "compressed_bytes": 135060830
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-03/part-00127-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 56940,
+    "uncompressed_bytes": 6305907,
+    "compressed_bytes": 5414582
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-04/part-00698-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152543908,
+    "compressed_bytes": 135098639
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-04/part-00698-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 282408,
+    "uncompressed_bytes": 29436342,
+    "compressed_bytes": 25789391
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-05/part-00717-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152459174,
+    "compressed_bytes": 135020844
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-05/part-00717-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 206659,
+    "uncompressed_bytes": 21755947,
+    "compressed_bytes": 18986747
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-06/part-01006-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152421384,
+    "compressed_bytes": 134986072
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-06/part-01006-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 184124,
+    "uncompressed_bytes": 19457036,
+    "compressed_bytes": 16958414
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-07/part-00810-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152520938,
+    "compressed_bytes": 135063255
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-07/part-00810-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 286137,
+    "uncompressed_bytes": 29813756,
+    "compressed_bytes": 26115793
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-08/part-00728-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152636616,
+    "compressed_bytes": 135082246
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-08/part-00728-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 383850,
+    "uncompressed_bytes": 39653106,
+    "compressed_bytes": 34836323
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-09/part-01021-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152703258,
+    "compressed_bytes": 135137535
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-09/part-01021-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 365486,
+    "uncompressed_bytes": 37862698,
+    "compressed_bytes": 33217331
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-10/part-00930-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152748207,
+    "compressed_bytes": 135148086
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-10/part-00930-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 428254,
+    "uncompressed_bytes": 44145302,
+    "compressed_bytes": 38799558
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-11/part-00305-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152895558,
+    "compressed_bytes": 135136323
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-11/part-00305-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 496797,
+    "uncompressed_bytes": 51087845,
+    "compressed_bytes": 44950397
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-12/part-00251-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1517650,
+    "uncompressed_bytes": 153606369,
+    "compressed_bytes": 135720022
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-12/part-00251-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 467732,
+    "uncompressed_bytes": 48159297,
+    "compressed_bytes": 42324707
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-13/part-00557-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152905826,
+    "compressed_bytes": 135169276
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-13/part-00557-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 506611,
+    "uncompressed_bytes": 52065166,
+    "compressed_bytes": 45826677
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-14/part-00037-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1517650,
+    "uncompressed_bytes": 154452847,
+    "compressed_bytes": 135637765
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-14/part-00037-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1517650,
+    "uncompressed_bytes": 154023841,
+    "compressed_bytes": 135501931
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-14/part-00037-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 29436,
+    "uncompressed_bytes": 3358403,
+    "compressed_bytes": 2866493
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-15/part-00227-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152476100,
+    "compressed_bytes": 133885935
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-15/part-00227-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152474396,
+    "compressed_bytes": 133947891
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-15/part-00227-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152477078,
+    "compressed_bytes": 133933867
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-15/part-00227-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 151889093,
+    "compressed_bytes": 133859437
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-15/part-00227-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 209012,
+    "uncompressed_bytes": 22107521,
+    "compressed_bytes": 19202594
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152422935,
+    "compressed_bytes": 133820363
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152561680,
+    "compressed_bytes": 134160141
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152259747,
+    "compressed_bytes": 133723269
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152300109,
+    "compressed_bytes": 134067582
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 492596,
+    "uncompressed_bytes": 50663691,
+    "compressed_bytes": 44521407
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-17/part-00495-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152551364,
+    "compressed_bytes": 134232525
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-17/part-00495-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152546329,
+    "compressed_bytes": 134228845
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-17/part-00495-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152547333,
+    "compressed_bytes": 134220800
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-17/part-00495-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 152173307,
+    "compressed_bytes": 134178317
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-17/part-00495-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 383593,
+    "uncompressed_bytes": 39610687,
+    "compressed_bytes": 34750357
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-18/part-00577-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1517650,
+    "uncompressed_bytes": 154301751,
+    "compressed_bytes": 135629548
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-18/part-00577-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 501307,
+    "uncompressed_bytes": 51683769,
+    "compressed_bytes": 45272468
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-19/part-00783-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1517650,
+    "uncompressed_bytes": 153412823,
+    "compressed_bytes": 135688693
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-19/part-00783-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 208547,
+    "uncompressed_bytes": 22002174,
+    "compressed_bytes": 19183906
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-20/part-00075-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152558042,
+    "compressed_bytes": 135115168
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-20/part-00075-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 187336,
+    "uncompressed_bytes": 19823847,
+    "compressed_bytes": 17289216
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-21/part-00442-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152544818,
+    "compressed_bytes": 135140115
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-21/part-00442-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 163977,
+    "uncompressed_bytes": 17432512,
+    "compressed_bytes": 15170618
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-22/part-00681-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152602318,
+    "compressed_bytes": 135096769
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-22/part-00681-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 55766,
+    "uncompressed_bytes": 6187043,
+    "compressed_bytes": 5310632
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-23/part-00545-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152577326,
+    "compressed_bytes": 135034895
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-23/part-00545-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 49415,
+    "uncompressed_bytes": 5497450,
+    "compressed_bytes": 4715079
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-24/part-00330-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152545215,
+    "compressed_bytes": 135010353
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-24/part-00330-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 79331,
+    "uncompressed_bytes": 8671587,
+    "compressed_bytes": 7473863
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-25/part-00061-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152558962,
+    "compressed_bytes": 135058022
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-25/part-00061-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 80937,
+    "uncompressed_bytes": 8850295,
+    "compressed_bytes": 7630683
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-26/part-00119-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152603094,
+    "compressed_bytes": 135078681
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-26/part-00119-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 142742,
+    "uncompressed_bytes": 15260645,
+    "compressed_bytes": 13255326
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-27/part-00361-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152628508,
+    "compressed_bytes": 135195752
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-27/part-00361-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 134117,
+    "uncompressed_bytes": 14365454,
+    "compressed_bytes": 12476661
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-28/part-00455-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152635266,
+    "compressed_bytes": 135184451
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-28/part-00455-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 146097,
+    "uncompressed_bytes": 15618351,
+    "compressed_bytes": 13572417
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-29/part-00335-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1499082,
+    "uncompressed_bytes": 151674732,
+    "compressed_bytes": 134336867
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-29/part-00335-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 351742,
+    "uncompressed_bytes": 36491874,
+    "compressed_bytes": 32033542
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-30/part-00089-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 1510100,
+    "uncompressed_bytes": 152656118,
+    "compressed_bytes": 135159537
+  },
+  {
+    "file": "/app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-30/part-00089-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet",
+    "rows": 242507,
+    "uncompressed_bytes": 25434886,
+    "compressed_bytes": 22234814
+  }
+]

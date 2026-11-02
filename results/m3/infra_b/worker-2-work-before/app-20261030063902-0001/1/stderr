@@ -1,0 +1,737 @@
+Spark Executor Command: "/opt/java/openjdk/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=40365" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@a68f91559f87:40365" "--executor-id" "1" "--hostname" "172.19.0.4" "--cores" "2" "--app-id" "app-20261030063902-0001" "--worker-url" "spark://Worker@172.19.0.4:40559" "--resourceProfileId" "0"
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/30 06:39:03 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 123@dccee2b1d72e
+26/10/30 06:39:03 INFO SignalUtils: Registering signal handler for TERM
+26/10/30 06:39:03 INFO SignalUtils: Registering signal handler for HUP
+26/10/30 06:39:03 INFO SignalUtils: Registering signal handler for INT
+26/10/30 06:39:04 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/30 06:39:04 INFO SecurityManager: Changing view acls to: root
+26/10/30 06:39:04 INFO SecurityManager: Changing modify acls to: root
+26/10/30 06:39:04 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 06:39:04 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 06:39:04 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 06:39:04 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:40365 after 71 ms (0 ms spent in bootstraps)
+26/10/30 06:39:04 INFO SecurityManager: Changing view acls to: root
+26/10/30 06:39:04 INFO SecurityManager: Changing modify acls to: root
+26/10/30 06:39:04 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 06:39:04 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 06:39:04 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 06:39:04 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:40365 after 4 ms (0 ms spent in bootstraps)
+26/10/30 06:39:04 INFO DiskBlockManager: Created local directory at /tmp/spark-6931e683-bbde-42a9-be20-7fbf0822572b/executor-b8b0c5ec-1d9a-40ca-9a4e-ab862e5a02d2/blockmgr-68becc11-c65d-44cf-b9c1-895c54d41abc
+26/10/30 06:39:04 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+26/10/30 06:39:04 INFO WorkerWatcher: Connecting to worker spark://Worker@172.19.0.4:40559
+26/10/30 06:39:04 INFO CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@a68f91559f87:40365
+26/10/30 06:39:04 INFO TransportClientFactory: Successfully created connection to /172.19.0.4:40559 after 4 ms (0 ms spent in bootstraps)
+26/10/30 06:39:04 INFO WorkerWatcher: Successfully connected to spark://Worker@172.19.0.4:40559
+26/10/30 06:39:04 INFO ResourceUtils: ==============================================================
+26/10/30 06:39:04 INFO ResourceUtils: No custom resources configured for spark.executor.
+26/10/30 06:39:04 INFO ResourceUtils: ==============================================================
+26/10/30 06:39:04 INFO CoarseGrainedExecutorBackend: Successfully registered with driver
+26/10/30 06:39:04 INFO Executor: Starting executor ID 1 on host 172.19.0.4
+26/10/30 06:39:04 INFO Executor: OS info Linux, 6.18.54.1-microsoft-standard-WSL2, amd64
+26/10/30 06:39:04 INFO Executor: Java version 11.0.25
+26/10/30 06:39:04 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45659.
+26/10/30 06:39:04 INFO NettyBlockTransferService: Server created on 172.19.0.4:45659
+26/10/30 06:39:04 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/30 06:39:04 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(1, 172.19.0.4, 45659, None)
+26/10/30 06:39:04 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(1, 172.19.0.4, 45659, None)
+26/10/30 06:39:04 INFO BlockManager: Initialized BlockManager: BlockManagerId(1, 172.19.0.4, 45659, None)
+26/10/30 06:39:04 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/30 06:39:04 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@3856f0c for default.
+26/10/30 06:39:06 INFO CoarseGrainedExecutorBackend: Got assigned task 0
+26/10/30 06:39:06 INFO CoarseGrainedExecutorBackend: Got assigned task 2
+26/10/30 06:39:06 INFO Executor: Running task 2.0 in stage 0.0 (TID 2)
+26/10/30 06:39:06 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+26/10/30 06:39:06 INFO TorrentBroadcast: Started reading broadcast variable 1 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 06:39:06 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:38009 after 2 ms (0 ms spent in bootstraps)
+26/10/30 06:39:06 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 92.3 KiB, free 434.3 MiB)
+26/10/30 06:39:06 INFO TorrentBroadcast: Reading broadcast variable 1 took 94 ms
+26/10/30 06:39:06 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 259.8 KiB, free 434.1 MiB)
+26/10/30 06:39:07 INFO CodeGenerator: Code generated in 317.038753 ms
+26/10/30 06:39:07 INFO CodeGenerator: Code generated in 10.803109 ms
+26/10/30 06:39:07 INFO CodeGenerator: Code generated in 14.153665 ms
+26/10/30 06:39:07 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:07 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:07 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:07 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:07 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:07 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:07 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:07 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:07 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:07 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:07 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:07 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:07 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 268435456-402653184, partition values: [empty row]
+26/10/30 06:39:07 INFO CodeGenerator: Code generated in 15.336187 ms
+26/10/30 06:39:07 INFO CodeGenerator: Code generated in 15.958622 ms
+26/10/30 06:39:07 INFO TorrentBroadcast: Started reading broadcast variable 0 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 06:39:07 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 0-134217728, partition values: [empty row]
+26/10/30 06:39:07 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 34.6 KiB, free 433.9 MiB)
+26/10/30 06:39:07 INFO TorrentBroadcast: Reading broadcast variable 0 took 13 ms
+26/10/30 06:39:07 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 378.6 KiB, free 433.5 MiB)
+26/10/30 06:39:08 WARN CSVHeaderChecker: Number of column in CSV header is not equal to number of fields in the schema:
+ Header length: 1, schema size: 9
+CSV file: file:///app/data/raw/2019-Oct.csv
+26/10/30 06:39:22 INFO CodeGenerator: Code generated in 11.94764 ms
+26/10/30 06:39:22 INFO CodeGenerator: Code generated in 14.074281 ms
+26/10/30 06:39:22 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:22 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:22 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:39:22 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:39:22 INFO CodecPool: Got brand-new compressor [.snappy]
+26/10/30 06:39:23 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:23 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:23 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:39:23 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:39:23 INFO CodecPool: Got brand-new compressor [.snappy]
+26/10/30 06:39:24 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000000_0' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000000
+26/10/30 06:39:24 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000000_0: Committed. Elapsed time: 14 ms.
+26/10/30 06:39:24 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000002_2' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000002
+26/10/30 06:39:24 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000002_2: Committed. Elapsed time: 16 ms.
+26/10/30 06:39:24 INFO Executor: Finished task 2.0 in stage 0.0 (TID 2). 3399 bytes result sent to driver
+26/10/30 06:39:24 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 3399 bytes result sent to driver
+26/10/30 06:39:24 INFO CoarseGrainedExecutorBackend: Got assigned task 4
+26/10/30 06:39:24 INFO Executor: Running task 4.0 in stage 0.0 (TID 4)
+26/10/30 06:39:24 INFO CoarseGrainedExecutorBackend: Got assigned task 5
+26/10/30 06:39:24 INFO Executor: Running task 5.0 in stage 0.0 (TID 5)
+26/10/30 06:39:24 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:24 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:24 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:24 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:24 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:24 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:24 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 536870912-671088640, partition values: [empty row]
+26/10/30 06:39:24 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:24 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:24 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:24 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:24 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:24 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:24 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 671088640-805306368, partition values: [empty row]
+26/10/30 06:39:39 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:39 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:39 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:39:39 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:39:39 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:39 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:39 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:39:39 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:39:39 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000004_4' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000004
+26/10/30 06:39:39 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000004_4: Committed. Elapsed time: 8 ms.
+26/10/30 06:39:39 INFO Executor: Finished task 4.0 in stage 0.0 (TID 4). 3356 bytes result sent to driver
+26/10/30 06:39:39 INFO CoarseGrainedExecutorBackend: Got assigned task 8
+26/10/30 06:39:39 INFO Executor: Running task 8.0 in stage 0.0 (TID 8)
+26/10/30 06:39:39 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:39 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:39 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:39 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:39 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:39 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:39 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 1073741824-1207959552, partition values: [empty row]
+26/10/30 06:39:39 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000005_5' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000005
+26/10/30 06:39:39 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000005_5: Committed. Elapsed time: 9 ms.
+26/10/30 06:39:39 INFO Executor: Finished task 5.0 in stage 0.0 (TID 5). 3356 bytes result sent to driver
+26/10/30 06:39:39 INFO CoarseGrainedExecutorBackend: Got assigned task 9
+26/10/30 06:39:39 INFO Executor: Running task 9.0 in stage 0.0 (TID 9)
+26/10/30 06:39:39 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:39 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:39 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:39 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:39 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:39 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:39 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 1207959552-1342177280, partition values: [empty row]
+26/10/30 06:39:54 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:54 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:54 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:39:54 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:39:54 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:54 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:39:54 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:39:54 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:39:54 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000008_8' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000008
+26/10/30 06:39:54 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000008_8: Committed. Elapsed time: 17 ms.
+26/10/30 06:39:54 INFO Executor: Finished task 8.0 in stage 0.0 (TID 8). 3356 bytes result sent to driver
+26/10/30 06:39:54 INFO CoarseGrainedExecutorBackend: Got assigned task 12
+26/10/30 06:39:54 INFO Executor: Running task 12.0 in stage 0.0 (TID 12)
+26/10/30 06:39:54 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:54 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:54 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:54 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+26/10/30 06:39:54 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+26/10/30 06:39:54 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+26/10/30 06:39:54 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 1610612736-1741928540, partition values: [empty row]
+26/10/30 06:39:54 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000009_9' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000009
+26/10/30 06:39:54 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000009_9: Committed. Elapsed time: 40 ms.
+26/10/30 06:39:54 INFO Executor: Finished task 9.0 in stage 0.0 (TID 9). 3399 bytes result sent to driver
+26/10/30 06:40:07 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:40:07 INFO CodecConfig: Compression: SNAPPY
+26/10/30 06:40:07 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+26/10/30 06:40:07 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "event_time",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "event_type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "product_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "category_code",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "brand",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "price",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_id",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "user_session",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "source_file",
+    "type" : "string",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "ingest_ts",
+    "type" : "timestamp",
+    "nullable" : false,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary event_time (STRING);
+  optional binary event_type (STRING);
+  optional int64 product_id;
+  optional int64 category_id;
+  optional binary category_code (STRING);
+  optional binary brand (STRING);
+  optional double price;
+  optional int64 user_id;
+  optional binary user_session (STRING);
+  required binary source_file (STRING);
+  required int96 ingest_ts;
+}
+
+       
+26/10/30 06:40:08 INFO FileOutputCommitter: Saved output of task 'attempt_202610300639068084077655518750178_0000_m_000012_12' to file:/app/data/lake/bronze/events/_temporary/0/task_202610300639068084077655518750178_0000_m_000012
+26/10/30 06:40:08 INFO SparkHadoopMapRedUtil: attempt_202610300639068084077655518750178_0000_m_000012_12: Committed. Elapsed time: 32 ms.
+26/10/30 06:40:08 INFO Executor: Finished task 12.0 in stage 0.0 (TID 12). 3356 bytes result sent to driver
+26/10/30 06:40:10 INFO CoarseGrainedExecutorBackend: Got assigned task 14
+26/10/30 06:40:10 INFO CoarseGrainedExecutorBackend: Got assigned task 16
+26/10/30 06:40:10 INFO Executor: Running task 1.0 in stage 1.0 (TID 14)
+26/10/30 06:40:10 INFO Executor: Running task 3.0 in stage 1.0 (TID 16)
+26/10/30 06:40:10 INFO TorrentBroadcast: Started reading broadcast variable 3 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 06:40:10 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 9.3 KiB, free 433.6 MiB)
+26/10/30 06:40:10 INFO TorrentBroadcast: Reading broadcast variable 3 took 10 ms
+26/10/30 06:40:10 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 19.3 KiB, free 433.6 MiB)
+26/10/30 06:40:10 INFO CodeGenerator: Code generated in 15.659789 ms
+26/10/30 06:40:10 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 134217728-268435456, partition values: [empty row]
+26/10/30 06:40:10 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 402653184-536870912, partition values: [empty row]
+26/10/30 06:40:10 INFO CodeGenerator: Code generated in 5.101339 ms
+26/10/30 06:40:10 INFO TorrentBroadcast: Started reading broadcast variable 2 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 06:40:10 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 34.6 KiB, free 433.6 MiB)
+26/10/30 06:40:10 INFO TorrentBroadcast: Reading broadcast variable 2 took 11 ms
+26/10/30 06:40:10 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 378.6 KiB, free 433.2 MiB)
+26/10/30 06:40:12 INFO Executor: Finished task 3.0 in stage 1.0 (TID 16). 2063 bytes result sent to driver
+26/10/30 06:40:12 INFO Executor: Finished task 1.0 in stage 1.0 (TID 14). 2063 bytes result sent to driver
+26/10/30 06:40:12 INFO CoarseGrainedExecutorBackend: Got assigned task 17
+26/10/30 06:40:12 INFO CoarseGrainedExecutorBackend: Got assigned task 18
+26/10/30 06:40:12 INFO Executor: Running task 5.0 in stage 1.0 (TID 18)
+26/10/30 06:40:12 INFO Executor: Running task 4.0 in stage 1.0 (TID 17)
+26/10/30 06:40:12 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 536870912-671088640, partition values: [empty row]
+26/10/30 06:40:12 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 671088640-805306368, partition values: [empty row]
+26/10/30 06:40:15 INFO Executor: Finished task 4.0 in stage 1.0 (TID 17). 2020 bytes result sent to driver
+26/10/30 06:40:15 INFO Executor: Finished task 5.0 in stage 1.0 (TID 18). 2020 bytes result sent to driver
+26/10/30 06:40:15 INFO CoarseGrainedExecutorBackend: Got assigned task 22
+26/10/30 06:40:15 INFO Executor: Running task 9.0 in stage 1.0 (TID 22)
+26/10/30 06:40:15 INFO CoarseGrainedExecutorBackend: Got assigned task 23
+26/10/30 06:40:15 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 1207959552-1342177280, partition values: [empty row]
+26/10/30 06:40:15 INFO Executor: Running task 10.0 in stage 1.0 (TID 23)
+26/10/30 06:40:15 INFO FileScanRDD: Reading File path: file:///app/data/raw/2019-Oct.csv, range: 1342177280-1476395008, partition values: [empty row]
+26/10/30 06:40:17 INFO Executor: Finished task 10.0 in stage 1.0 (TID 23). 2020 bytes result sent to driver
+26/10/30 06:40:17 INFO Executor: Finished task 9.0 in stage 1.0 (TID 22). 2020 bytes result sent to driver
+26/10/30 06:40:20 INFO CoarseGrainedExecutorBackend: Driver commanded a shutdown
+26/10/30 06:40:20 ERROR CoarseGrainedExecutorBackend: RECEIVED SIGNAL TERM
+tdown

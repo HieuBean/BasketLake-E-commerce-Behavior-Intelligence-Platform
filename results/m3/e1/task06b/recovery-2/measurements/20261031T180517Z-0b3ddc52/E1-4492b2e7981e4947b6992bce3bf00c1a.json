@@ -1,0 +1,234 @@
+{
+  "run_id": "E1-4492b2e7981e4947b6992bce3bf00c1a",
+  "fraction": 0.5,
+  "seed": 42,
+  "actual_input_rows": 54916699,
+  "success": true,
+  "throughput_rows_s": 2648405.316433542,
+  "cache_status": "MEMORY_AND_DISK materialized; warmup complete; OS cache uncontrolled",
+  "checksum": "116c30507ce6ff213afd3d19e708b5f05b353cbeafa5322bea75355b354f8929",
+  "error": "",
+  "metrics": {
+    "shuffle_read_bytes": 186449,
+    "shuffle_write_bytes": 93830,
+    "spill_bytes": 0,
+    "memory_bytes_spilled": 0,
+    "executor_run_time_ms": 29909,
+    "jvm_gc_time_ms": 124,
+    "failed_tasks": 0,
+    "status": "measured",
+    "source": "Spark REST; completed stages in measured job group",
+    "job_group": "E1-4492b2e7981e4947b6992bce3bf00c1a",
+    "job_ids": [
+      366,
+      365,
+      364,
+      363,
+      362,
+      361,
+      360,
+      359,
+      358,
+      357,
+      356,
+      355,
+      354,
+      353,
+      352,
+      351,
+      350
+    ],
+    "stage_attempts": [
+      [
+        924,
+        0
+      ],
+      [
+        926,
+        0
+      ],
+      [
+        928,
+        0
+      ],
+      [
+        931,
+        0
+      ],
+      [
+        934,
+        0
+      ],
+      [
+        937,
+        0
+      ],
+      [
+        940,
+        0
+      ],
+      [
+        943,
+        0
+      ],
+      [
+        946,
+        0
+      ],
+      [
+        949,
+        0
+      ],
+      [
+        952,
+        0
+      ],
+      [
+        955,
+        0
+      ],
+      [
+        958,
+        0
+      ],
+      [
+        961,
+        0
+      ],
+      [
+        964,
+        0
+      ],
+      [
+        967,
+        0
+      ],
+      [
+        970,
+        0
+      ]
+    ],
+    "peak_ram_bytes": null,
+    "pre_run_stage_watermark": 923
+  },
+  "spark_config": {
+    "spark.master": "spark://spark-master:7077",
+    "spark.executor.cores": "1",
+    "spark.executor.memory": "1536m",
+    "spark.driver.memory": "2g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "1024",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.dynamicAllocation.enabled": "false",
+    "spark.sql.session.timeZone": "Etc/UTC",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.sql.parquet.enableVectorizedReader": "false",
+    "spark.sql.parquet.columnarReaderBatchSize": "512",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "1000",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.eventLog.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark_version": "3.5.4",
+    "application_id": "app-20261031180518-0002",
+    "driver_max_heap_bytes": 2147483648,
+    "workers": [
+      {
+        "id": "worker-20261031170336-172.19.0.4-45909",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1536
+      },
+      {
+        "id": "worker-20261031170336-172.19.0.5-37049",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1536
+      }
+    ],
+    "alive_workers": 2
+  },
+  "started_utc": "2026-10-31T18:28:03.255998Z",
+  "wall_time_s": 20.73576074599987,
+  "values": [
+    {
+      "category_l1": "electronics",
+      "revenue": 191200856.98999926,
+      "purchase_count": 459357
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 26340222.56999997,
+      "purchase_count": 203899
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 16100774.209999999,
+      "purchase_count": 86974
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 12620193.370000003,
+      "purchase_count": 31200
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 2121503.5399999996,
+      "purchase_count": 9985
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 1332224.83,
+      "purchase_count": 10678
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 1017497.9099999996,
+      "purchase_count": 8377
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 898589.2200000002,
+      "purchase_count": 11068
+    },
+    {
+      "category_l1": "kids",
+      "revenue": 679365.3399999999,
+      "purchase_count": 5746
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 353790.6699999999,
+      "purchase_count": 1343
+    },
+    {
+      "category_l1": "accessories",
+      "revenue": 86603.72000000002,
+      "purchase_count": 1922
+    },
+    {
+      "category_l1": "medicine",
+      "revenue": 15202.549999999996,
+      "purchase_count": 334
+    },
+    {
+      "category_l1": "country_yard",
+      "revenue": 14138.44,
+      "purchase_count": 65
+    },
+    {
+      "category_l1": "stationery",
+      "revenue": 2633.810000000001,
+      "purchase_count": 166
+    }
+  ],
+  "output_rows": 14,
+  "purchase_count": 831114,
+  "revenue": 252783597.16999924,
+  "application_id": "app-20261031180518-0002",
+  "finished_utc": "2026-10-31T18:28:24.831372Z"
+}

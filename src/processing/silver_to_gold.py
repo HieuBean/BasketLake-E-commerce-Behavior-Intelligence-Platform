@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import argparse
 
-from pyspark.sql import DataFrame
+from pyspark.sql import Column, DataFrame, Window
 from pyspark.sql import functions as F
 
 from src.common.config import get_paths, load_config
@@ -32,15 +32,48 @@ log = get_logger(__name__)
 # Sessionization
 # =============================================================================
 
+def _effective_session_id(df: DataFrame) -> Column:
+    """Prefer Silver R9 ID, falling back to a nonblank original ID.
+
+    Preserve IDs verbatim. Missing both violates Silver's input contract;
+    fail on evaluation rather than inventing or merging unknown sessions.
+    """
+    candidates = [
+        F.when(F.length(F.trim(F.col(name))) > 0, F.col(name))
+        for name in ("session_id", "user_session") if name in df.columns
+    ]
+    return F.coalesce(
+        *candidates,
+        F.raise_error("Gold session identity requires session_id or user_session").cast("string"),
+    )
+
+
+def _known_value(name: str) -> Column:
+    """ADR-004: classify normalized values; preserve valid source values verbatim."""
+    return F.coalesce(
+        (F.length(F.trim(F.col(name))) > 0)
+        & (F.lower(F.trim(F.col(name))) != "unknown"), F.lit(False)
+    )
+
+
+def _representative(df: DataFrame, keys: list[str], values: list[str], valid: Column) -> DataFrame:
+    """Rank observed candidates: valid first, frequency, then stable value ordering."""
+    counts = df.groupBy(*(keys + values)).count().withColumn("_valid", valid.cast("int"))
+    window = Window.partitionBy(*keys).orderBy(
+        F.desc("_valid"), F.desc("count"), *[F.col(c).asc_nulls_last() for c in values]
+    )
+    return (counts.withColumn("_rank", F.row_number().over(window))
+            .filter(F.col("_rank") == 1).select(*(keys + values)))
+
+
 def build_fact_sessions(df: DataFrame) -> DataFrame:
     """
     Tạo fact_sessions từ silver_events.
-    Dùng user_session gốc làm session key chính.
-    Mỗi phiên = (user_id, user_session).
+    Mỗi phiên = (user_id, effective session ID từ Silver).
+    Giữ tên cột public user_session cho khóa phiên hiệu lực.
     """
     log.info("Xây dựng fact_sessions...")
-    if "session_id" in df.columns:
-        df = df.withColumn("user_session", F.coalesce(F.col("user_session"), F.col("session_id")))
+    df = df.withColumn("user_session", _effective_session_id(df))
 
     sessions = df.groupBy("user_id", "user_session").agg(
         F.min("event_ts").alias("session_start"),
@@ -56,8 +89,13 @@ def build_fact_sessions(df: DataFrame) -> DataFrame:
             F.when(F.col("event_type") == "purchase", F.col("price")).otherwise(0)
         ).alias("revenue"),
         F.countDistinct("product_id").alias("distinct_products"),
-        F.first("category_l1").alias("category_l1"),   # category chính của phiên
     )
+
+    category = _representative(df, ["user_id", "user_session"], ["category_l1"],
+                               _known_value("category_l1"))
+    category = category.withColumn("category_l1", F.when(
+        _known_value("category_l1"), F.col("category_l1")).otherwise("unknown"))
+    sessions = sessions.join(category, ["user_id", "user_session"])
 
     sessions = sessions.withColumn(
         "session_duration_s",
@@ -76,16 +114,19 @@ def build_fact_sessions(df: DataFrame) -> DataFrame:
 
 def build_dim_product(df: DataFrame) -> DataFrame:
     log.info("Xây dựng dim_product...")
-    return df.groupBy("product_id").agg(
-        F.first("category_id").alias("category_id"),
-        F.first("category_l1").alias("category_l1"),
-        F.first("category_l2").alias("category_l2"),
-        F.first("category_l3").alias("category_l3"),
-        F.first("brand").alias("brand"),
+    prices = df.groupBy("product_id").agg(
         F.min("price").alias("price_min"),
         F.max("price").alias("price_max"),
         F.avg("price").alias("price_avg"),
     )
+    category_columns = ["category_id", "category_l1", "category_l2", "category_l3"]
+    category = _representative(df, ["product_id"], category_columns,
+                               F.col("category_id").isNotNull() & _known_value("category_l1"))
+    brand = _representative(df, ["product_id"], ["brand"], _known_value("brand"))
+    brand = brand.withColumn("brand", F.when(_known_value("brand"), F.col("brand"))
+                             .otherwise("unknown"))
+    return (prices.join(category, "product_id").join(brand, "product_id")
+            .select("product_id", *category_columns, "brand", "price_min", "price_max", "price_avg"))
 
 
 def build_dim_user(df: DataFrame) -> DataFrame:
@@ -93,7 +134,7 @@ def build_dim_user(df: DataFrame) -> DataFrame:
     return df.groupBy("user_id").agg(
         F.min("event_ts").alias("first_seen"),
         F.max("event_ts").alias("last_seen"),
-        F.countDistinct("user_session").alias("session_count"),
+        F.countDistinct(_effective_session_id(df)).alias("session_count"),
     )
 
 
@@ -111,7 +152,7 @@ def build_agg_daily(df: DataFrame) -> DataFrame:
             F.when(F.col("event_type") == "purchase", F.col("price")).otherwise(0)
         ).alias("revenue"),
         F.countDistinct("user_id").alias("unique_users"),
-        F.countDistinct("user_session").alias("sessions"),
+        F.countDistinct("user_id", _effective_session_id(df)).alias("sessions"),
     )
 
 
@@ -134,7 +175,9 @@ def build_agg_funnel(df: DataFrame) -> DataFrame:
     Định nghĩa: phiên có ≥1 sự kiện ở bước đó.
     """
     log.info("Xây dựng agg_funnel...")
-    session_steps = df.groupBy("user_session", "category_l1").agg(
+    session_steps = df.groupBy(
+        "user_id", _effective_session_id(df).alias("_effective_session_id"), "category_l1"
+    ).agg(
         F.max(F.when(F.col("event_type") == "view",     1).otherwise(0)).alias("has_view"),
         F.max(F.when(F.col("event_type") == "cart",     1).otherwise(0)).alias("has_cart"),
         F.max(F.when(F.col("event_type") == "purchase", 1).otherwise(0)).alias("has_purchase"),

@@ -1,0 +1,1120 @@
+Spark Executor Command: "/opt/java/openjdk/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1536M" "-Dspark.driver.port=44025" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@a68f91559f87:44025" "--executor-id" "0" "--hostname" "172.19.0.4" "--cores" "2" "--app-id" "app-20261030112429-0003" "--worker-url" "spark://Worker@172.19.0.4:46037" "--resourceProfileId" "0"
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/30 11:24:30 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 811@58ff0ea50c81
+26/10/30 11:24:30 INFO SignalUtils: Registering signal handler for TERM
+26/10/30 11:24:30 INFO SignalUtils: Registering signal handler for HUP
+26/10/30 11:24:30 INFO SignalUtils: Registering signal handler for INT
+26/10/30 11:24:30 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/30 11:24:31 INFO SecurityManager: Changing view acls to: root
+26/10/30 11:24:31 INFO SecurityManager: Changing modify acls to: root
+26/10/30 11:24:31 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 11:24:31 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 11:24:31 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 11:24:31 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:44025 after 66 ms (0 ms spent in bootstraps)
+26/10/30 11:24:31 INFO SecurityManager: Changing view acls to: root
+26/10/30 11:24:31 INFO SecurityManager: Changing modify acls to: root
+26/10/30 11:24:31 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 11:24:31 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 11:24:31 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 11:24:31 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:44025 after 3 ms (0 ms spent in bootstraps)
+26/10/30 11:24:31 INFO DiskBlockManager: Created local directory at /tmp/spark-68da7f74-1741-46ed-9f2b-b36aaa3f1956/executor-1b7911df-1f2f-4ee0-90cf-a64f8758a0b4/blockmgr-94a97171-f0ba-4942-a759-178ca6e113fd
+26/10/30 11:24:31 INFO MemoryStore: MemoryStore started with capacity 741.6 MiB
+26/10/30 11:24:31 INFO CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@a68f91559f87:44025
+26/10/30 11:24:31 INFO WorkerWatcher: Connecting to worker spark://Worker@172.19.0.4:46037
+26/10/30 11:24:31 INFO TransportClientFactory: Successfully created connection to /172.19.0.4:46037 after 3 ms (0 ms spent in bootstraps)
+26/10/30 11:24:31 INFO WorkerWatcher: Successfully connected to spark://Worker@172.19.0.4:46037
+26/10/30 11:24:31 INFO ResourceUtils: ==============================================================
+26/10/30 11:24:31 INFO ResourceUtils: No custom resources configured for spark.executor.
+26/10/30 11:24:31 INFO ResourceUtils: ==============================================================
+26/10/30 11:24:31 INFO CoarseGrainedExecutorBackend: Successfully registered with driver
+26/10/30 11:24:31 INFO Executor: Starting executor ID 0 on host 172.19.0.4
+26/10/30 11:24:31 INFO Executor: OS info Linux, 6.18.54.1-microsoft-standard-WSL2, amd64
+26/10/30 11:24:31 INFO Executor: Java version 11.0.25
+26/10/30 11:24:31 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 39125.
+26/10/30 11:24:31 INFO NettyBlockTransferService: Server created on 172.19.0.4:39125
+26/10/30 11:24:31 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/30 11:24:31 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(0, 172.19.0.4, 39125, None)
+26/10/30 11:24:31 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(0, 172.19.0.4, 39125, None)
+26/10/30 11:24:31 INFO BlockManager: Initialized BlockManager: BlockManagerId(0, 172.19.0.4, 39125, None)
+26/10/30 11:24:31 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/30 11:24:31 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@7c7b0ff6 for default.
+26/10/30 11:24:36 INFO CoarseGrainedExecutorBackend: Got assigned task 1
+26/10/30 11:24:36 INFO CoarseGrainedExecutorBackend: Got assigned task 3
+26/10/30 11:24:36 INFO Executor: Running task 2.0 in stage 1.0 (TID 3)
+26/10/30 11:24:36 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+26/10/30 11:24:36 INFO TorrentBroadcast: Started reading broadcast variable 2 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:24:37 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:36725 after 3 ms (0 ms spent in bootstraps)
+26/10/30 11:24:37 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 8.2 KiB, free 741.6 MiB)
+26/10/30 11:24:37 INFO TorrentBroadcast: Reading broadcast variable 2 took 99 ms
+26/10/30 11:24:37 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 18.2 KiB, free 741.6 MiB)
+26/10/30 11:24:37 INFO CodeGenerator: Code generated in 270.225376 ms
+26/10/30 11:24:37 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00085-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42370802, partition values: [2019-11]
+26/10/30 11:24:37 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00083-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-43417481, partition values: [2019-11]
+26/10/30 11:24:37 INFO TorrentBroadcast: Started reading broadcast variable 1 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:24:37 INFO TransportClientFactory: Successfully created connection to /172.19.0.5:33143 after 2 ms (0 ms spent in bootstraps)
+26/10/30 11:24:37 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 741.5 MiB)
+26/10/30 11:24:37 INFO TorrentBroadcast: Reading broadcast variable 1 took 38 ms
+26/10/30 11:24:37 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 382.6 KiB, free 741.2 MiB)
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00084-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42239322, partition values: [2019-11]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00082-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42703102, partition values: [2019-11]
+26/10/30 11:24:38 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 2215 bytes result sent to driver
+26/10/30 11:24:38 INFO Executor: Finished task 2.0 in stage 1.0 (TID 3). 2215 bytes result sent to driver
+26/10/30 11:24:38 INFO CoarseGrainedExecutorBackend: Got assigned task 17
+26/10/30 11:24:38 INFO CoarseGrainedExecutorBackend: Got assigned task 18
+26/10/30 11:24:38 INFO Executor: Running task 16.0 in stage 1.0 (TID 17)
+26/10/30 11:24:38 INFO Executor: Running task 17.0 in stage 1.0 (TID 18)
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00009-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36572160, partition values: [2019-10]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00019-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36492205, partition values: [2019-10]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00092-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36514760, partition values: [2019-11]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00087-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36409223, partition values: [2019-11]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00042-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36493209, partition values: [2019-11]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00059-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36345412, partition values: [2019-11]
+26/10/30 11:24:38 INFO Executor: Finished task 17.0 in stage 1.0 (TID 18). 2172 bytes result sent to driver
+26/10/30 11:24:38 INFO Executor: Finished task 16.0 in stage 1.0 (TID 17). 2172 bytes result sent to driver
+26/10/30 11:24:38 INFO CoarseGrainedExecutorBackend: Got assigned task 21
+26/10/30 11:24:38 INFO Executor: Running task 20.0 in stage 1.0 (TID 21)
+26/10/30 11:24:38 INFO CoarseGrainedExecutorBackend: Got assigned task 22
+26/10/30 11:24:38 INFO Executor: Running task 21.0 in stage 1.0 (TID 22)
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00025-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35900361, partition values: [2019-10]
+26/10/30 11:24:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00022-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35854431, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00103-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35885641, partition values: [2019-11]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00029-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35832043, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00053-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35865651, partition values: [2019-11]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00044-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35672165, partition values: [2019-11]
+26/10/30 11:24:39 INFO Executor: Finished task 21.0 in stage 1.0 (TID 22). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO Executor: Finished task 20.0 in stage 1.0 (TID 21). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 25
+26/10/30 11:24:39 INFO Executor: Running task 24.0 in stage 1.0 (TID 25)
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 26
+26/10/30 11:24:39 INFO Executor: Running task 25.0 in stage 1.0 (TID 26)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00036-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35188787, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00074-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35367945, partition values: [2019-11]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00089-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35351345, partition values: [2019-11]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00000-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35160341, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00095-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35274560, partition values: [2019-11]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00102-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35136131, partition values: [2019-11]
+26/10/30 11:24:39 INFO Executor: Finished task 24.0 in stage 1.0 (TID 25). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 29
+26/10/30 11:24:39 INFO Executor: Running task 28.0 in stage 1.0 (TID 29)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00094-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34872001, partition values: [2019-11]
+26/10/30 11:24:39 INFO Executor: Finished task 25.0 in stage 1.0 (TID 26). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 30
+26/10/30 11:24:39 INFO Executor: Running task 29.0 in stage 1.0 (TID 30)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00010-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34724350, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00021-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34772725, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00097-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34700216, partition values: [2019-11]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00005-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34730687, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00034-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34649076, partition values: [2019-10]
+26/10/30 11:24:39 INFO Executor: Finished task 28.0 in stage 1.0 (TID 29). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 33
+26/10/30 11:24:39 INFO Executor: Running task 32.0 in stage 1.0 (TID 33)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00031-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34377175, partition values: [2019-10]
+26/10/30 11:24:39 INFO Executor: Finished task 29.0 in stage 1.0 (TID 30). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 34
+26/10/30 11:24:39 INFO Executor: Running task 33.0 in stage 1.0 (TID 34)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00038-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34312940, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00018-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34326441, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00004-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34288549, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00023-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34317450, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00020-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34216729, partition values: [2019-10]
+26/10/30 11:24:39 INFO Executor: Finished task 32.0 in stage 1.0 (TID 33). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 37
+26/10/30 11:24:39 INFO Executor: Running task 36.0 in stage 1.0 (TID 37)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00037-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33549363, partition values: [2019-10]
+26/10/30 11:24:39 INFO Executor: Finished task 33.0 in stage 1.0 (TID 34). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO CoarseGrainedExecutorBackend: Got assigned task 38
+26/10/30 11:24:39 INFO Executor: Running task 37.0 in stage 1.0 (TID 38)
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00006-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33045816, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00003-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33530763, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00001-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-32952859, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00002-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33058024, partition values: [2019-10]
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00109-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-5975084, partition values: [2019-10]
+26/10/30 11:24:39 INFO Executor: Finished task 36.0 in stage 1.0 (TID 37). 2172 bytes result sent to driver
+26/10/30 11:24:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00109-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-2227799, partition values: [2019-11]
+26/10/30 11:24:39 INFO Executor: Finished task 37.0 in stage 1.0 (TID 38). 2172 bytes result sent to driver
+26/10/30 11:24:41 INFO CoarseGrainedExecutorBackend: Got assigned task 40
+26/10/30 11:24:41 INFO CoarseGrainedExecutorBackend: Got assigned task 42
+26/10/30 11:24:41 INFO Executor: Running task 0.0 in stage 4.0 (TID 40)
+26/10/30 11:24:41 INFO Executor: Running task 2.0 in stage 4.0 (TID 42)
+26/10/30 11:24:41 INFO MapOutputTrackerWorker: Updating epoch to 1 and clearing cache
+26/10/30 11:24:41 INFO TorrentBroadcast: Started reading broadcast variable 5 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:24:41 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 15.2 KiB, free 741.6 MiB)
+26/10/30 11:24:41 INFO TorrentBroadcast: Reading broadcast variable 5 took 11 ms
+26/10/30 11:24:41 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 41.6 KiB, free 741.5 MiB)
+26/10/30 11:24:41 INFO CodeGenerator: Code generated in 104.844622 ms
+26/10/30 11:24:41 INFO CodeGenerator: Code generated in 40.237839 ms
+26/10/30 11:24:41 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00083-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-43417481, partition values: [2019-11]
+26/10/30 11:24:41 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00085-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42370802, partition values: [2019-11]
+26/10/30 11:24:41 INFO TorrentBroadcast: Started reading broadcast variable 4 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:24:41 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 35.8 KiB, free 741.5 MiB)
+26/10/30 11:24:41 INFO TorrentBroadcast: Reading broadcast variable 4 took 12 ms
+26/10/30 11:24:41 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 382.6 KiB, free 741.1 MiB)
+26/10/30 11:24:42 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:24:42 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:24:48 INFO CodecPool: Got brand-new decompressor [.snappy]
+26/10/30 11:24:49 INFO CodecPool: Got brand-new decompressor [.snappy]
+26/10/30 11:24:53 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00082-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42703102, partition values: [2019-11]
+26/10/30 11:24:53 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:24:53 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00084-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42239322, partition values: [2019-11]
+26/10/30 11:24:53 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:04 INFO Executor: Finished task 0.0 in stage 4.0 (TID 40). 2289 bytes result sent to driver
+26/10/30 11:25:04 INFO CoarseGrainedExecutorBackend: Got assigned task 44
+26/10/30 11:25:04 INFO Executor: Running task 4.0 in stage 4.0 (TID 44)
+26/10/30 11:25:04 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00077-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-41836620, partition values: [2019-11]
+26/10/30 11:25:04 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:04 INFO Executor: Finished task 2.0 in stage 4.0 (TID 42). 2289 bytes result sent to driver
+26/10/30 11:25:04 INFO CoarseGrainedExecutorBackend: Got assigned task 45
+26/10/30 11:25:04 INFO Executor: Running task 5.0 in stage 4.0 (TID 45)
+26/10/30 11:25:04 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00070-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-40536960, partition values: [2019-11]
+26/10/30 11:25:04 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00066-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-40311437, partition values: [2019-11]
+26/10/30 11:25:13 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:14 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00086-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-41514101, partition values: [2019-11]
+26/10/30 11:25:14 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:22 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00071-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-40225161, partition values: [2019-11]
+26/10/30 11:25:22 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:23 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00081-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-40789517, partition values: [2019-11]
+26/10/30 11:25:23 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:33 INFO Executor: Finished task 5.0 in stage 4.0 (TID 45). 2289 bytes result sent to driver
+26/10/30 11:25:33 INFO CoarseGrainedExecutorBackend: Got assigned task 48
+26/10/30 11:25:33 INFO Executor: Running task 8.0 in stage 4.0 (TID 48)
+26/10/30 11:25:33 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00064-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38980556, partition values: [2019-11]
+26/10/30 11:25:33 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:36 INFO Executor: Finished task 4.0 in stage 4.0 (TID 44). 2332 bytes result sent to driver
+26/10/30 11:25:36 INFO CoarseGrainedExecutorBackend: Got assigned task 51
+26/10/30 11:25:36 INFO Executor: Running task 11.0 in stage 4.0 (TID 51)
+26/10/30 11:25:36 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00101-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37893493, partition values: [2019-11]
+26/10/30 11:25:36 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:37 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00073-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38844047, partition values: [2019-11]
+26/10/30 11:25:37 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:59 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00091-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37605246, partition values: [2019-11]
+26/10/30 11:25:59 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:25:59 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00067-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38807474, partition values: [2019-11]
+26/10/30 11:25:59 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:09 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00013-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37355729, partition values: [2019-10]
+26/10/30 11:26:09 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:09 INFO Executor: Finished task 8.0 in stage 4.0 (TID 48). 2289 bytes result sent to driver
+26/10/30 11:26:09 INFO CoarseGrainedExecutorBackend: Got assigned task 52
+26/10/30 11:26:09 INFO Executor: Running task 12.0 in stage 4.0 (TID 52)
+26/10/30 11:26:09 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00049-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37354880, partition values: [2019-11]
+26/10/30 11:26:10 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:17 INFO Executor: Finished task 11.0 in stage 4.0 (TID 51). 2289 bytes result sent to driver
+26/10/30 11:26:17 INFO CoarseGrainedExecutorBackend: Got assigned task 53
+26/10/30 11:26:17 INFO Executor: Running task 13.0 in stage 4.0 (TID 53)
+26/10/30 11:26:17 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00104-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37141112, partition values: [2019-11]
+26/10/30 11:26:17 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:17 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00016-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37242224, partition values: [2019-10]
+26/10/30 11:26:17 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:24 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00065-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36915414, partition values: [2019-11]
+26/10/30 11:26:24 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:24 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00050-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37238192, partition values: [2019-11]
+26/10/30 11:26:24 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:33 INFO Executor: Finished task 12.0 in stage 4.0 (TID 52). 2289 bytes result sent to driver
+26/10/30 11:26:33 INFO CoarseGrainedExecutorBackend: Got assigned task 56
+26/10/30 11:26:33 INFO Executor: Running task 16.0 in stage 4.0 (TID 56)
+26/10/30 11:26:33 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00009-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36572160, partition values: [2019-10]
+26/10/30 11:26:33 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00108-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36837259, partition values: [2019-11]
+26/10/30 11:26:33 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:33 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:56 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00092-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36514760, partition values: [2019-11]
+26/10/30 11:26:56 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:26:57 INFO Executor: Finished task 13.0 in stage 4.0 (TID 53). 2289 bytes result sent to driver
+26/10/30 11:26:57 INFO CoarseGrainedExecutorBackend: Got assigned task 58
+26/10/30 11:26:57 INFO Executor: Running task 18.0 in stage 4.0 (TID 58)
+26/10/30 11:26:57 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00061-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36302050, partition values: [2019-11]
+26/10/30 11:26:57 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:06 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00028-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36233827, partition values: [2019-10]
+26/10/30 11:27:06 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:06 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00042-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36493209, partition values: [2019-11]
+26/10/30 11:27:06 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:15 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00051-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36017874, partition values: [2019-11]
+26/10/30 11:27:15 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:15 INFO Executor: Finished task 16.0 in stage 4.0 (TID 56). 2289 bytes result sent to driver
+26/10/30 11:27:16 INFO CoarseGrainedExecutorBackend: Got assigned task 60
+26/10/30 11:27:16 INFO Executor: Running task 20.0 in stage 4.0 (TID 60)
+26/10/30 11:27:16 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00025-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35900361, partition values: [2019-10]
+26/10/30 11:27:16 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:24 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00103-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35885641, partition values: [2019-11]
+26/10/30 11:27:24 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:25 INFO Executor: Finished task 18.0 in stage 4.0 (TID 58). 2289 bytes result sent to driver
+26/10/30 11:27:25 INFO CoarseGrainedExecutorBackend: Got assigned task 61
+26/10/30 11:27:25 INFO Executor: Running task 21.0 in stage 4.0 (TID 61)
+26/10/30 11:27:25 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00022-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35854431, partition values: [2019-10]
+26/10/30 11:27:25 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:58 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00029-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35832043, partition values: [2019-10]
+26/10/30 11:27:58 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:27:59 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00053-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35865651, partition values: [2019-11]
+26/10/30 11:27:59 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:02 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00044-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35672165, partition values: [2019-11]
+26/10/30 11:28:02 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:10 INFO Executor: Finished task 20.0 in stage 4.0 (TID 60). 2289 bytes result sent to driver
+26/10/30 11:28:10 INFO CoarseGrainedExecutorBackend: Got assigned task 64
+26/10/30 11:28:10 INFO Executor: Running task 24.0 in stage 4.0 (TID 64)
+26/10/30 11:28:10 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00074-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35367945, partition values: [2019-11]
+26/10/30 11:28:10 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:11 INFO Executor: Finished task 21.0 in stage 4.0 (TID 61). 2289 bytes result sent to driver
+26/10/30 11:28:11 INFO CoarseGrainedExecutorBackend: Got assigned task 65
+26/10/30 11:28:11 INFO Executor: Running task 25.0 in stage 4.0 (TID 65)
+26/10/30 11:28:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00036-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35188787, partition values: [2019-10]
+26/10/30 11:28:11 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:41 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00089-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35351345, partition values: [2019-11]
+26/10/30 11:28:41 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00000-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35160341, partition values: [2019-10]
+26/10/30 11:28:42 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:52 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00095-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35274560, partition values: [2019-11]
+26/10/30 11:28:52 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:28:53 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00102-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35136131, partition values: [2019-11]
+26/10/30 11:28:53 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:02 INFO Executor: Finished task 24.0 in stage 4.0 (TID 64). 2289 bytes result sent to driver
+26/10/30 11:29:02 INFO CoarseGrainedExecutorBackend: Got assigned task 68
+26/10/30 11:29:02 INFO Executor: Running task 28.0 in stage 4.0 (TID 68)
+26/10/30 11:29:02 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00094-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34872001, partition values: [2019-11]
+26/10/30 11:29:02 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:06 INFO Executor: Finished task 25.0 in stage 4.0 (TID 65). 2289 bytes result sent to driver
+26/10/30 11:29:06 INFO CoarseGrainedExecutorBackend: Got assigned task 70
+26/10/30 11:29:06 INFO Executor: Running task 30.0 in stage 4.0 (TID 70)
+26/10/30 11:29:06 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00040-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34598482, partition values: [2019-10]
+26/10/30 11:29:06 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:09 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00021-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34772725, partition values: [2019-10]
+26/10/30 11:29:09 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:31 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00012-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34585384, partition values: [2019-10]
+26/10/30 11:29:31 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:36 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00005-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34730687, partition values: [2019-10]
+26/10/30 11:29:36 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:36 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00043-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34568692, partition values: [2019-11]
+26/10/30 11:29:37 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:44 INFO Executor: Finished task 30.0 in stage 4.0 (TID 70). 2289 bytes result sent to driver
+26/10/30 11:29:44 INFO CoarseGrainedExecutorBackend: Got assigned task 72
+26/10/30 11:29:44 INFO Executor: Running task 32.0 in stage 4.0 (TID 72)
+26/10/30 11:29:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00031-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34377175, partition values: [2019-10]
+26/10/30 11:29:44 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:45 INFO Executor: Finished task 28.0 in stage 4.0 (TID 68). 2289 bytes result sent to driver
+26/10/30 11:29:45 INFO CoarseGrainedExecutorBackend: Got assigned task 73
+26/10/30 11:29:45 INFO Executor: Running task 33.0 in stage 4.0 (TID 73)
+26/10/30 11:29:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00038-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34312940, partition values: [2019-10]
+26/10/30 11:29:45 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:53 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00018-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34326441, partition values: [2019-10]
+26/10/30 11:29:53 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00004-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34288549, partition values: [2019-10]
+26/10/30 11:29:53 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:29:53 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:30:00 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00023-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34317450, partition values: [2019-10]
+26/10/30 11:30:00 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:30:01 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00020-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34216729, partition values: [2019-10]
+26/10/30 11:30:01 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:30:37 INFO Executor: Finished task 32.0 in stage 4.0 (TID 72). 2289 bytes result sent to driver
+26/10/30 11:30:37 INFO CoarseGrainedExecutorBackend: Got assigned task 76
+26/10/30 11:30:37 INFO Executor: Running task 36.0 in stage 4.0 (TID 76)
+26/10/30 11:30:37 INFO Executor: Finished task 33.0 in stage 4.0 (TID 73). 2289 bytes result sent to driver
+26/10/30 11:30:37 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00037-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33549363, partition values: [2019-10]
+26/10/30 11:30:37 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:30:43 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00003-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33530763, partition values: [2019-10]
+26/10/30 11:30:43 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:30:49 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00002-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33058024, partition values: [2019-10]
+26/10/30 11:30:49 INFO FilterCompat: Filtering using predicate: and(and(and(and(noteq(event_time, null), noteq(event_type, null)), noteq(product_id, null)), noteq(user_id, null)), or(eq(price, null), gteq(price, 0.0)))
+26/10/30 11:30:54 INFO Executor: Finished task 36.0 in stage 4.0 (TID 76). 2289 bytes result sent to driver
+26/10/30 11:30:55 INFO CoarseGrainedExecutorBackend: Got assigned task 78
+26/10/30 11:30:55 INFO CoarseGrainedExecutorBackend: Got assigned task 80
+26/10/30 11:30:55 INFO Executor: Running task 0.0 in stage 6.0 (TID 78)
+26/10/30 11:30:55 INFO Executor: Running task 2.0 in stage 6.0 (TID 80)
+26/10/30 11:30:55 INFO MapOutputTrackerWorker: Updating epoch to 2 and clearing cache
+26/10/30 11:30:55 INFO TorrentBroadcast: Started reading broadcast variable 6 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:30:55 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 24.8 KiB, free 741.1 MiB)
+26/10/30 11:30:55 INFO TorrentBroadcast: Reading broadcast variable 6 took 9 ms
+26/10/30 11:30:55 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 53.3 KiB, free 741.1 MiB)
+26/10/30 11:30:55 INFO MapOutputTrackerWorker: Don't have map outputs for shuffle 1, fetching them
+26/10/30 11:30:55 INFO MapOutputTrackerWorker: Don't have map outputs for shuffle 1, fetching them
+26/10/30 11:30:55 INFO MapOutputTrackerWorker: Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@a68f91559f87:44025)
+26/10/30 11:30:55 INFO MapOutputTrackerWorker: Got the map output locations
+26/10/30 11:30:55 INFO ShuffleBlockFetcherIterator: Getting 38 (67.1 MiB) non-empty blocks including 19 (33.8 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.2 MiB) remote blocks
+26/10/30 11:30:55 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (33.8 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.6 MiB) remote blocks
+26/10/30 11:30:55 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 27 ms
+26/10/30 11:30:55 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 29 ms
+26/10/30 11:30:55 INFO CodeGenerator: Code generated in 18.214718 ms
+26/10/30 11:30:55 INFO CodeGenerator: Code generated in 29.189478 ms
+26/10/30 11:30:55 INFO CodeGenerator: Code generated in 7.544875 ms
+26/10/30 11:30:55 INFO CodeGenerator: Code generated in 11.616755 ms
+26/10/30 11:30:55 INFO CodeGenerator: Code generated in 8.619459 ms
+26/10/30 11:31:18 INFO CodeGenerator: Code generated in 5.831359 ms
+26/10/30 11:31:18 INFO CodeGenerator: Code generated in 6.814117 ms
+26/10/30 11:31:18 INFO CodeGenerator: Code generated in 6.636652 ms
+26/10/30 11:31:24 INFO MemoryStore: Block rdd_17_0 stored as values in memory (estimated size 38.8 MiB, free 510.3 MiB)
+26/10/30 11:31:24 INFO Executor: 1 block locks were not released by task 0.0 in stage 6.0 (TID 78)
+[rdd_17_0]
+26/10/30 11:31:24 INFO Executor: Finished task 0.0 in stage 6.0 (TID 78). 4965 bytes result sent to driver
+26/10/30 11:31:25 INFO CoarseGrainedExecutorBackend: Got assigned task 84
+26/10/30 11:31:25 INFO Executor: Running task 6.0 in stage 6.0 (TID 84)
+26/10/30 11:31:25 INFO ShuffleBlockFetcherIterator: Getting 38 (67.0 MiB) non-empty blocks including 19 (33.9 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.1 MiB) remote blocks
+26/10/30 11:31:25 INFO ShuffleBlockFetcherIterator: Started 3 remote fetches in 2 ms
+26/10/30 11:31:25 INFO MemoryStore: Block rdd_17_2 stored as values in memory (estimated size 38.8 MiB, free 663.5 MiB)
+26/10/30 11:31:25 INFO Executor: 1 block locks were not released by task 2.0 in stage 6.0 (TID 80)
+[rdd_17_2]
+26/10/30 11:31:25 INFO Executor: Finished task 2.0 in stage 6.0 (TID 80). 4922 bytes result sent to driver
+26/10/30 11:31:25 INFO CoarseGrainedExecutorBackend: Got assigned task 85
+26/10/30 11:31:25 INFO Executor: Running task 7.0 in stage 6.0 (TID 85)
+26/10/30 11:31:25 INFO ShuffleBlockFetcherIterator: Getting 38 (67.0 MiB) non-empty blocks including 19 (33.5 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:31:25 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:31:28 INFO MemoryStore: Block rdd_17_6 stored as values in memory (estimated size 38.7 MiB, free 432.8 MiB)
+26/10/30 11:31:28 INFO Executor: 1 block locks were not released by task 6.0 in stage 6.0 (TID 84)
+[rdd_17_6]
+26/10/30 11:31:28 INFO Executor: Finished task 6.0 in stage 6.0 (TID 84). 4922 bytes result sent to driver
+26/10/30 11:31:28 INFO CoarseGrainedExecutorBackend: Got assigned task 86
+26/10/30 11:31:28 INFO Executor: Running task 8.0 in stage 6.0 (TID 86)
+26/10/30 11:31:28 INFO ShuffleBlockFetcherIterator: Getting 38 (66.7 MiB) non-empty blocks including 19 (33.5 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.2 MiB) remote blocks
+26/10/30 11:31:28 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 3 ms
+26/10/30 11:31:28 INFO MemoryStore: Block rdd_17_7 stored as values in memory (estimated size 38.7 MiB, free 534.1 MiB)
+26/10/30 11:31:28 INFO Executor: 1 block locks were not released by task 7.0 in stage 6.0 (TID 85)
+[rdd_17_7]
+26/10/30 11:31:28 INFO Executor: Finished task 7.0 in stage 6.0 (TID 85). 4922 bytes result sent to driver
+26/10/30 11:31:28 INFO CoarseGrainedExecutorBackend: Got assigned task 87
+26/10/30 11:31:28 INFO Executor: Running task 9.0 in stage 6.0 (TID 87)
+26/10/30 11:31:28 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:31:28 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:31:32 INFO MemoryStore: Block rdd_17_8 stored as values in memory (estimated size 38.7 MiB, free 355.4 MiB)
+26/10/30 11:31:32 INFO Executor: 1 block locks were not released by task 8.0 in stage 6.0 (TID 86)
+[rdd_17_8]
+26/10/30 11:31:32 INFO Executor: Finished task 8.0 in stage 6.0 (TID 86). 4922 bytes result sent to driver
+26/10/30 11:31:32 INFO CoarseGrainedExecutorBackend: Got assigned task 90
+26/10/30 11:31:32 INFO Executor: Running task 12.0 in stage 6.0 (TID 90)
+26/10/30 11:31:32 INFO ShuffleBlockFetcherIterator: Getting 38 (66.7 MiB) non-empty blocks including 19 (33.5 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.2 MiB) remote blocks
+26/10/30 11:31:32 INFO ShuffleBlockFetcherIterator: Started 3 remote fetches in 9 ms
+26/10/30 11:31:33 INFO MemoryStore: Block rdd_17_9 stored as values in memory (estimated size 38.9 MiB, free 436.5 MiB)
+26/10/30 11:31:33 INFO Executor: 1 block locks were not released by task 9.0 in stage 6.0 (TID 87)
+[rdd_17_9]
+26/10/30 11:31:33 INFO Executor: Finished task 9.0 in stage 6.0 (TID 87). 4922 bytes result sent to driver
+26/10/30 11:31:33 INFO CoarseGrainedExecutorBackend: Got assigned task 91
+26/10/30 11:31:33 INFO Executor: Running task 13.0 in stage 6.0 (TID 91)
+26/10/30 11:31:33 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (33.7 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.7 MiB) remote blocks
+26/10/30 11:31:33 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:31:37 INFO MemoryStore: Block rdd_17_12 stored as values in memory (estimated size 38.7 MiB, free 277.8 MiB)
+26/10/30 11:31:37 INFO Executor: 1 block locks were not released by task 12.0 in stage 6.0 (TID 90)
+[rdd_17_12]
+26/10/30 11:31:37 INFO Executor: Finished task 12.0 in stage 6.0 (TID 90). 4922 bytes result sent to driver
+26/10/30 11:31:37 INFO CoarseGrainedExecutorBackend: Got assigned task 94
+26/10/30 11:31:37 INFO Executor: Running task 16.0 in stage 6.0 (TID 94)
+26/10/30 11:31:37 INFO ShuffleBlockFetcherIterator: Getting 38 (67.2 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.2 MiB) remote blocks
+26/10/30 11:31:37 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:31:37 INFO MemoryStore: Block rdd_17_13 stored as values in memory (estimated size 38.7 MiB, free 295.1 MiB)
+26/10/30 11:31:37 INFO Executor: 1 block locks were not released by task 13.0 in stage 6.0 (TID 91)
+[rdd_17_13]
+26/10/30 11:31:37 INFO Executor: Finished task 13.0 in stage 6.0 (TID 91). 4965 bytes result sent to driver
+26/10/30 11:31:37 INFO CoarseGrainedExecutorBackend: Got assigned task 95
+26/10/30 11:31:37 INFO Executor: Running task 17.0 in stage 6.0 (TID 95)
+26/10/30 11:31:37 INFO ShuffleBlockFetcherIterator: Getting 38 (67.1 MiB) non-empty blocks including 19 (33.9 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.2 MiB) remote blocks
+26/10/30 11:31:37 INFO ShuffleBlockFetcherIterator: Started 3 remote fetches in 2 ms
+26/10/30 11:31:40 INFO MemoryStore: Will not store rdd_17_16
+26/10/30 11:31:40 WARN MemoryStore: Not enough space to cache rdd_17_16 in memory! (computed 23.3 MiB so far)
+26/10/30 11:31:40 INFO MemoryStore: Memory use = 310.5 MiB (blocks) + 36.1 MiB (scratch space shared across 2 tasks(s)) = 346.6 MiB. Storage limit = 357.6 MiB.
+26/10/30 11:31:40 WARN BlockManager: Persisting block rdd_17_16 to disk instead.
+26/10/30 11:31:42 INFO MemoryStore: Block rdd_17_16 stored as bytes in memory (estimated size 38.7 MiB, free 200.4 MiB)
+26/10/30 11:31:42 INFO Executor: 1 block locks were not released by task 16.0 in stage 6.0 (TID 94)
+[rdd_17_16]
+26/10/30 11:31:42 INFO Executor: Finished task 16.0 in stage 6.0 (TID 94). 4965 bytes result sent to driver
+26/10/30 11:31:42 INFO CoarseGrainedExecutorBackend: Got assigned task 98
+26/10/30 11:31:42 INFO Executor: Running task 20.0 in stage 6.0 (TID 98)
+26/10/30 11:31:42 INFO ShuffleBlockFetcherIterator: Getting 38 (67.5 MiB) non-empty blocks including 19 (34.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:31:42 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:31:42 INFO MemoryStore: Block rdd_17_17 stored as values in memory (estimated size 38.7 MiB, free 281.6 MiB)
+26/10/30 11:31:42 INFO Executor: 1 block locks were not released by task 17.0 in stage 6.0 (TID 95)
+[rdd_17_17]
+26/10/30 11:31:42 INFO Executor: Finished task 17.0 in stage 6.0 (TID 95). 4922 bytes result sent to driver
+26/10/30 11:31:42 INFO CoarseGrainedExecutorBackend: Got assigned task 99
+26/10/30 11:31:42 INFO Executor: Running task 21.0 in stage 6.0 (TID 99)
+26/10/30 11:31:42 INFO ShuffleBlockFetcherIterator: Getting 38 (67.2 MiB) non-empty blocks including 19 (33.7 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:31:42 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:31:42 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:31:42 INFO MemoryStore: 7 blocks selected for dropping (39.3 MiB bytes)
+26/10/30 11:31:42 INFO BlockManager: Dropping block broadcast_5_piece0 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block broadcast_5_piece0 to disk
+26/10/30 11:31:42 INFO BlockManager: Dropping block broadcast_5 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block broadcast_5 to disk
+26/10/30 11:31:42 INFO BlockManager: Dropping block broadcast_4_piece0 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block broadcast_4_piece0 to disk
+26/10/30 11:31:42 INFO BlockManager: Dropping block broadcast_4 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block broadcast_4 to disk
+26/10/30 11:31:42 INFO BlockManager: Dropping block broadcast_6_piece0 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block broadcast_6_piece0 to disk
+26/10/30 11:31:42 INFO BlockManager: Dropping block broadcast_6 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block broadcast_6 to disk
+26/10/30 11:31:42 INFO BlockManager: Dropping block rdd_17_0 from memory
+26/10/30 11:31:42 INFO BlockManager: Writing block rdd_17_0 to disk
+26/10/30 11:31:42 INFO MemoryStore: After dropping 7 blocks, free memory is 47.5 MiB
+26/10/30 11:31:47 INFO MemoryStore: Block rdd_17_21 stored as values in memory (estimated size 38.9 MiB, free 336.1 MiB)
+26/10/30 11:31:47 INFO Executor: 1 block locks were not released by task 21.0 in stage 6.0 (TID 99)
+[rdd_17_21]
+26/10/30 11:31:47 INFO Executor: Finished task 21.0 in stage 6.0 (TID 99). 4922 bytes result sent to driver
+26/10/30 11:31:47 INFO CoarseGrainedExecutorBackend: Got assigned task 102
+26/10/30 11:31:47 INFO Executor: Running task 24.0 in stage 6.0 (TID 102)
+26/10/30 11:31:47 INFO MemoryStore: Block rdd_17_20 stored as values in memory (estimated size 38.8 MiB, free 315.3 MiB)
+26/10/30 11:31:47 INFO Executor: 1 block locks were not released by task 20.0 in stage 6.0 (TID 98)
+[rdd_17_20]
+26/10/30 11:31:47 INFO Executor: Finished task 20.0 in stage 6.0 (TID 98). 5008 bytes result sent to driver
+26/10/30 11:31:47 INFO CoarseGrainedExecutorBackend: Got assigned task 103
+26/10/30 11:31:47 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.2 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:31:47 INFO Executor: Running task 25.0 in stage 6.0 (TID 103)
+26/10/30 11:31:47 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:31:47 INFO ShuffleBlockFetcherIterator: Getting 38 (67.8 MiB) non-empty blocks including 19 (34.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.7 MiB) remote blocks
+26/10/30 11:31:47 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:31:48 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:31:48 INFO BlockManager: Dropping block rdd_17_2 from memory
+26/10/30 11:31:48 INFO BlockManager: Writing block rdd_17_2 to disk
+26/10/30 11:31:48 INFO MemoryStore: After dropping 1 blocks, free memory is 50.1 MiB
+26/10/30 11:31:48 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:48 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:48 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:31:48 INFO BlockManager: Dropping block rdd_17_6 from memory
+26/10/30 11:31:48 INFO BlockManager: Writing block rdd_17_6 to disk
+26/10/30 11:31:48 INFO MemoryStore: After dropping 1 blocks, free memory is 40.8 MiB
+26/10/30 11:31:48 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:48 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:48 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 144.0 MiB to disk (0  time so far)
+26/10/30 11:31:48 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:31:55 INFO MemoryStore: Block rdd_17_24 stored as values in memory (estimated size 38.9 MiB, free 271.9 MiB)
+26/10/30 11:31:55 INFO Executor: 1 block locks were not released by task 24.0 in stage 6.0 (TID 102)
+[rdd_17_24]
+26/10/30 11:31:55 INFO Executor: Finished task 24.0 in stage 6.0 (TID 102). 5008 bytes result sent to driver
+26/10/30 11:31:55 INFO CoarseGrainedExecutorBackend: Got assigned task 106
+26/10/30 11:31:55 INFO Executor: Running task 28.0 in stage 6.0 (TID 106)
+26/10/30 11:31:55 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 53.3 KiB, free 319.9 MiB)
+26/10/30 11:31:55 INFO MemoryStore: Block rdd_17_25 stored as values in memory (estimated size 38.8 MiB, free 299.0 MiB)
+26/10/30 11:31:55 INFO Executor: 1 block locks were not released by task 25.0 in stage 6.0 (TID 103)
+[rdd_17_25]
+26/10/30 11:31:55 INFO Executor: Finished task 25.0 in stage 6.0 (TID 103). 5008 bytes result sent to driver
+26/10/30 11:31:55 INFO CoarseGrainedExecutorBackend: Got assigned task 107
+26/10/30 11:31:55 INFO Executor: Running task 29.0 in stage 6.0 (TID 107)
+26/10/30 11:31:55 INFO ShuffleBlockFetcherIterator: Getting 38 (67.5 MiB) non-empty blocks including 19 (33.8 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.7 MiB) remote blocks
+26/10/30 11:31:55 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 3 ms
+26/10/30 11:31:55 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (33.9 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:31:55 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 3 ms
+26/10/30 11:31:55 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:55 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:55 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:55 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 88.0 MiB to disk (0  time so far)
+26/10/30 11:31:56 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:31:56 INFO BlockManager: Dropping block rdd_17_7 from memory
+26/10/30 11:31:56 INFO BlockManager: Writing block rdd_17_7 to disk
+26/10/30 11:31:56 INFO MemoryStore: After dropping 1 blocks, free memory is 48.4 MiB
+26/10/30 11:31:56 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:31:56 INFO BlockManager: Dropping block rdd_17_8 from memory
+26/10/30 11:31:56 INFO BlockManager: Writing block rdd_17_8 to disk
+26/10/30 11:31:56 INFO MemoryStore: After dropping 1 blocks, free memory is 47.1 MiB
+26/10/30 11:31:56 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:31:56 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 128.0 MiB to disk (0  time so far)
+26/10/30 11:31:56 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 88.0 MiB to disk (1  time so far)
+26/10/30 11:32:02 INFO MemoryStore: Block rdd_17_29 stored as values in memory (estimated size 38.8 MiB, free 193.6 MiB)
+26/10/30 11:32:02 INFO Executor: 1 block locks were not released by task 29.0 in stage 6.0 (TID 107)
+[rdd_17_29]
+26/10/30 11:32:02 INFO MemoryStore: Block rdd_17_28 stored as values in memory (estimated size 38.8 MiB, free 218.9 MiB)
+26/10/30 11:32:02 INFO Executor: 1 block locks were not released by task 28.0 in stage 6.0 (TID 106)
+[rdd_17_28]
+26/10/30 11:32:02 INFO Executor: Finished task 29.0 in stage 6.0 (TID 107). 5008 bytes result sent to driver
+26/10/30 11:32:02 INFO Executor: Finished task 28.0 in stage 6.0 (TID 106). 5008 bytes result sent to driver
+26/10/30 11:32:02 INFO CoarseGrainedExecutorBackend: Got assigned task 110
+26/10/30 11:32:02 INFO CoarseGrainedExecutorBackend: Got assigned task 111
+26/10/30 11:32:02 INFO Executor: Running task 32.0 in stage 6.0 (TID 110)
+26/10/30 11:32:02 INFO Executor: Running task 33.0 in stage 6.0 (TID 111)
+26/10/30 11:32:02 INFO ShuffleBlockFetcherIterator: Getting 38 (67.1 MiB) non-empty blocks including 19 (33.7 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:02 INFO ShuffleBlockFetcherIterator: Getting 38 (67.6 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.6 MiB) remote blocks
+26/10/30 11:32:02 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:02 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 88.0 MiB to disk (0  time so far)
+26/10/30 11:32:03 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:03 INFO MemoryStore: 1 blocks selected for dropping (38.9 MiB bytes)
+26/10/30 11:32:03 INFO BlockManager: Dropping block rdd_17_9 from memory
+26/10/30 11:32:03 INFO BlockManager: Writing block rdd_17_9 to disk
+26/10/30 11:32:03 INFO MemoryStore: After dropping 1 blocks, free memory is 48.3 MiB
+26/10/30 11:32:03 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:03 INFO BlockManager: Dropping block rdd_17_12 from memory
+26/10/30 11:32:03 INFO BlockManager: Writing block rdd_17_12 to disk
+26/10/30 11:32:03 INFO MemoryStore: After dropping 1 blocks, free memory is 47.0 MiB
+26/10/30 11:32:03 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:04 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 88.0 MiB to disk (1  time so far)
+26/10/30 11:32:09 INFO MemoryStore: Block rdd_17_33 stored as values in memory (estimated size 38.7 MiB, free 223.7 MiB)
+26/10/30 11:32:09 INFO Executor: 1 block locks were not released by task 33.0 in stage 6.0 (TID 111)
+[rdd_17_33]
+26/10/30 11:32:09 INFO Executor: Finished task 33.0 in stage 6.0 (TID 111). 5008 bytes result sent to driver
+26/10/30 11:32:09 INFO CoarseGrainedExecutorBackend: Got assigned task 114
+26/10/30 11:32:09 INFO Executor: Running task 36.0 in stage 6.0 (TID 114)
+26/10/30 11:32:09 INFO MemoryStore: Block rdd_17_32 stored as values in memory (estimated size 38.8 MiB, free 298.9 MiB)
+26/10/30 11:32:09 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:09 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:09 INFO Executor: 1 block locks were not released by task 32.0 in stage 6.0 (TID 110)
+[rdd_17_32]
+26/10/30 11:32:09 INFO Executor: Finished task 32.0 in stage 6.0 (TID 110). 5008 bytes result sent to driver
+26/10/30 11:32:09 INFO CoarseGrainedExecutorBackend: Got assigned task 115
+26/10/30 11:32:09 INFO Executor: Running task 37.0 in stage 6.0 (TID 115)
+26/10/30 11:32:09 INFO ShuffleBlockFetcherIterator: Getting 38 (67.2 MiB) non-empty blocks including 19 (33.9 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:09 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:10 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:10 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:10 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:10 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:10 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:10 INFO BlockManager: Dropping block rdd_17_13 from memory
+26/10/30 11:32:10 INFO BlockManager: Writing block rdd_17_13 to disk
+26/10/30 11:32:10 INFO MemoryStore: After dropping 1 blocks, free memory is 49.6 MiB
+26/10/30 11:32:10 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 120.0 MiB to disk (0  time so far)
+26/10/30 11:32:10 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:10 INFO BlockManager: Dropping block rdd_17_16 from memory
+26/10/30 11:32:10 INFO MemoryStore: After dropping 1 blocks, free memory is 46.9 MiB
+26/10/30 11:32:14 INFO MemoryStore: Will not store rdd_17_36
+26/10/30 11:32:14 WARN MemoryStore: Not enough space to cache rdd_17_36 in memory! (computed 23.4 MiB so far)
+26/10/30 11:32:14 INFO MemoryStore: Memory use = 349.3 MiB (blocks) + 53.1 MiB (scratch space shared across 2 tasks(s)) = 402.4 MiB. Storage limit = 413.6 MiB.
+26/10/30 11:32:14 WARN BlockManager: Persisting block rdd_17_36 to disk instead.
+26/10/30 11:32:15 INFO MemoryStore: Block rdd_17_37 stored as values in memory (estimated size 38.7 MiB, free 217.6 MiB)
+26/10/30 11:32:15 INFO Executor: 1 block locks were not released by task 37.0 in stage 6.0 (TID 115)
+[rdd_17_37]
+26/10/30 11:32:15 INFO Executor: Finished task 37.0 in stage 6.0 (TID 115). 4965 bytes result sent to driver
+26/10/30 11:32:15 INFO CoarseGrainedExecutorBackend: Got assigned task 118
+26/10/30 11:32:15 INFO Executor: Running task 40.0 in stage 6.0 (TID 118)
+26/10/30 11:32:15 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.2 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:32:15 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:16 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:16 INFO MemoryStore: Block rdd_17_36 stored as bytes in memory (estimated size 38.8 MiB, free 65.3 MiB)
+26/10/30 11:32:16 INFO Executor: 1 block locks were not released by task 36.0 in stage 6.0 (TID 114)
+[rdd_17_36]
+26/10/30 11:32:16 INFO Executor: Finished task 36.0 in stage 6.0 (TID 114). 5008 bytes result sent to driver
+26/10/30 11:32:16 INFO CoarseGrainedExecutorBackend: Got assigned task 119
+26/10/30 11:32:16 INFO Executor: Running task 41.0 in stage 6.0 (TID 119)
+26/10/30 11:32:16 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.2 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:32:16 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:16 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:16 INFO BlockManager: Dropping block rdd_17_17 from memory
+26/10/30 11:32:16 INFO BlockManager: Writing block rdd_17_17 to disk
+26/10/30 11:32:16 INFO MemoryStore: After dropping 1 blocks, free memory is 48.1 MiB
+26/10/30 11:32:16 INFO MemoryStore: 1 blocks selected for dropping (38.9 MiB bytes)
+26/10/30 11:32:16 INFO BlockManager: Dropping block rdd_17_21 from memory
+26/10/30 11:32:16 INFO BlockManager: Writing block rdd_17_21 to disk
+26/10/30 11:32:16 INFO MemoryStore: After dropping 1 blocks, free memory is 47.0 MiB
+26/10/30 11:32:22 INFO MemoryStore: Block rdd_17_41 stored as values in memory (estimated size 38.7 MiB, free 335.6 MiB)
+26/10/30 11:32:22 INFO Executor: 1 block locks were not released by task 41.0 in stage 6.0 (TID 119)
+[rdd_17_41]
+26/10/30 11:32:22 INFO Executor: Finished task 41.0 in stage 6.0 (TID 119). 4922 bytes result sent to driver
+26/10/30 11:32:22 INFO CoarseGrainedExecutorBackend: Got assigned task 121
+26/10/30 11:32:22 INFO Executor: Running task 43.0 in stage 6.0 (TID 121)
+26/10/30 11:32:22 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.2 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:32:22 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:22 INFO MemoryStore: Block rdd_17_40 stored as values in memory (estimated size 38.8 MiB, free 280.9 MiB)
+26/10/30 11:32:22 INFO Executor: 1 block locks were not released by task 40.0 in stage 6.0 (TID 118)
+[rdd_17_40]
+26/10/30 11:32:22 INFO Executor: Finished task 40.0 in stage 6.0 (TID 118). 5008 bytes result sent to driver
+26/10/30 11:32:22 INFO CoarseGrainedExecutorBackend: Got assigned task 122
+26/10/30 11:32:22 INFO Executor: Running task 44.0 in stage 6.0 (TID 122)
+26/10/30 11:32:22 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.2 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:32:22 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:22 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:32:22 INFO BlockManager: Dropping block rdd_17_20 from memory
+26/10/30 11:32:22 INFO BlockManager: Writing block rdd_17_20 to disk
+26/10/30 11:32:22 INFO MemoryStore: After dropping 1 blocks, free memory is 49.6 MiB
+26/10/30 11:32:22 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:22 INFO MemoryStore: 1 blocks selected for dropping (38.9 MiB bytes)
+26/10/30 11:32:22 INFO BlockManager: Dropping block rdd_17_24 from memory
+26/10/30 11:32:22 INFO BlockManager: Writing block rdd_17_24 to disk
+26/10/30 11:32:22 INFO MemoryStore: After dropping 1 blocks, free memory is 47.1 MiB
+26/10/30 11:32:27 INFO MemoryStore: Block rdd_17_44 stored as values in memory (estimated size 38.8 MiB, free 335.7 MiB)
+26/10/30 11:32:27 INFO Executor: 1 block locks were not released by task 44.0 in stage 6.0 (TID 122)
+[rdd_17_44]
+26/10/30 11:32:27 INFO Executor: Finished task 44.0 in stage 6.0 (TID 122). 4922 bytes result sent to driver
+26/10/30 11:32:27 INFO CoarseGrainedExecutorBackend: Got assigned task 124
+26/10/30 11:32:27 INFO Executor: Running task 46.0 in stage 6.0 (TID 124)
+26/10/30 11:32:27 INFO ShuffleBlockFetcherIterator: Getting 38 (67.6 MiB) non-empty blocks including 19 (34.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:32:27 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:27 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:27 INFO MemoryStore: Block rdd_17_43 stored as values in memory (estimated size 38.8 MiB, free 129.5 MiB)
+26/10/30 11:32:27 INFO Executor: 1 block locks were not released by task 43.0 in stage 6.0 (TID 121)
+[rdd_17_43]
+26/10/30 11:32:27 INFO Executor: Finished task 43.0 in stage 6.0 (TID 121). 5008 bytes result sent to driver
+26/10/30 11:32:27 INFO CoarseGrainedExecutorBackend: Got assigned task 125
+26/10/30 11:32:27 INFO Executor: Running task 47.0 in stage 6.0 (TID 125)
+26/10/30 11:32:27 INFO ShuffleBlockFetcherIterator: Getting 38 (67.0 MiB) non-empty blocks including 19 (33.5 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:27 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:27 INFO MemoryStore: 2 blocks selected for dropping (38.9 MiB bytes)
+26/10/30 11:32:27 INFO BlockManager: Dropping block broadcast_6 from memory
+26/10/30 11:32:27 INFO BlockManager: Dropping block rdd_17_25 from memory
+26/10/30 11:32:27 INFO BlockManager: Writing block rdd_17_25 to disk
+26/10/30 11:32:27 INFO MemoryStore: After dropping 2 blocks, free memory is 48.4 MiB
+26/10/30 11:32:27 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:32:27 INFO BlockManager: Dropping block rdd_17_29 from memory
+26/10/30 11:32:27 INFO BlockManager: Writing block rdd_17_29 to disk
+26/10/30 11:32:28 INFO MemoryStore: After dropping 1 blocks, free memory is 47.2 MiB
+26/10/30 11:32:32 INFO MemoryStore: Block rdd_17_47 stored as values in memory (estimated size 38.8 MiB, free 335.8 MiB)
+26/10/30 11:32:32 INFO Executor: 1 block locks were not released by task 47.0 in stage 6.0 (TID 125)
+[rdd_17_47]
+26/10/30 11:32:32 INFO Executor: Finished task 47.0 in stage 6.0 (TID 125). 4922 bytes result sent to driver
+26/10/30 11:32:32 INFO CoarseGrainedExecutorBackend: Got assigned task 128
+26/10/30 11:32:32 INFO Executor: Running task 50.0 in stage 6.0 (TID 128)
+26/10/30 11:32:32 INFO ShuffleBlockFetcherIterator: Getting 38 (67.2 MiB) non-empty blocks including 19 (33.8 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:32 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:32 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:34 INFO MemoryStore: Block rdd_17_46 stored as values in memory (estimated size 38.8 MiB, free 297.1 MiB)
+26/10/30 11:32:34 INFO Executor: 1 block locks were not released by task 46.0 in stage 6.0 (TID 124)
+[rdd_17_46]
+26/10/30 11:32:34 INFO Executor: Finished task 46.0 in stage 6.0 (TID 124). 5008 bytes result sent to driver
+26/10/30 11:32:34 INFO CoarseGrainedExecutorBackend: Got assigned task 131
+26/10/30 11:32:34 INFO Executor: Running task 53.0 in stage 6.0 (TID 131)
+26/10/30 11:32:34 INFO ShuffleBlockFetcherIterator: Getting 38 (67.2 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.2 MiB) remote blocks
+26/10/30 11:32:34 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:34 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:37 INFO MemoryStore: Block rdd_17_50 stored as values in memory (estimated size 38.7 MiB, free 258.4 MiB)
+26/10/30 11:32:37 INFO Executor: 1 block locks were not released by task 50.0 in stage 6.0 (TID 128)
+[rdd_17_50]
+26/10/30 11:32:37 INFO Executor: Finished task 50.0 in stage 6.0 (TID 128). 5008 bytes result sent to driver
+26/10/30 11:32:37 INFO CoarseGrainedExecutorBackend: Got assigned task 132
+26/10/30 11:32:37 INFO Executor: Running task 54.0 in stage 6.0 (TID 132)
+26/10/30 11:32:37 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.6 MiB) remote blocks
+26/10/30 11:32:37 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 3 ms
+26/10/30 11:32:38 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:40 INFO MemoryStore: Block rdd_17_53 stored as values in memory (estimated size 38.8 MiB, free 219.6 MiB)
+26/10/30 11:32:40 INFO Executor: 1 block locks were not released by task 53.0 in stage 6.0 (TID 131)
+[rdd_17_53]
+26/10/30 11:32:40 INFO Executor: Finished task 53.0 in stage 6.0 (TID 131). 5008 bytes result sent to driver
+26/10/30 11:32:40 INFO CoarseGrainedExecutorBackend: Got assigned task 135
+26/10/30 11:32:40 INFO Executor: Running task 57.0 in stage 6.0 (TID 135)
+26/10/30 11:32:40 INFO ShuffleBlockFetcherIterator: Getting 38 (67.6 MiB) non-empty blocks including 19 (34.2 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:40 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:40 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:43 INFO MemoryStore: Block rdd_17_54 stored as values in memory (estimated size 38.8 MiB, free 180.7 MiB)
+26/10/30 11:32:43 INFO Executor: 1 block locks were not released by task 54.0 in stage 6.0 (TID 132)
+[rdd_17_54]
+26/10/30 11:32:43 INFO Executor: Finished task 54.0 in stage 6.0 (TID 132). 5008 bytes result sent to driver
+26/10/30 11:32:43 INFO CoarseGrainedExecutorBackend: Got assigned task 136
+26/10/30 11:32:43 INFO Executor: Running task 58.0 in stage 6.0 (TID 136)
+26/10/30 11:32:43 INFO ShuffleBlockFetcherIterator: Getting 38 (67.7 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.7 MiB) remote blocks
+26/10/30 11:32:43 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:43 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:43 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:32:43 INFO BlockManager: Dropping block rdd_17_28 from memory
+26/10/30 11:32:43 INFO BlockManager: Writing block rdd_17_28 to disk
+26/10/30 11:32:43 INFO MemoryStore: After dropping 1 blocks, free memory is 59.5 MiB
+26/10/30 11:32:43 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:43 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 144.0 MiB to disk (0  time so far)
+26/10/30 11:32:46 INFO MemoryStore: Block rdd_17_57 stored as values in memory (estimated size 38.8 MiB, free 114.7 MiB)
+26/10/30 11:32:46 INFO Executor: 1 block locks were not released by task 57.0 in stage 6.0 (TID 135)
+[rdd_17_57]
+26/10/30 11:32:46 INFO Executor: Finished task 57.0 in stage 6.0 (TID 135). 5008 bytes result sent to driver
+26/10/30 11:32:46 INFO CoarseGrainedExecutorBackend: Got assigned task 139
+26/10/30 11:32:46 INFO Executor: Running task 61.0 in stage 6.0 (TID 139)
+26/10/30 11:32:46 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 53.3 KiB, free 114.6 MiB)
+26/10/30 11:32:46 INFO ShuffleBlockFetcherIterator: Getting 38 (67.1 MiB) non-empty blocks including 19 (33.7 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:46 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:46 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:46 INFO BlockManager: Dropping block rdd_17_33 from memory
+26/10/30 11:32:46 INFO BlockManager: Writing block rdd_17_33 to disk
+26/10/30 11:32:46 INFO MemoryStore: After dropping 1 blocks, free memory is 65.4 MiB
+26/10/30 11:32:46 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:32:46 INFO BlockManager: Dropping block rdd_17_32 from memory
+26/10/30 11:32:46 INFO BlockManager: Writing block rdd_17_32 to disk
+26/10/30 11:32:46 INFO MemoryStore: After dropping 1 blocks, free memory is 72.2 MiB
+26/10/30 11:32:46 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:46 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:46 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:46 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:46 INFO BlockManager: Dropping block rdd_17_37 from memory
+26/10/30 11:32:46 INFO BlockManager: Writing block rdd_17_37 to disk
+26/10/30 11:32:46 INFO MemoryStore: After dropping 1 blocks, free memory is 62.9 MiB
+26/10/30 11:32:46 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 128.0 MiB to disk (0  time so far)
+26/10/30 11:32:49 INFO MemoryStore: Block rdd_17_58 stored as values in memory (estimated size 38.8 MiB, free 124.1 MiB)
+26/10/30 11:32:49 INFO Executor: 1 block locks were not released by task 58.0 in stage 6.0 (TID 136)
+[rdd_17_58]
+26/10/30 11:32:49 INFO Executor: Finished task 58.0 in stage 6.0 (TID 136). 5008 bytes result sent to driver
+26/10/30 11:32:49 INFO CoarseGrainedExecutorBackend: Got assigned task 140
+26/10/30 11:32:49 INFO Executor: Running task 62.0 in stage 6.0 (TID 140)
+26/10/30 11:32:49 INFO ShuffleBlockFetcherIterator: Getting 38 (67.6 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.6 MiB) remote blocks
+26/10/30 11:32:49 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 2 ms
+26/10/30 11:32:50 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:32:50 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:32:50 INFO BlockManager: Dropping block rdd_17_36 from memory
+26/10/30 11:32:50 INFO MemoryStore: After dropping 1 blocks, free memory is 58.9 MiB
+26/10/30 11:32:50 INFO MemoryStore: 1 blocks selected for dropping (38.7 MiB bytes)
+26/10/30 11:32:50 INFO BlockManager: Dropping block rdd_17_41 from memory
+26/10/30 11:32:50 INFO BlockManager: Writing block rdd_17_41 to disk
+26/10/30 11:32:50 INFO MemoryStore: After dropping 1 blocks, free memory is 57.7 MiB
+26/10/30 11:32:50 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 160.0 MiB to disk (0  time so far)
+26/10/30 11:32:52 INFO MemoryStore: Block rdd_17_61 stored as values in memory (estimated size 38.7 MiB, free 215.0 MiB)
+26/10/30 11:32:52 INFO Executor: 1 block locks were not released by task 61.0 in stage 6.0 (TID 139)
+[rdd_17_61]
+26/10/30 11:32:52 INFO Executor: Finished task 61.0 in stage 6.0 (TID 139). 5008 bytes result sent to driver
+26/10/30 11:32:52 INFO CoarseGrainedExecutorBackend: Got assigned task 143
+26/10/30 11:32:52 INFO Executor: Running task 65.0 in stage 6.0 (TID 143)
+26/10/30 11:32:52 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (33.8 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.5 MiB) remote blocks
+26/10/30 11:32:52 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:52 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:55 INFO MemoryStore: Block rdd_17_62 stored as values in memory (estimated size 38.7 MiB, free 242.2 MiB)
+26/10/30 11:32:55 INFO Executor: 1 block locks were not released by task 62.0 in stage 6.0 (TID 140)
+[rdd_17_62]
+26/10/30 11:32:55 INFO Executor: Finished task 62.0 in stage 6.0 (TID 140). 5008 bytes result sent to driver
+26/10/30 11:32:55 INFO CoarseGrainedExecutorBackend: Got assigned task 144
+26/10/30 11:32:55 INFO Executor: Running task 66.0 in stage 6.0 (TID 144)
+26/10/30 11:32:55 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (34.0 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:55 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:55 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 176.0 MiB to disk (0  time so far)
+26/10/30 11:32:57 INFO MemoryStore: Block rdd_17_65 stored as values in memory (estimated size 38.8 MiB, free 219.5 MiB)
+26/10/30 11:32:57 INFO Executor: 1 block locks were not released by task 65.0 in stage 6.0 (TID 143)
+[rdd_17_65]
+26/10/30 11:32:57 INFO Executor: Finished task 65.0 in stage 6.0 (TID 143). 5008 bytes result sent to driver
+26/10/30 11:32:57 INFO CoarseGrainedExecutorBackend: Got assigned task 146
+26/10/30 11:32:57 INFO Executor: Running task 68.0 in stage 6.0 (TID 146)
+26/10/30 11:32:57 INFO ShuffleBlockFetcherIterator: Getting 38 (67.0 MiB) non-empty blocks including 19 (33.5 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:32:57 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:32:58 WARN TaskMemoryManager: Failed to allocate a page (16777200 bytes), try again.
+26/10/30 11:32:58 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 160.0 MiB to disk (0  time so far)
+26/10/30 11:32:58 INFO MemoryStore: Will not store rdd_17_66
+26/10/30 11:32:58 WARN MemoryStore: Not enough space to cache rdd_17_66 in memory! (computed 23.4 MiB so far)
+26/10/30 11:32:58 INFO MemoryStore: Memory use = 504.1 MiB (blocks) + 18.0 MiB (scratch space shared across 1 tasks(s)) = 522.2 MiB. Storage limit = 538.2 MiB.
+26/10/30 11:32:58 WARN BlockManager: Persisting block rdd_17_66 to disk instead.
+26/10/30 11:33:00 INFO MemoryStore: Block rdd_17_66 stored as bytes in memory (estimated size 38.8 MiB, free 146.7 MiB)
+26/10/30 11:33:00 INFO Executor: 1 block locks were not released by task 66.0 in stage 6.0 (TID 144)
+[rdd_17_66]
+26/10/30 11:33:00 INFO Executor: Finished task 66.0 in stage 6.0 (TID 144). 5008 bytes result sent to driver
+26/10/30 11:33:00 INFO CoarseGrainedExecutorBackend: Got assigned task 148
+26/10/30 11:33:00 INFO Executor: Running task 70.0 in stage 6.0 (TID 148)
+26/10/30 11:33:00 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (33.8 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.6 MiB) remote blocks
+26/10/30 11:33:00 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:33:01 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:33:01 INFO BlockManager: Dropping block rdd_17_40 from memory
+26/10/30 11:33:01 INFO BlockManager: Writing block rdd_17_40 to disk
+26/10/30 11:33:01 INFO MemoryStore: After dropping 1 blocks, free memory is 65.5 MiB
+26/10/30 11:33:01 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:33:01 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:33:01 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:33:01 INFO BlockManager: Dropping block rdd_17_44 from memory
+26/10/30 11:33:01 INFO BlockManager: Writing block rdd_17_44 to disk
+26/10/30 11:33:01 INFO MemoryStore: After dropping 1 blocks, free memory is 72.3 MiB
+26/10/30 11:33:01 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:33:01 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:33:01 INFO UnsafeExternalSorter: Thread 44 spilling sort data of 120.0 MiB to disk (0  time so far)
+26/10/30 11:33:04 INFO MemoryStore: Block rdd_17_68 stored as values in memory (estimated size 38.8 MiB, free 85.4 MiB)
+26/10/30 11:33:04 INFO Executor: 1 block locks were not released by task 68.0 in stage 6.0 (TID 146)
+[rdd_17_68]
+26/10/30 11:33:04 INFO Executor: Finished task 68.0 in stage 6.0 (TID 146). 5008 bytes result sent to driver
+26/10/30 11:33:04 INFO CoarseGrainedExecutorBackend: Got assigned task 151
+26/10/30 11:33:04 INFO Executor: Running task 73.0 in stage 6.0 (TID 151)
+26/10/30 11:33:04 INFO ShuffleBlockFetcherIterator: Getting 38 (67.5 MiB) non-empty blocks including 19 (34.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.4 MiB) remote blocks
+26/10/30 11:33:04 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 1 ms
+26/10/30 11:33:04 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:33:04 INFO BlockManager: Dropping block rdd_17_43 from memory
+26/10/30 11:33:04 INFO BlockManager: Writing block rdd_17_43 to disk
+26/10/30 11:33:04 INFO MemoryStore: After dropping 1 blocks, free memory is 68.2 MiB
+26/10/30 11:33:04 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:33:04 INFO BlockManager: Dropping block rdd_17_47 from memory
+26/10/30 11:33:04 INFO BlockManager: Writing block rdd_17_47 to disk
+26/10/30 11:33:05 INFO MemoryStore: After dropping 1 blocks, free memory is 59.0 MiB
+26/10/30 11:33:05 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:33:05 WARN TaskMemoryManager: Failed to allocate a page (16777216 bytes), try again.
+26/10/30 11:33:05 INFO MemoryStore: 1 blocks selected for dropping (38.8 MiB bytes)
+26/10/30 11:33:05 INFO BlockManager: Dropping block rdd_17_46 from memory
+26/10/30 11:33:05 INFO BlockManager: Writing block rdd_17_46 to disk
+26/10/30 11:33:05 INFO MemoryStore: After dropping 1 blocks, free memory is 65.8 MiB
+26/10/30 11:33:05 INFO UnsafeExternalSorter: Thread 43 spilling sort data of 144.0 MiB to disk (0  time so far)
+26/10/30 11:33:05 INFO MemoryStore: Will not store rdd_17_70
+26/10/30 11:33:05 WARN MemoryStore: Not enough space to cache rdd_17_70 in memory! (computed 23.4 MiB so far)
+26/10/30 11:33:05 INFO MemoryStore: Memory use = 387.8 MiB (blocks) + 18.0 MiB (scratch space shared across 1 tasks(s)) = 405.9 MiB. Storage limit = 420.2 MiB.
+26/10/30 11:33:05 WARN BlockManager: Persisting block rdd_17_70 to disk instead.
+26/10/30 11:33:08 ERROR Executor: Exception in task 70.0 in stage 6.0 (TID 148)
+java.lang.OutOfMemoryError: Java heap space
+26/10/30 11:33:08 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 70.0 in stage 6.0 (TID 148),5,main]
+java.lang.OutOfMemoryError: Java heap space
+26/10/30 11:33:08 INFO CoarseGrainedExecutorBackend: Got assigned task 152
+26/10/30 11:33:08 INFO Executor: Running task 74.0 in stage 6.0 (TID 152)
+26/10/30 11:33:08 INFO ShuffleBlockFetcherIterator: Getting 38 (67.4 MiB) non-empty blocks including 19 (33.7 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 19 (33.7 MiB) remote blocks
+26/10/30 11:33:08 ERROR RetryingBlockTransferor: Exception while beginning fetch of 1 outstanding blocks 
+java.io.IOException: Failed to connect to /172.19.0.5:33143
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:294)
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:214)
+	at org.apache.spark.network.netty.NettyBlockTransferService$$anon$2.createAndStart(NettyBlockTransferService.scala:131)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.transferAllOutstanding(RetryingBlockTransferor.java:173)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.start(RetryingBlockTransferor.java:152)
+	at org.apache.spark.network.netty.NettyBlockTransferService.fetchBlocks(NettyBlockTransferService.scala:151)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.sendRequest(ShuffleBlockFetcherIterator.scala:374)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.send$1(ShuffleBlockFetcherIterator.scala:1209)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.fetchUpToMaxBytes(ShuffleBlockFetcherIterator.scala:1201)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.initialize(ShuffleBlockFetcherIterator.scala:715)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.<init>(ShuffleBlockFetcherIterator.scala:194)
+	at org.apache.spark.shuffle.BlockStoreShuffleReader.read(BlockStoreShuffleReader.scala:73)
+	at org.apache.spark.sql.execution.ShuffledRowRDD.compute(ShuffledRowRDD.scala:232)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.$anonfun$getOrCompute$1(RDD.scala:381)
+	at org.apache.spark.storage.BlockManager.$anonfun$getOrElseUpdate$1(BlockManager.scala:1372)
+	at org.apache.spark.storage.BlockManager.$anonfun$doPutIterator$1(BlockManager.scala:1614)
+	at org.apache.spark.storage.BlockManager.org$apache$spark$storage$BlockManager$$doPut(BlockManager.scala:1524)
+	at org.apache.spark.storage.BlockManager.doPutIterator(BlockManager.scala:1588)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1389)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1343)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:379)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:329)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: executor not accepting a task
+	at io.netty.resolver.AddressResolverGroup.getResolver(AddressResolverGroup.java:61)
+	at io.netty.bootstrap.Bootstrap.doResolveAndConnect0(Bootstrap.java:208)
+	at io.netty.bootstrap.Bootstrap.access$000(Bootstrap.java:46)
+	at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:189)
+	at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:175)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:557)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
+	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
+	at io.netty.util.concurrent.DefaultPromise.setSuccess0(DefaultPromise.java:625)
+	at io.netty.util.concurrent.DefaultPromise.trySuccess(DefaultPromise.java:105)
+	at io.netty.channel.DefaultChannelPromise.trySuccess(DefaultChannelPromise.java:84)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetSuccess(AbstractChannel.java:990)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:516)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:429)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:486)
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:174)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:167)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:470)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	... 1 more
+26/10/30 11:33:08 INFO RetryingBlockTransferor: Retrying fetch (1/3) for 1 outstanding blocks after 5000 ms
+26/10/30 11:33:08 ERROR RetryingBlockTransferor: Exception while beginning fetch of 6 outstanding blocks 
+java.io.IOException: Connecting to /172.19.0.5:33143 failed in the last 4750 ms, fail this connection directly
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:210)
+	at org.apache.spark.network.netty.NettyBlockTransferService$$anon$2.createAndStart(NettyBlockTransferService.scala:131)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.transferAllOutstanding(RetryingBlockTransferor.java:173)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.start(RetryingBlockTransferor.java:152)
+	at org.apache.spark.network.netty.NettyBlockTransferService.fetchBlocks(NettyBlockTransferService.scala:151)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.sendRequest(ShuffleBlockFetcherIterator.scala:374)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.send$1(ShuffleBlockFetcherIterator.scala:1209)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.fetchUpToMaxBytes(ShuffleBlockFetcherIterator.scala:1201)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.initialize(ShuffleBlockFetcherIterator.scala:715)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.<init>(ShuffleBlockFetcherIterator.scala:194)
+	at org.apache.spark.shuffle.BlockStoreShuffleReader.read(BlockStoreShuffleReader.scala:73)
+	at org.apache.spark.sql.execution.ShuffledRowRDD.compute(ShuffledRowRDD.scala:232)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.$anonfun$getOrCompute$1(RDD.scala:381)
+	at org.apache.spark.storage.BlockManager.$anonfun$getOrElseUpdate$1(BlockManager.scala:1372)
+	at org.apache.spark.storage.BlockManager.$anonfun$doPutIterator$1(BlockManager.scala:1614)
+	at org.apache.spark.storage.BlockManager.org$apache$spark$storage$BlockManager$$doPut(BlockManager.scala:1524)
+	at org.apache.spark.storage.BlockManager.doPutIterator(BlockManager.scala:1588)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1389)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1343)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:379)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:329)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+26/10/30 11:33:08 INFO RetryingBlockTransferor: Retrying fetch (1/3) for 6 outstanding blocks after 5000 ms
+26/10/30 11:33:08 ERROR RetryingBlockTransferor: Exception while beginning fetch of 6 outstanding blocks 
+java.io.IOException: Connecting to /172.19.0.5:33143 failed in the last 4750 ms, fail this connection directly
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:210)
+	at org.apache.spark.network.netty.NettyBlockTransferService$$anon$2.createAndStart(NettyBlockTransferService.scala:131)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.transferAllOutstanding(RetryingBlockTransferor.java:173)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.start(RetryingBlockTransferor.java:152)
+	at org.apache.spark.network.netty.NettyBlockTransferService.fetchBlocks(NettyBlockTransferService.scala:151)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.sendRequest(ShuffleBlockFetcherIterator.scala:374)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.send$1(ShuffleBlockFetcherIterator.scala:1209)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.fetchUpToMaxBytes(ShuffleBlockFetcherIterator.scala:1201)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.initialize(ShuffleBlockFetcherIterator.scala:715)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.<init>(ShuffleBlockFetcherIterator.scala:194)
+	at org.apache.spark.shuffle.BlockStoreShuffleReader.read(BlockStoreShuffleReader.scala:73)
+	at org.apache.spark.sql.execution.ShuffledRowRDD.compute(ShuffledRowRDD.scala:232)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.$anonfun$getOrCompute$1(RDD.scala:381)
+	at org.apache.spark.storage.BlockManager.$anonfun$getOrElseUpdate$1(BlockManager.scala:1372)
+	at org.apache.spark.storage.BlockManager.$anonfun$doPutIterator$1(BlockManager.scala:1614)
+	at org.apache.spark.storage.BlockManager.org$apache$spark$storage$BlockManager$$doPut(BlockManager.scala:1524)
+	at org.apache.spark.storage.BlockManager.doPutIterator(BlockManager.scala:1588)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1389)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1343)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:379)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:329)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+26/10/30 11:33:08 INFO RetryingBlockTransferor: Retrying fetch (1/3) for 6 outstanding blocks after 5000 ms
+26/10/30 11:33:08 ERROR RetryingBlockTransferor: Exception while beginning fetch of 6 outstanding blocks 
+java.io.IOException: Connecting to /172.19.0.5:33143 failed in the last 4750 ms, fail this connection directly
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:210)
+	at org.apache.spark.network.netty.NettyBlockTransferService$$anon$2.createAndStart(NettyBlockTransferService.scala:131)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.transferAllOutstanding(RetryingBlockTransferor.java:173)
+	at org.apache.spark.network.shuffle.RetryingBlockTransferor.start(RetryingBlockTransferor.java:152)
+	at org.apache.spark.network.netty.NettyBlockTransferService.fetchBlocks(NettyBlockTransferService.scala:151)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.sendRequest(ShuffleBlockFetcherIterator.scala:374)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.send$1(ShuffleBlockFetcherIterator.scala:1209)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.fetchUpToMaxBytes(ShuffleBlockFetcherIterator.scala:1201)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.initialize(ShuffleBlockFetcherIterator.scala:715)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.<init>(ShuffleBlockFetcherIterator.scala:194)
+	at org.apache.spark.shuffle.BlockStoreShuffleReader.read(BlockStoreShuffleReader.scala:73)
+	at org.apache.spark.sql.execution.ShuffledRowRDD.compute(ShuffledRowRDD.scala:232)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.$anonfun$getOrCompute$1(RDD.scala:381)
+	at org.apache.spark.storage.BlockManager.$anonfun$getOrElseUpdate$1(BlockManager.scala:1372)
+	at org.apache.spark.storage.BlockManager.$anonfun$doPutIterator$1(BlockManager.scala:1614)
+	at org.apache.spark.storage.BlockManager.org$apache$spark$storage$BlockManager$$doPut(BlockManager.scala:1524)
+	at org.apache.spark.storage.BlockManager.doPutIterator(BlockManager.scala:1588)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1389)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1343)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:379)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:329)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+26/10/30 11:33:08 INFO RetryingBlockTransferor: Retrying fetch (1/3) for 6 outstanding blocks after 5000 ms
+26/10/30 11:33:08 INFO ShuffleBlockFetcherIterator: Started 4 remote fetches in 47 ms
+26/10/30 11:33:08 ERROR ShuffleBlockFetcherIterator: Error occurred while fetching local blocks
+java.nio.file.NoSuchFileException: /tmp/spark-68da7f74-1741-46ed-9f2b-b36aaa3f1956/executor-1b7911df-1f2f-4ee0-90cf-a64f8758a0b4/blockmgr-94a97171-f0ba-4942-a759-178ca6e113fd/1b/shuffle_1_40_0.index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(Unknown Source)
+	at java.base/java.nio.file.Files.newByteChannel(Unknown Source)
+	at java.base/java.nio.file.Files.newByteChannel(Unknown Source)
+	at org.apache.spark.shuffle.IndexShuffleBlockResolver.getBlockData(IndexShuffleBlockResolver.scala:604)
+	at org.apache.spark.storage.BlockManager.getLocalBlockData(BlockManager.scala:698)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.fetchLocalBlocks(ShuffleBlockFetcherIterator.scala:574)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.initialize(ShuffleBlockFetcherIterator.scala:723)
+	at org.apache.spark.storage.ShuffleBlockFetcherIterator.<init>(ShuffleBlockFetcherIterator.scala:194)
+	at org.apache.spark.shuffle.BlockStoreShuffleReader.read(BlockStoreShuffleReader.scala:73)
+	at org.apache.spark.sql.execution.ShuffledRowRDD.compute(ShuffledRowRDD.scala:232)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:331)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:367)
+	at org.apache.spark.rdd.RDD.$anonfun$getOrCompute$1(RDD.scala:381)
+	at org.apache.spark.storage.BlockManager.$anonfun$getOrElseUpdate$1(BlockManager.scala:1372)
+	at org.apache.spark.storage.BlockManager.$anonfun$doPutIterator$1(BlockManager.scala:1614)
+	at org.apache.spark.storage.BlockManager.org$apache$spark$storage$BlockManager$$doPut(BlockManager.scala:1524)
+	at org.apache.spark.storage.BlockManager.doPutIterator(BlockManager.scala:1588)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1389)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1343)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:379)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:329)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:93)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:166)
+	at org.apache.spark.scheduler.Task.run(Task.scala:141)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:620)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:64)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:61)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:94)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+26/10/30 11:33:08 WARN BlockManager: Putting block rdd_17_74 failed due to exception org.apache.spark.shuffle.FetchFailedException.
+26/10/30 11:33:08 WARN BlockManager: Block rdd_17_74 could not be removed as it was not found on disk or in memory
+26/10/30 11:33:08 INFO CoarseGrainedExecutorBackend: Got assigned task 153
+26/10/30 11:33:08 ERROR Inbox: Ignoring error
+java.util.concurrent.RejectedExecutionException: Task org.apache.spark.executor.Executor$TaskRunner@2e7fda8e rejected from java.util.concurrent.ThreadPoolExecutor@5b63c715[Shutting down, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 70]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(Unknown Source)
+	at org.apache.spark.executor.Executor.launchTask(Executor.scala:363)
+	at org.apache.spark.executor.CoarseGrainedExecutorBackend$$anonfun$receive$1.applyOrElse(CoarseGrainedExecutorBackend.scala:195)
+	at org.apache.spark.rpc.netty.Inbox.$anonfun$process$1(Inbox.scala:115)
+	at org.apache.spark.rpc.netty.Inbox.safelyCall(Inbox.scala:213)
+	at org.apache.spark.rpc.netty.Inbox.process(Inbox.scala:100)
+	at org.apache.spark.rpc.netty.MessageLoop.org$apache$spark$rpc$netty$MessageLoop$$receiveLoop(MessageLoop.scala:75)
+	at org.apache.spark.rpc.netty.MessageLoop$$anon$1.run(MessageLoop.scala:41)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+26/10/30 11:33:08 INFO MemoryStore: MemoryStore cleared
+26/10/30 11:33:08 INFO BlockManager: BlockManager stopped
+26/10/30 11:33:08 INFO ShutdownHookManager: Shutdown hook called

@@ -104,7 +104,7 @@ experiments:
 # Chạy thí nghiệm đơn lẻ: make experiment-e1 TIER=L
 experiment-e1:
 	$(SPARK_SUBMIT) --master spark://spark-master:7077 \
-		/app/experiments/e1_scale_data.py --tier $(TIER)
+		/app/experiments/e1_scale_data.py --tier $(TIER) --git-sha $$(git rev-parse --short HEAD 2>/dev/null || echo "HEAD")
 
 experiment-e2:
 	$(SPARK_SUBMIT) --master spark://spark-master:7077 \

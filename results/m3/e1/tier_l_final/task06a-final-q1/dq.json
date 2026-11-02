@@ -1,0 +1,703 @@
+{
+  "status": "PASS",
+  "stage": "dq",
+  "application_id": "app-20261031065148-0004",
+  "spark_version": "3.5.4",
+  "started_utc": "2026-10-31T06:51:50.225314+00:00",
+  "effective_conf": {
+    "spark.dynamicAllocation.enabled": "false",
+    "spark.eventLog.enabled": "true",
+    "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Djava.io.tmpdir=/spark-local/task06a-final/java",
+    "spark.sql.ansi.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.driver.host": "a0dde0b964a7",
+    "spark.executor.memory": "1536m",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.sql.parquet.compression.codec": "snappy",
+    "spark.master": "spark://spark-master:7077",
+    "spark.app.startTime": "1793429507363",
+    "spark.serializer.objectStreamReset": "100",
+    "spark.local.dir": "/spark-local",
+    "spark.executorEnv.TMPDIR": "/spark-local/task06a-final/python",
+    "spark.submit.deployMode": "client",
+    "spark.app.name": "m3-L-final-dq",
+    "spark.sql.warehouse.dir": "file:/opt/spark/work-dir/spark-warehouse",
+    "spark.driver.port": "46231",
+    "spark.ui.enabled": "true",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.executor.id": "driver",
+    "spark.executorEnv.TEMP": "/spark-local/task06a-final/python",
+    "spark.app.submitTime": "1793429506595",
+    "spark.executorEnv.TMP": "/spark-local/task06a-final/python",
+    "spark.rdd.compress": "True",
+    "spark.driver.memory": "2g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "1024",
+    "spark.submit.pyFiles": "",
+    "spark.executor.cores": "1",
+    "spark.app.id": "app-20261031065148-0004",
+    "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Djava.io.tmpdir=/spark-local/task06a-final/java",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.history.fs.logDirectory": "file:///opt/spark-events",
+    "spark.executorEnv.PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "checks": {
+    "row_accounting": {
+      "pass": true,
+      "detail": {
+        "bronze": 109950743,
+        "silver": 109820004,
+        "quarantine": 130739
+      }
+    },
+    "immutable_input_counts": {
+      "pass": true,
+      "detail": null
+    },
+    "quarantine_schema": {
+      "pass": true,
+      "detail": null
+    },
+    "silver_schema": {
+      "pass": true,
+      "detail": null
+    },
+    "all_required_columns": {
+      "pass": true,
+      "detail": null
+    },
+    "R1_R4_independent_reject_counts": {
+      "pass": true,
+      "detail": {
+        "source": {
+          "null": 109950743
+        },
+        "quarantine": {
+          "R7": 130739
+        }
+      }
+    },
+    "reject_rule_values_and_priority": {
+      "pass": true,
+      "detail": 0
+    },
+    "required_nulls": {
+      "pass": true,
+      "detail": 0
+    },
+    "R2_event_type": {
+      "pass": true,
+      "detail": 0
+    },
+    "R3_UTC": {
+      "pass": true,
+      "detail": 0
+    },
+    "R4_price": {
+      "pass": true,
+      "detail": 0
+    },
+    "R5_brand": {
+      "pass": true,
+      "detail": 0
+    },
+    "R6_category": {
+      "pass": true,
+      "detail": 0
+    },
+    "R8_month": {
+      "pass": true,
+      "detail": 0
+    },
+    "R9_flag": {
+      "pass": true,
+      "detail": 0
+    },
+    "R9_original": {
+      "pass": true,
+      "detail": 0
+    },
+    "R9_generated_gap": {
+      "pass": true,
+      "detail": null
+    },
+    "both_source_months": {
+      "pass": true,
+      "detail": {
+        "bronze": [
+          {
+            "source_month": "2019-11",
+            "count": 67501979
+          },
+          {
+            "source_month": "2019-10",
+            "count": 42448764
+          }
+        ],
+        "silver": [
+          {
+            "source_month": "2019-11",
+            "count": 67401460
+          },
+          {
+            "source_month": "2019-10",
+            "count": 42418544
+          }
+        ],
+        "quarantine": [
+          {
+            "source_month": "2019-11",
+            "count": 100519
+          },
+          {
+            "source_month": "2019-10",
+            "count": 30220
+          }
+        ]
+      }
+    },
+    "both_event_months": {
+      "pass": true,
+      "detail": [
+        {
+          "month": "2019-11",
+          "count": 67401460
+        },
+        {
+          "month": "2019-10",
+          "count": 42418544
+        }
+      ]
+    },
+    "canonical_source_timestamp": {
+      "pass": true,
+      "detail": null
+    },
+    "R7_metadata_tie_proof": {
+      "pass": true,
+      "detail": [
+        {
+          "source_file": "file:///app/data/raw/2019-Nov.csv",
+          "months": 1,
+          "month": "2019-11"
+        },
+        {
+          "source_file": "file:///app/data/raw/2019-Oct.csv",
+          "months": 1,
+          "month": "2019-10"
+        }
+      ]
+    },
+    "full_normalized_payload_multiset_conservation": {
+      "pass": true,
+      "detail": {
+        "mismatched_groups": 0,
+        "scope": "all12 Bronze payload columns after event_type/brand normalization; no raw EXCEPT; R5 flags validated separately"
+      }
+    },
+    "R7_full_key_unique_survivor_and_n_minus_1": {
+      "pass": true,
+      "detail": {
+        "wrong": 0,
+        "silver_duplicate_groups": 0,
+        "groups": 109820004
+      }
+    },
+    "purchase_revenue_reconciliation": {
+      "pass": true,
+      "detail": {
+        "values": {
+          "bronze": {
+            "purchases": 1659788,
+            "revenue": 505152392.76999843
+          },
+          "silver": {
+            "purchases": 1659703,
+            "revenue": 505126293.4400004
+          },
+          "quarantine": {
+            "purchases": 85,
+            "revenue": 26099.33
+          }
+        },
+        "delta": 1.9836443243548274e-06,
+        "absolute_tolerance": 0.01
+      }
+    },
+    "E1_workload_actual_aggregates": {
+      "pass": true,
+      "detail": null
+    },
+    "output_commits": {
+      "pass": true,
+      "detail": null
+    }
+  },
+  "rows": {
+    "bronze": 109950743,
+    "silver": 109820004,
+    "quarantine": 130739
+  },
+  "rejects": {
+    "R7": 130739
+  },
+  "months": {
+    "bronze": [
+      {
+        "source_month": "2019-11",
+        "count": 67501979
+      },
+      {
+        "source_month": "2019-10",
+        "count": 42448764
+      }
+    ],
+    "silver": [
+      {
+        "source_month": "2019-11",
+        "count": 67401460
+      },
+      {
+        "source_month": "2019-10",
+        "count": 42418544
+      }
+    ],
+    "quarantine": [
+      {
+        "source_month": "2019-11",
+        "count": 100519
+      },
+      {
+        "source_month": "2019-10",
+        "count": 30220
+      }
+    ]
+  },
+  "event_months": [
+    {
+      "month": "2019-11",
+      "count": 67401460
+    },
+    {
+      "month": "2019-10",
+      "count": 42418544
+    }
+  ],
+  "monetary": {
+    "bronze": {
+      "purchases": 1659788,
+      "revenue": 505152392.76999843
+    },
+    "silver": {
+      "purchases": 1659703,
+      "revenue": 505126293.4400004
+    },
+    "quarantine": {
+      "purchases": 85,
+      "revenue": 26099.33
+    }
+  },
+  "E1_reference": [
+    {
+      "category_l1": "electronics",
+      "revenue": 381695319.2899982,
+      "purchase_count": 916616
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 52801355.36999996,
+      "purchase_count": 407625
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 32222145.729999978,
+      "purchase_count": 174011
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 25372201.510000005,
+      "purchase_count": 62330
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 4216494.029999999,
+      "purchase_count": 19841
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 2648960.5300000007,
+      "purchase_count": 21338
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 2013385.72,
+      "purchase_count": 16500
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 1805962.8699999996,
+      "purchase_count": 22217
+    },
+    {
+      "category_l1": "kids",
+      "revenue": 1401903.9300000002,
+      "purchase_count": 11648
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 718251.7499999997,
+      "purchase_count": 2725
+    },
+    {
+      "category_l1": "accessories",
+      "revenue": 166986.89999999997,
+      "purchase_count": 3741
+    },
+    {
+      "category_l1": "medicine",
+      "revenue": 29943.369999999995,
+      "purchase_count": 654
+    },
+    {
+      "category_l1": "country_yard",
+      "revenue": 28142.58,
+      "purchase_count": 132
+    },
+    {
+      "category_l1": "stationery",
+      "revenue": 5239.86,
+      "purchase_count": 325
+    }
+  ],
+  "schemas": {
+    "bronze": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "event_time",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "event_type",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "product_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_code",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "brand",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "price",
+          "type": "double",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_session",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "source_file",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "ingest_ts",
+          "type": "timestamp",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "source_month",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "silver": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "event_ts",
+          "type": "timestamp",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "event_hour",
+          "type": "integer",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "event_type",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "product_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_code",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_l1",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_l2",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_l3",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_missing",
+          "type": "boolean",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "brand",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "brand_missing",
+          "type": "boolean",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "price",
+          "type": "double",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "price_valid",
+          "type": "boolean",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_session",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "session_generated",
+          "type": "boolean",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "out_of_month",
+          "type": "boolean",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "source_file",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "source_month",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "ingest_ts",
+          "type": "timestamp",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "event_date",
+          "type": "date",
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "quarantine": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "event_time",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "event_type",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "product_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "category_code",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "brand",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "price",
+          "type": "double",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_id",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_session",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "source_file",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "ingest_ts",
+          "type": "timestamp",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "source_month",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "reject_reason",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "reject_rule",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "bronze": {
+      "path": "/app/data/lake/benchmark/e1/tier_l/bronze/events",
+      "files": 111,
+      "bytes": 4006673564
+    },
+    "silver": {
+      "path": "/app/data/lake/benchmark/e1/tier_l/silver/events",
+      "files": 61,
+      "bytes": 9835577566
+    },
+    "quarantine": {
+      "path": "/app/data/lake/benchmark/e1/tier_l/recovery/task06a-final-q1/quarantine/events",
+      "files": 1,
+      "bytes": 5012706
+    }
+  },
+  "finished_utc": "2026-10-31T09:59:24.348852+00:00",
+  "elapsed_seconds": 11254.710643976
+}

@@ -1,0 +1,167 @@
+Spark Executor Command: "/opt/java/openjdk/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1536M" "-Dspark.driver.port=40459" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@a68f91559f87:40459" "--executor-id" "0" "--hostname" "172.19.0.4" "--cores" "2" "--app-id" "app-20261030112400-0002" "--worker-url" "spark://Worker@172.19.0.4:46037" "--resourceProfileId" "0"
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/30 11:24:01 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 732@58ff0ea50c81
+26/10/30 11:24:01 INFO SignalUtils: Registering signal handler for TERM
+26/10/30 11:24:01 INFO SignalUtils: Registering signal handler for HUP
+26/10/30 11:24:01 INFO SignalUtils: Registering signal handler for INT
+26/10/30 11:24:02 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/30 11:24:02 INFO SecurityManager: Changing view acls to: root
+26/10/30 11:24:02 INFO SecurityManager: Changing modify acls to: root
+26/10/30 11:24:02 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 11:24:02 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 11:24:02 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 11:24:02 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:40459 after 69 ms (0 ms spent in bootstraps)
+26/10/30 11:24:02 INFO SecurityManager: Changing view acls to: root
+26/10/30 11:24:02 INFO SecurityManager: Changing modify acls to: root
+26/10/30 11:24:02 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 11:24:02 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 11:24:02 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 11:24:02 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:40459 after 5 ms (0 ms spent in bootstraps)
+26/10/30 11:24:02 INFO DiskBlockManager: Created local directory at /tmp/spark-68da7f74-1741-46ed-9f2b-b36aaa3f1956/executor-fe7e1712-53af-42f2-b519-ed20e3bdea62/blockmgr-ec5485cb-320e-4a15-9d67-a314bc2cb954
+26/10/30 11:24:02 INFO MemoryStore: MemoryStore started with capacity 741.6 MiB
+26/10/30 11:24:03 INFO CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@a68f91559f87:40459
+26/10/30 11:24:03 INFO WorkerWatcher: Connecting to worker spark://Worker@172.19.0.4:46037
+26/10/30 11:24:03 INFO TransportClientFactory: Successfully created connection to /172.19.0.4:46037 after 3 ms (0 ms spent in bootstraps)
+26/10/30 11:24:03 INFO WorkerWatcher: Successfully connected to spark://Worker@172.19.0.4:46037
+26/10/30 11:24:03 INFO ResourceUtils: ==============================================================
+26/10/30 11:24:03 INFO ResourceUtils: No custom resources configured for spark.executor.
+26/10/30 11:24:03 INFO ResourceUtils: ==============================================================
+26/10/30 11:24:03 INFO CoarseGrainedExecutorBackend: Successfully registered with driver
+26/10/30 11:24:03 INFO Executor: Starting executor ID 0 on host 172.19.0.4
+26/10/30 11:24:03 INFO Executor: OS info Linux, 6.18.54.1-microsoft-standard-WSL2, amd64
+26/10/30 11:24:03 INFO Executor: Java version 11.0.25
+26/10/30 11:24:03 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 42725.
+26/10/30 11:24:03 INFO NettyBlockTransferService: Server created on 172.19.0.4:42725
+26/10/30 11:24:03 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/30 11:24:03 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(0, 172.19.0.4, 42725, None)
+26/10/30 11:24:03 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(0, 172.19.0.4, 42725, None)
+26/10/30 11:24:03 INFO BlockManager: Initialized BlockManager: BlockManagerId(0, 172.19.0.4, 42725, None)
+26/10/30 11:24:03 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/30 11:24:03 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@7f954a53 for default.
+26/10/30 11:24:09 INFO CoarseGrainedExecutorBackend: Got assigned task 1
+26/10/30 11:24:09 INFO CoarseGrainedExecutorBackend: Got assigned task 3
+26/10/30 11:24:09 INFO Executor: Running task 2.0 in stage 1.0 (TID 3)
+26/10/30 11:24:09 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+26/10/30 11:24:09 INFO TorrentBroadcast: Started reading broadcast variable 2 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:24:09 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:33735 after 3 ms (0 ms spent in bootstraps)
+26/10/30 11:24:09 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 17.9 KiB, free 741.6 MiB)
+26/10/30 11:24:09 INFO TorrentBroadcast: Reading broadcast variable 2 took 102 ms
+26/10/30 11:24:09 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 39.7 KiB, free 741.5 MiB)
+26/10/30 11:24:10 INFO CodeGenerator: Code generated in 297.863048 ms
+26/10/30 11:24:10 INFO CodeGenerator: Code generated in 17.514513 ms
+26/10/30 11:24:10 INFO CodeGenerator: Code generated in 5.261257 ms
+26/10/30 11:24:10 INFO CodeGenerator: Code generated in 8.372091 ms
+26/10/30 11:24:10 INFO CodeGenerator: Code generated in 6.786201 ms
+26/10/30 11:24:10 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00085-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42370802, partition values: [2019-11]
+26/10/30 11:24:10 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00083-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-43417481, partition values: [2019-11]
+26/10/30 11:24:10 INFO TorrentBroadcast: Started reading broadcast variable 1 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 11:24:10 INFO TransportClientFactory: Successfully created connection to /172.19.0.5:39369 after 2 ms (0 ms spent in bootstraps)
+26/10/30 11:24:10 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 35.3 KiB, free 709.0 MiB)
+26/10/30 11:24:10 INFO TorrentBroadcast: Reading broadcast variable 1 took 30 ms
+26/10/30 11:24:10 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 382.6 KiB, free 708.6 MiB)
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00082-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42703102, partition values: [2019-11]
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00084-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-42239322, partition values: [2019-11]
+26/10/30 11:24:11 INFO Executor: Finished task 2.0 in stage 1.0 (TID 3). 3184 bytes result sent to driver
+26/10/30 11:24:11 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 3184 bytes result sent to driver
+26/10/30 11:24:11 INFO CoarseGrainedExecutorBackend: Got assigned task 10
+26/10/30 11:24:11 INFO CoarseGrainedExecutorBackend: Got assigned task 11
+26/10/30 11:24:11 INFO Executor: Running task 9.0 in stage 1.0 (TID 10)
+26/10/30 11:24:11 INFO Executor: Running task 10.0 in stage 1.0 (TID 11)
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00088-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38745095, partition values: [2019-11]
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00106-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38322403, partition values: [2019-11]
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00052-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38675783, partition values: [2019-11]
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00093-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38265254, partition values: [2019-11]
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00058-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38432261, partition values: [2019-11]
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00056-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-38021421, partition values: [2019-11]
+26/10/30 11:24:11 INFO Executor: Finished task 9.0 in stage 1.0 (TID 10). 3141 bytes result sent to driver
+26/10/30 11:24:11 INFO CoarseGrainedExecutorBackend: Got assigned task 13
+26/10/30 11:24:11 INFO Executor: Running task 12.0 in stage 1.0 (TID 13)
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00049-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37354880, partition values: [2019-11]
+26/10/30 11:24:11 INFO Executor: Finished task 10.0 in stage 1.0 (TID 11). 3141 bytes result sent to driver
+26/10/30 11:24:11 INFO CoarseGrainedExecutorBackend: Got assigned task 16
+26/10/30 11:24:11 INFO Executor: Running task 15.0 in stage 1.0 (TID 16)
+26/10/30 11:24:11 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00063-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36702649, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00016-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37242224, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00068-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36699845, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00096-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36627179, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00050-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-37238192, partition values: [2019-11]
+26/10/30 11:24:12 INFO Executor: Finished task 12.0 in stage 1.0 (TID 13). 3141 bytes result sent to driver
+26/10/30 11:24:12 INFO CoarseGrainedExecutorBackend: Got assigned task 18
+26/10/30 11:24:12 INFO Executor: Running task 17.0 in stage 1.0 (TID 18)
+26/10/30 11:24:12 INFO Executor: Finished task 15.0 in stage 1.0 (TID 16). 3141 bytes result sent to driver
+26/10/30 11:24:12 INFO CoarseGrainedExecutorBackend: Got assigned task 19
+26/10/30 11:24:12 INFO Executor: Running task 18.0 in stage 1.0 (TID 19)
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00019-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36492205, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00061-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36302050, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00028-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36233827, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00087-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36409223, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00051-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36017874, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00059-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-36345412, partition values: [2019-11]
+26/10/30 11:24:12 INFO Executor: Finished task 18.0 in stage 1.0 (TID 19). 3141 bytes result sent to driver
+26/10/30 11:24:12 INFO Executor: Finished task 17.0 in stage 1.0 (TID 18). 3141 bytes result sent to driver
+26/10/30 11:24:12 INFO CoarseGrainedExecutorBackend: Got assigned task 21
+26/10/30 11:24:12 INFO Executor: Running task 20.0 in stage 1.0 (TID 21)
+26/10/30 11:24:12 INFO CoarseGrainedExecutorBackend: Got assigned task 22
+26/10/30 11:24:12 INFO Executor: Running task 21.0 in stage 1.0 (TID 22)
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00025-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35900361, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00022-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35854431, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00103-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35885641, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00029-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35832043, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00053-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35865651, partition values: [2019-11]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00044-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35672165, partition values: [2019-11]
+26/10/30 11:24:12 INFO Executor: Finished task 20.0 in stage 1.0 (TID 21). 3141 bytes result sent to driver
+26/10/30 11:24:12 INFO CoarseGrainedExecutorBackend: Got assigned task 25
+26/10/30 11:24:12 INFO Executor: Running task 24.0 in stage 1.0 (TID 25)
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00074-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35367945, partition values: [2019-11]
+26/10/30 11:24:12 INFO Executor: Finished task 21.0 in stage 1.0 (TID 22). 3141 bytes result sent to driver
+26/10/30 11:24:12 INFO CoarseGrainedExecutorBackend: Got assigned task 26
+26/10/30 11:24:12 INFO Executor: Running task 25.0 in stage 1.0 (TID 26)
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00036-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35188787, partition values: [2019-10]
+26/10/30 11:24:12 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00089-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35351345, partition values: [2019-11]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00000-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35160341, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00102-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35136131, partition values: [2019-11]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00095-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-35274560, partition values: [2019-11]
+26/10/30 11:24:13 INFO Executor: Finished task 25.0 in stage 1.0 (TID 26). 3141 bytes result sent to driver
+26/10/30 11:24:13 INFO CoarseGrainedExecutorBackend: Got assigned task 29
+26/10/30 11:24:13 INFO Executor: Running task 28.0 in stage 1.0 (TID 29)
+26/10/30 11:24:13 INFO Executor: Finished task 24.0 in stage 1.0 (TID 25). 3141 bytes result sent to driver
+26/10/30 11:24:13 INFO CoarseGrainedExecutorBackend: Got assigned task 30
+26/10/30 11:24:13 INFO Executor: Running task 29.0 in stage 1.0 (TID 30)
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00094-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34872001, partition values: [2019-11]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00010-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34724350, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00097-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34700216, partition values: [2019-11]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00021-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34772725, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00034-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34649076, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00005-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34730687, partition values: [2019-10]
+26/10/30 11:24:13 INFO Executor: Finished task 29.0 in stage 1.0 (TID 30). 3141 bytes result sent to driver
+26/10/30 11:24:13 INFO CoarseGrainedExecutorBackend: Got assigned task 33
+26/10/30 11:24:13 INFO Executor: Running task 32.0 in stage 1.0 (TID 33)
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00031-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34377175, partition values: [2019-10]
+26/10/30 11:24:13 INFO Executor: Finished task 28.0 in stage 1.0 (TID 29). 3141 bytes result sent to driver
+26/10/30 11:24:13 INFO CoarseGrainedExecutorBackend: Got assigned task 34
+26/10/30 11:24:13 INFO Executor: Running task 33.0 in stage 1.0 (TID 34)
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00038-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34312940, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00018-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34326441, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00023-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34317450, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00004-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34288549, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00020-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-34216729, partition values: [2019-10]
+26/10/30 11:24:13 INFO Executor: Finished task 32.0 in stage 1.0 (TID 33). 3141 bytes result sent to driver
+26/10/30 11:24:13 INFO CoarseGrainedExecutorBackend: Got assigned task 37
+26/10/30 11:24:13 INFO Executor: Running task 36.0 in stage 1.0 (TID 37)
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00037-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33549363, partition values: [2019-10]
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00003-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33530763, partition values: [2019-10]
+26/10/30 11:24:13 INFO Executor: Finished task 33.0 in stage 1.0 (TID 34). 3141 bytes result sent to driver
+26/10/30 11:24:13 INFO CoarseGrainedExecutorBackend: Got assigned task 38
+26/10/30 11:24:13 INFO Executor: Running task 37.0 in stage 1.0 (TID 38)
+26/10/30 11:24:13 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00006-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33045816, partition values: [2019-10]
+26/10/30 11:24:14 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00001-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-32952859, partition values: [2019-10]
+26/10/30 11:24:14 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00002-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-33058024, partition values: [2019-10]
+26/10/30 11:24:14 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-10/part-00109-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-5975084, partition values: [2019-10]
+26/10/30 11:24:14 INFO Executor: Finished task 36.0 in stage 1.0 (TID 37). 3141 bytes result sent to driver
+26/10/30 11:24:14 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/bronze/events/source_month=2019-11/part-00109-1dd74560-2187-4280-870a-a575a9ca8f60.c000.snappy.parquet, range: 0-2227799, partition values: [2019-11]
+26/10/30 11:24:14 INFO Executor: Finished task 37.0 in stage 1.0 (TID 38). 3141 bytes result sent to driver
+26/10/30 11:24:14 INFO CoarseGrainedExecutorBackend: Driver commanded a shutdown
+26/10/30 11:24:15 ERROR CoarseGrainedExecutorBackend: RECEIVED SIGNAL TERM
+tdown

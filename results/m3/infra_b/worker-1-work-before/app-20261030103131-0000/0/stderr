@@ -1,0 +1,212 @@
+Spark Executor Command: "/opt/java/openjdk/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=35313" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@a68f91559f87:35313" "--executor-id" "0" "--hostname" "172.19.0.4" "--cores" "1" "--app-id" "app-20261030103131-0000" "--worker-url" "spark://Worker@172.19.0.4:46037" "--resourceProfileId" "0"
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/30 10:31:33 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 84@58ff0ea50c81
+26/10/30 10:31:33 INFO SignalUtils: Registering signal handler for TERM
+26/10/30 10:31:33 INFO SignalUtils: Registering signal handler for HUP
+26/10/30 10:31:33 INFO SignalUtils: Registering signal handler for INT
+26/10/30 10:31:33 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/30 10:31:33 INFO SecurityManager: Changing view acls to: root
+26/10/30 10:31:33 INFO SecurityManager: Changing modify acls to: root
+26/10/30 10:31:33 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 10:31:33 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 10:31:33 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 10:31:33 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:35313 after 71 ms (0 ms spent in bootstraps)
+26/10/30 10:31:33 INFO SecurityManager: Changing view acls to: root
+26/10/30 10:31:33 INFO SecurityManager: Changing modify acls to: root
+26/10/30 10:31:33 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 10:31:33 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 10:31:33 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 10:31:34 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:35313 after 4 ms (0 ms spent in bootstraps)
+26/10/30 10:31:34 INFO DiskBlockManager: Created local directory at /tmp/spark-68da7f74-1741-46ed-9f2b-b36aaa3f1956/executor-ccec646e-4eb7-4c16-be86-fb797a77d9a9/blockmgr-ebf5596c-3233-4d84-8112-c9487e652dad
+26/10/30 10:31:34 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+26/10/30 10:31:34 INFO CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@a68f91559f87:35313
+26/10/30 10:31:34 INFO WorkerWatcher: Connecting to worker spark://Worker@172.19.0.4:46037
+26/10/30 10:31:34 INFO TransportClientFactory: Successfully created connection to /172.19.0.4:46037 after 2 ms (0 ms spent in bootstraps)
+26/10/30 10:31:34 INFO WorkerWatcher: Successfully connected to spark://Worker@172.19.0.4:46037
+26/10/30 10:31:34 INFO ResourceUtils: ==============================================================
+26/10/30 10:31:34 INFO ResourceUtils: No custom resources configured for spark.executor.
+26/10/30 10:31:34 INFO ResourceUtils: ==============================================================
+26/10/30 10:31:34 INFO CoarseGrainedExecutorBackend: Successfully registered with driver
+26/10/30 10:31:34 INFO Executor: Starting executor ID 0 on host 172.19.0.4
+26/10/30 10:31:34 INFO Executor: OS info Linux, 6.18.54.1-microsoft-standard-WSL2, amd64
+26/10/30 10:31:34 INFO Executor: Java version 11.0.25
+26/10/30 10:31:34 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46535.
+26/10/30 10:31:34 INFO NettyBlockTransferService: Server created on 172.19.0.4:46535
+26/10/30 10:31:34 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/30 10:31:34 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(0, 172.19.0.4, 46535, None)
+26/10/30 10:31:34 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(0, 172.19.0.4, 46535, None)
+26/10/30 10:31:34 INFO BlockManager: Initialized BlockManager: BlockManagerId(0, 172.19.0.4, 46535, None)
+26/10/30 10:31:34 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/30 10:31:34 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@29da075e for default.
+26/10/30 10:31:38 INFO CoarseGrainedExecutorBackend: Got assigned task 2
+26/10/30 10:31:38 INFO Executor: Running task 1.0 in stage 1.0 (TID 2)
+26/10/30 10:31:38 INFO TorrentBroadcast: Started reading broadcast variable 2 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:38 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:39169 after 2 ms (0 ms spent in bootstraps)
+26/10/30 10:31:38 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 8.2 KiB, free 434.4 MiB)
+26/10/30 10:31:38 INFO TorrentBroadcast: Reading broadcast variable 2 took 77 ms
+26/10/30 10:31:38 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 18.2 KiB, free 434.4 MiB)
+26/10/30 10:31:38 INFO CodeGenerator: Code generated in 258.149687 ms
+26/10/30 10:31:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-27/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3328402, partition values: [18196]
+26/10/30 10:31:38 INFO TorrentBroadcast: Started reading broadcast variable 1 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:39 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 35.2 KiB, free 434.3 MiB)
+26/10/30 10:31:39 INFO TorrentBroadcast: Reading broadcast variable 1 took 14 ms
+26/10/30 10:31:39 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 382.6 KiB, free 434.0 MiB)
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-08/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3317550, partition values: [18177]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-09/part-00004-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3252496, partition values: [18178]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-26/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3207731, partition values: [18195]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-05/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3173534, partition values: [18174]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-06/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3144706, partition values: [18175]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-24/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3140413, partition values: [18193]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-10/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3088576, partition values: [18179]
+26/10/30 10:31:39 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-28/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3041979, partition values: [18197]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-31/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3003984, partition values: [18200]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-01/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3003320, partition values: [18170]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-29/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-2943937, partition values: [18198]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-30/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-2934737, partition values: [18199]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-07/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-2758223, partition values: [18176]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-02/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-2745226, partition values: [18171]
+26/10/30 10:31:40 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-03/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-2576816, partition values: [18172]
+26/10/30 10:31:40 INFO Executor: Finished task 1.0 in stage 1.0 (TID 2). 2215 bytes result sent to driver
+26/10/30 10:31:40 INFO CoarseGrainedExecutorBackend: Got assigned task 3
+26/10/30 10:31:40 INFO Executor: Running task 0.0 in stage 3.0 (TID 3)
+26/10/30 10:31:40 INFO MapOutputTrackerWorker: Updating epoch to 1 and clearing cache
+26/10/30 10:31:40 INFO TorrentBroadcast: Started reading broadcast variable 3 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:40 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 6.2 KiB, free 434.0 MiB)
+26/10/30 10:31:40 INFO TorrentBroadcast: Reading broadcast variable 3 took 7 ms
+26/10/30 10:31:40 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 13.0 KiB, free 433.9 MiB)
+26/10/30 10:31:40 INFO MapOutputTrackerWorker: Don't have map outputs for shuffle 0, fetching them
+26/10/30 10:31:40 INFO MapOutputTrackerWorker: Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@a68f91559f87:35313)
+26/10/30 10:31:40 INFO MapOutputTrackerWorker: Got the map output locations
+26/10/30 10:31:40 INFO ShuffleBlockFetcherIterator: Getting 2 (120.0 B) non-empty blocks including 1 (60.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 1 (60.0 B) remote blocks
+26/10/30 10:31:40 INFO TransportClientFactory: Successfully created connection to /172.19.0.5:39903 after 1 ms (0 ms spent in bootstraps)
+26/10/30 10:31:40 INFO ShuffleBlockFetcherIterator: Started 1 remote fetches in 19 ms
+26/10/30 10:31:40 INFO CodeGenerator: Code generated in 14.752573 ms
+26/10/30 10:31:40 INFO Executor: Finished task 0.0 in stage 3.0 (TID 3). 4081 bytes result sent to driver
+26/10/30 10:31:41 INFO CoarseGrainedExecutorBackend: Got assigned task 4
+26/10/30 10:31:41 INFO Executor: Running task 0.0 in stage 4.0 (TID 4)
+26/10/30 10:31:41 INFO TorrentBroadcast: Started reading broadcast variable 5 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:41 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 13.0 KiB, free 433.9 MiB)
+26/10/30 10:31:41 INFO TorrentBroadcast: Reading broadcast variable 5 took 12 ms
+26/10/30 10:31:41 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 30.5 KiB, free 433.9 MiB)
+26/10/30 10:31:41 INFO CodeGenerator: Code generated in 75.07794 ms
+26/10/30 10:31:41 INFO CodeGenerator: Code generated in 23.572743 ms
+26/10/30 10:31:41 INFO CodeGenerator: Code generated in 7.597657 ms
+26/10/30 10:31:41 INFO CodeGenerator: Code generated in 8.480382 ms
+26/10/30 10:31:41 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-13/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3944166, partition values: [18182]
+26/10/30 10:31:41 INFO TorrentBroadcast: Started reading broadcast variable 4 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:41 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 35.4 KiB, free 417.6 MiB)
+26/10/30 10:31:41 INFO TorrentBroadcast: Reading broadcast variable 4 took 12 ms
+26/10/30 10:31:41 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 382.6 KiB, free 417.2 MiB)
+26/10/30 10:31:41 INFO CodecPool: Got brand-new decompressor [.snappy]
+26/10/30 10:31:41 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-15/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3706640, partition values: [18184]
+26/10/30 10:31:41 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-16/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3654415, partition values: [18185]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-20/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3603962, partition values: [18189]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-11/part-00004-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3569574, partition values: [18180]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-18/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3540389, partition values: [18187]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-12/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3518383, partition values: [18181]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-14/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3492707, partition values: [18183]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-19/part-00004-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3463318, partition values: [18188]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-25/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3429678, partition values: [18194]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-04/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3426810, partition values: [18173]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-22/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3401380, partition values: [18191]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-17/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3399758, partition values: [18186]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-21/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3353537, partition values: [18190]
+26/10/30 10:31:42 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-23/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3339871, partition values: [18192]
+26/10/30 10:31:42 INFO Executor: Finished task 0.0 in stage 4.0 (TID 4). 3098 bytes result sent to driver
+26/10/30 10:31:42 INFO CoarseGrainedExecutorBackend: Got assigned task 6
+26/10/30 10:31:42 INFO Executor: Running task 0.0 in stage 6.0 (TID 6)
+26/10/30 10:31:42 INFO MapOutputTrackerWorker: Updating epoch to 2 and clearing cache
+26/10/30 10:31:42 INFO TorrentBroadcast: Started reading broadcast variable 6 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:42 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 18.4 KiB, free 433.5 MiB)
+26/10/30 10:31:42 INFO TorrentBroadcast: Reading broadcast variable 6 took 10 ms
+26/10/30 10:31:42 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 40.8 KiB, free 433.4 MiB)
+26/10/30 10:31:42 INFO MapOutputTrackerWorker: Don't have map outputs for shuffle 1, fetching them
+26/10/30 10:31:42 INFO MapOutputTrackerWorker: Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@a68f91559f87:35313)
+26/10/30 10:31:42 INFO MapOutputTrackerWorker: Got the map output locations
+26/10/30 10:31:42 INFO ShuffleBlockFetcherIterator: Getting 2 (144.0 B) non-empty blocks including 1 (72.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 1 (72.0 B) remote blocks
+26/10/30 10:31:42 INFO ShuffleBlockFetcherIterator: Started 1 remote fetches in 2 ms
+26/10/30 10:31:42 INFO CodeGenerator: Code generated in 42.020256 ms
+26/10/30 10:31:42 INFO Executor: Finished task 0.0 in stage 6.0 (TID 6). 5550 bytes result sent to driver
+26/10/30 10:31:43 INFO CoarseGrainedExecutorBackend: Got assigned task 7
+26/10/30 10:31:43 INFO Executor: Running task 0.0 in stage 7.0 (TID 7)
+26/10/30 10:31:43 INFO TorrentBroadcast: Started reading broadcast variable 8 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:43 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 12.2 KiB, free 433.9 MiB)
+26/10/30 10:31:43 INFO TorrentBroadcast: Reading broadcast variable 8 took 11 ms
+26/10/30 10:31:43 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 38.2 KiB, free 433.9 MiB)
+26/10/30 10:31:43 INFO CodeGenerator: Code generated in 48.572175 ms
+26/10/30 10:31:43 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-13/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3944166, partition values: [18182]
+26/10/30 10:31:43 INFO TorrentBroadcast: Started reading broadcast variable 7 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:43 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 36.1 KiB, free 433.9 MiB)
+26/10/30 10:31:43 INFO TorrentBroadcast: Reading broadcast variable 7 took 14 ms
+26/10/30 10:31:43 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 382.6 KiB, free 433.5 MiB)
+26/10/30 10:31:43 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-15/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3706640, partition values: [18184]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-16/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3654415, partition values: [18185]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-20/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3603962, partition values: [18189]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-11/part-00004-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3569574, partition values: [18180]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-18/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3540389, partition values: [18187]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-12/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3518383, partition values: [18181]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-14/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3492707, partition values: [18183]
+26/10/30 10:31:44 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-19/part-00004-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3463318, partition values: [18188]
+26/10/30 10:31:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-25/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3429678, partition values: [18194]
+26/10/30 10:31:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-04/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3426810, partition values: [18173]
+26/10/30 10:31:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-22/part-00000-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3401380, partition values: [18191]
+26/10/30 10:31:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-17/part-00002-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3399758, partition values: [18186]
+26/10/30 10:31:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-21/part-00001-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3353537, partition values: [18190]
+26/10/30 10:31:45 INFO FileScanRDD: Reading File path: file:///app/data/lake/silver/events/event_date=2019-10-23/part-00003-f2936286-cea6-46f9-8592-a32b6e14f8e9.c000.snappy.parquet, range: 0-3339871, partition values: [18192]
+26/10/30 10:31:45 INFO MemoryStore: Block rdd_20_0 stored as values in memory (estimated size 586.2 KiB, free 433.0 MiB)
+26/10/30 10:31:45 INFO Executor: 1 block locks were not released by task 0.0 in stage 7.0 (TID 7)
+[rdd_20_0]
+26/10/30 10:31:45 INFO Executor: Finished task 0.0 in stage 7.0 (TID 7). 1752 bytes result sent to driver
+26/10/30 10:31:45 INFO CoarseGrainedExecutorBackend: Got assigned task 9
+26/10/30 10:31:45 INFO Executor: Running task 0.0 in stage 8.0 (TID 9)
+26/10/30 10:31:45 INFO TorrentBroadcast: Started reading broadcast variable 9 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:45 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 15.6 KiB, free 432.9 MiB)
+26/10/30 10:31:45 INFO TorrentBroadcast: Reading broadcast variable 9 took 9 ms
+26/10/30 10:31:45 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 46.7 KiB, free 432.9 MiB)
+26/10/30 10:31:45 INFO BlockManager: Found block rdd_20_0 locally
+26/10/30 10:31:45 INFO CodeGenerator: Code generated in 5.254064 ms
+26/10/30 10:31:45 INFO CodeGenerator: Code generated in 16.846326 ms
+26/10/30 10:31:45 INFO CodeGenerator: Code generated in 11.454552 ms
+26/10/30 10:31:45 INFO Executor: Finished task 0.0 in stage 8.0 (TID 9). 2426 bytes result sent to driver
+26/10/30 10:31:45 INFO CoarseGrainedExecutorBackend: Got assigned task 11
+26/10/30 10:31:45 INFO Executor: Running task 0.0 in stage 10.0 (TID 11)
+26/10/30 10:31:45 INFO MapOutputTrackerWorker: Updating epoch to 3 and clearing cache
+26/10/30 10:31:45 INFO TorrentBroadcast: Started reading broadcast variable 10 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:45 INFO MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 6.2 KiB, free 432.9 MiB)
+26/10/30 10:31:45 INFO TorrentBroadcast: Reading broadcast variable 10 took 8 ms
+26/10/30 10:31:45 INFO MemoryStore: Block broadcast_10 stored as values in memory (estimated size 13.0 KiB, free 432.9 MiB)
+26/10/30 10:31:45 INFO MapOutputTrackerWorker: Don't have map outputs for shuffle 2, fetching them
+26/10/30 10:31:45 INFO MapOutputTrackerWorker: Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@a68f91559f87:35313)
+26/10/30 10:31:45 INFO MapOutputTrackerWorker: Got the map output locations
+26/10/30 10:31:45 INFO ShuffleBlockFetcherIterator: Getting 2 (120.0 B) non-empty blocks including 1 (60.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 1 (60.0 B) remote blocks
+26/10/30 10:31:45 INFO ShuffleBlockFetcherIterator: Started 1 remote fetches in 1 ms
+26/10/30 10:31:45 INFO Executor: Finished task 0.0 in stage 10.0 (TID 11). 3995 bytes result sent to driver
+26/10/30 10:31:46 INFO CoarseGrainedExecutorBackend: Got assigned task 13
+26/10/30 10:31:46 INFO Executor: Running task 0.0 in stage 11.0 (TID 13)
+26/10/30 10:31:46 INFO TorrentBroadcast: Started reading broadcast variable 11 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:46 INFO MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 27.2 KiB, free 432.9 MiB)
+26/10/30 10:31:46 INFO TorrentBroadcast: Reading broadcast variable 11 took 7 ms
+26/10/30 10:31:46 INFO MemoryStore: Block broadcast_11 stored as values in memory (estimated size 73.5 KiB, free 432.8 MiB)
+26/10/30 10:31:46 INFO BlockManager: Found block rdd_20_0 locally
+26/10/30 10:31:46 INFO CodeGenerator: Code generated in 15.695003 ms
+26/10/30 10:31:46 INFO CodeGenerator: Code generated in 13.85522 ms
+26/10/30 10:31:46 INFO CodeGenerator: Code generated in 37.221176 ms
+26/10/30 10:31:46 INFO CodeGenerator: Code generated in 8.719925 ms
+26/10/30 10:31:46 INFO CodeGenerator: Code generated in 6.66087 ms
+26/10/30 10:31:46 INFO Executor: Finished task 0.0 in stage 11.0 (TID 13). 3045 bytes result sent to driver
+26/10/30 10:31:47 INFO CoarseGrainedExecutorBackend: Got assigned task 17
+26/10/30 10:31:47 INFO Executor: Running task 0.0 in stage 19.0 (TID 17)
+26/10/30 10:31:47 INFO MapOutputTrackerWorker: Updating epoch to 5 and clearing cache
+26/10/30 10:31:47 INFO TorrentBroadcast: Started reading broadcast variable 15 with 1 pieces (estimated total size 4.0 MiB)
+26/10/30 10:31:47 INFO MemoryStore: Block broadcast_15_piece0 stored as bytes in memory (estimated size 27.2 KiB, free 432.8 MiB)
+26/10/30 10:31:47 INFO TorrentBroadcast: Reading broadcast variable 15 took 6 ms
+26/10/30 10:31:47 INFO MemoryStore: Block broadcast_15 stored as values in memory (estimated size 73.5 KiB, free 432.7 MiB)
+26/10/30 10:31:47 INFO BlockManager: Found block rdd_20_0 locally
+26/10/30 10:31:47 INFO Executor: Finished task 0.0 in stage 19.0 (TID 17). 3045 bytes result sent to driver
+26/10/30 10:31:47 INFO BlockManager: Removing RDD 20
+26/10/30 10:31:47 INFO CoarseGrainedExecutorBackend: Driver commanded a shutdown
+26/10/30 10:31:47 INFO MemoryStore: MemoryStore cleared
+26/10/30 10:31:47 INFO BlockManager: BlockManager stopped
+26/10/30 10:31:47 ERROR CoarseGrainedExecutorBackend: RECE

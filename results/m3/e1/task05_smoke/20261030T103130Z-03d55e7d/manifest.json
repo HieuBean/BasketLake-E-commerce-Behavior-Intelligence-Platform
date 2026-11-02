@@ -1,0 +1,218 @@
+{
+  "experiment_id": "20261030T103130Z-03d55e7d",
+  "git_sha": "d07282af4e584fda028417ccfb826ac059f7f684",
+  "requested_tier": "S",
+  "actual_tier": "S",
+  "tier_evidence": "existing Silver manifest tier + current metadata fingerprint",
+  "source_path": "/app/data/lake/silver/events",
+  "timestamp_utc": "2026-10-30T10:31:32.544405",
+  "input_validation_status": "verified_manifest_and_readable_parquet",
+  "fractions": [
+    0.01
+  ],
+  "seed": 42,
+  "smoke_only": true,
+  "workload": "E1 purchase/category revenue-count v1; no join",
+  "method": "B compute-only, persisted sample + 1 warmup excluded",
+  "code_sha256": "99de5b1e551e5b3bc446269e347ea873870f308cb9eb7f7cfa7f7e4b565add30",
+  "base_rows": 1060392,
+  "schema_fingerprint": "d75ed958afdc6867d502b9186969b4c0066671977a51486e7b2222b416dbd40c",
+  "schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "name": "event_ts",
+        "type": "timestamp",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "event_hour",
+        "type": "integer",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "event_type",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "product_id",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_id",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_code",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_l1",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_l2",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_l3",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_missing",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "brand",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "brand_missing",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "price",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "price_valid",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "user_id",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "user_session",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "session_id",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "session_generated",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "out_of_month",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "source_file",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "source_month",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "ingest_ts",
+        "type": "timestamp",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "event_date",
+        "type": "date",
+        "nullable": true,
+        "metadata": {}
+      }
+    ]
+  },
+  "dataset_metadata_fingerprint": "8d87dee21c294e4cc56e331df3f45a10995e63face67b3256aae038027d43a35",
+  "parquet_bytes": 101506218,
+  "source_months": [
+    "2019-10"
+  ],
+  "spark_version": "3.5.4",
+  "resources": {
+    "spark.master": "spark://spark-master:7077",
+    "spark.executor.cores": "1",
+    "spark.executor.memory": "1g",
+    "spark.driver.memory": "1g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "200",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.eventLog.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark_version": "3.5.4",
+    "application_id": "app-20261030103131-0000",
+    "driver_max_heap_bytes": 1073741824,
+    "workers": [
+      {
+        "id": "worker-20261030100658-172.19.0.5-34723",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1024
+      },
+      {
+        "id": "worker-20261030100658-172.19.0.4-46037",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1024
+      }
+    ],
+    "alive_workers": 2
+  },
+  "inventory": {
+    "official_dim_product": {
+      "path": "/app/data/lake/gold/dim_product",
+      "exists": true
+    },
+    "raw_october": {
+      "path": "/app/data/raw/2019-Oct.csv",
+      "exists": true
+    },
+    "raw_november": {
+      "path": "/app/data/raw/2019-Nov.csv",
+      "exists": false
+    }
+  },
+  "source_metadata_unchanged": true
+}

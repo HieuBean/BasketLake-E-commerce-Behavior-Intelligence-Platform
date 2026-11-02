@@ -1,0 +1,8 @@
+{
+  "started_utc": "2026-10-30T11:42:13.221403",
+  "status": "FAILED",
+  "metrics_path": "/app/results/m3/e1/tier_l_build/recovery-local1/build-metrics.json",
+  "error": "Py4JError('An error occurred while calling o409.parquet')",
+  "elapsed_seconds": 384.60463919500035,
+  "completed_utc": "2026-10-30T11:48:37.802047"
+}

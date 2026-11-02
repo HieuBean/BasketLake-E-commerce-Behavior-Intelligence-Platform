@@ -1,0 +1,272 @@
+{
+  "status": "BLOCKED",
+  "application_id": "app-20261031172341-0000",
+  "official_attempts": 1,
+  "measured_successful_runs": 0,
+  "measured_failed_runs": 0,
+  "preparation_failures": 1,
+  "producer_exit_code": null,
+  "producer_exit_note": "Controller did not persist exit code after SIGINT; no exit0 claim",
+  "controller_error": "AssertionError('Host STOP request')",
+  "points": [
+    {
+      "fraction": 0.01,
+      "successful_runs": 0,
+      "status": "NOT RUN \u2014 batch stopped",
+      "actual_sample_rows": null,
+      "mean_s": null,
+      "median_s": null,
+      "std_s": null,
+      "throughput_rows_s": null
+    },
+    {
+      "fraction": 0.05,
+      "successful_runs": 0,
+      "status": "NOT RUN \u2014 batch stopped",
+      "actual_sample_rows": null,
+      "mean_s": null,
+      "median_s": null,
+      "std_s": null,
+      "throughput_rows_s": null
+    },
+    {
+      "fraction": 0.1,
+      "successful_runs": 0,
+      "status": "NOT RUN \u2014 batch stopped",
+      "actual_sample_rows": null,
+      "mean_s": null,
+      "median_s": null,
+      "std_s": null,
+      "throughput_rows_s": null
+    },
+    {
+      "fraction": 0.25,
+      "successful_runs": 0,
+      "status": "PREPARATION FAILED \u2014 JVM OOM",
+      "actual_sample_rows": null,
+      "mean_s": null,
+      "median_s": null,
+      "std_s": null,
+      "throughput_rows_s": null
+    },
+    {
+      "fraction": 0.5,
+      "successful_runs": 0,
+      "status": "NOT RUN \u2014 batch stopped",
+      "actual_sample_rows": null,
+      "mean_s": null,
+      "median_s": null,
+      "std_s": null,
+      "throughput_rows_s": null
+    },
+    {
+      "fraction": 1.0,
+      "successful_runs": 0,
+      "status": "NOT RUN \u2014 batch stopped",
+      "actual_sample_rows": null,
+      "mean_s": null,
+      "median_s": null,
+      "std_s": null,
+      "throughput_rows_s": null
+    }
+  ],
+  "resources": {
+    "spark.master": "spark://spark-master:7077",
+    "spark.executor.cores": "1",
+    "spark.executor.memory": "1536m",
+    "spark.driver.memory": "2g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "1024",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.dynamicAllocation.enabled": "false",
+    "spark.sql.session.timeZone": "Etc/UTC",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.eventLog.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark_version": "3.5.4",
+    "application_id": "app-20261031172341-0000",
+    "driver_max_heap_bytes": 2147483648,
+    "workers": [
+      {
+        "id": "worker-20261031170336-172.19.0.4-45909",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1536
+      },
+      {
+        "id": "worker-20261031170336-172.19.0.5-37049",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1536
+      }
+    ],
+    "alive_workers": 2
+  },
+  "history_completed_means": "application ended, not successful benchmark",
+  "history_application": {
+    "id": "app-20261031172341-0000",
+    "name": "E1_compute_only",
+    "attempts": [
+      {
+        "startTime": "2026-10-31T17:23:38.694GMT",
+        "endTime": "2026-10-31T17:27:43.993GMT",
+        "lastUpdated": "2026-10-31T17:27:44.025GMT",
+        "duration": 245299,
+        "sparkUser": "root",
+        "completed": true,
+        "appSparkVersion": "3.5.4",
+        "startTimeEpoch": 1793467418694,
+        "endTimeEpoch": 1793467663993,
+        "lastUpdatedEpoch": 1793467664025
+      }
+    ]
+  },
+  "partial_attempt_metrics": {
+    "shuffleReadBytes": 15161,
+    "shuffleWriteBytes": 15161,
+    "diskBytesSpilled": 0,
+    "memoryBytesSpilled": 0,
+    "numFailedTasks": 4
+  },
+  "metrics_scope": "partial application/preparation, not measured workload runs",
+  "disk": {
+    "before": {
+      "epoch": 1793467403,
+      "utc": "2026-10-31T17:23:23.9505289Z",
+      "pid": 21044,
+      "C_free": 123892527104,
+      "E_free": 209573011456,
+      "pagefile": [
+        {
+          "Name": "C:\\pagefile.sys",
+          "AllocatedBaseSize": 2944,
+          "CurrentUsage": 112,
+          "PeakUsage": 137
+        }
+      ],
+      "docker_vhdx_bytes": 42053140480
+    },
+    "after": {
+      "epoch": 1793467704,
+      "utc": "2026-10-31T17:28:24.6728272Z",
+      "pid": 21044,
+      "C_free": 124007501824,
+      "E_free": 209570488320,
+      "pagefile": [
+        {
+          "Name": "C:\\pagefile.sys",
+          "AllocatedBaseSize": 2944,
+          "CurrentUsage": 113,
+          "PeakUsage": 137
+        }
+      ],
+      "docker_vhdx_bytes": 42053140480
+    },
+    "minimum_C": 123892527104,
+    "minimum_E": 209564020736
+  },
+  "preservation": {
+    "pass": true,
+    "counts": {
+      "protected": 318,
+      "bronze_L": 224,
+      "silver_L": 124,
+      "prior_artifacts": 117
+    },
+    "watched_files": 770,
+    "phase": "after",
+    "utc": "2026-10-31T17:31:59.493500+00:00",
+    "backup_checksum": "NOT REVALIDATED"
+  },
+  "executors": [
+    {
+      "id": "driver",
+      "isActive": true,
+      "totalTasks": 0,
+      "failedTasks": 0,
+      "totalDuration": 245299,
+      "totalGCTime": 0,
+      "peakMemoryMetrics": null,
+      "removeReason": null
+    },
+    {
+      "id": "3",
+      "isActive": true,
+      "totalTasks": 9,
+      "failedTasks": 0,
+      "totalDuration": 32961,
+      "totalGCTime": 545,
+      "peakMemoryMetrics": {
+        "JVMHeapMemory": 743042200,
+        "JVMOffHeapMemory": 93346552,
+        "OnHeapExecutionMemory": 0,
+        "OffHeapExecutionMemory": 0,
+        "OnHeapStorageMemory": 111866707,
+        "OffHeapStorageMemory": 0,
+        "OnHeapUnifiedMemory": 111866707,
+        "OffHeapUnifiedMemory": 0,
+        "DirectPoolMemory": 14335832,
+        "MappedPoolMemory": 0,
+        "ProcessTreeJVMVMemory": 0,
+        "ProcessTreeJVMRSSMemory": 0,
+        "ProcessTreePythonVMemory": 0,
+        "ProcessTreePythonRSSMemory": 0,
+        "ProcessTreeOtherVMemory": 0,
+        "ProcessTreeOtherRSSMemory": 0,
+        "MinorGCCount": 64,
+        "MinorGCTime": 386,
+        "MajorGCCount": 0,
+        "MajorGCTime": 0,
+        "TotalGCTime": 386
+      },
+      "removeReason": null
+    },
+    {
+      "id": "2",
+      "isActive": true,
+      "totalTasks": 11,
+      "failedTasks": 0,
+      "totalDuration": 41485,
+      "totalGCTime": 818,
+      "peakMemoryMetrics": {
+        "JVMHeapMemory": 622839032,
+        "JVMOffHeapMemory": 93971376,
+        "OnHeapExecutionMemory": 0,
+        "OffHeapExecutionMemory": 0,
+        "OnHeapStorageMemory": 171847673,
+        "OffHeapStorageMemory": 0,
+        "OnHeapUnifiedMemory": 171847673,
+        "OffHeapUnifiedMemory": 0,
+        "DirectPoolMemory": 18572906,
+        "MappedPoolMemory": 0,
+        "ProcessTreeJVMVMemory": 0,
+        "ProcessTreeJVMRSSMemory": 0,
+        "ProcessTreePythonVMemory": 0,
+        "ProcessTreePythonRSSMemory": 0,
+        "ProcessTreeOtherVMemory": 0,
+        "ProcessTreeOtherRSSMemory": 0,
+        "MinorGCCount": 131,
+        "MinorGCTime": 715,
+        "MajorGCCount": 0,
+        "MajorGCTime": 0,
+        "TotalGCTime": 715
+      },
+      "removeReason": null
+    }
+  ],
+  "tests": {
+    "E1": 8,
+    "Gold": 20,
+    "policy": 4,
+    "Silver": 25
+  },
+  "charts": "NOT RUN: no valid measured data; no synthetic scalability curves",
+  "backup_checksum": "NOT REVALIDATED",
+  "retry_submitted": false
+}

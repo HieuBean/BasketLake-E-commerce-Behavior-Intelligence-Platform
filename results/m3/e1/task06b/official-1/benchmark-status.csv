@@ -1,0 +1,7 @@
+fraction,successful_runs,status,actual_sample_rows,mean_s,median_s,std_s,throughput_rows_s
+0.01,0,NOT RUN — batch stopped,,,,,
+0.05,0,NOT RUN — batch stopped,,,,,
+0.1,0,NOT RUN — batch stopped,,,,,
+0.25,0,PREPARATION FAILED — JVM OOM,,,,,
+0.5,0,NOT RUN — batch stopped,,,,,
+1.0,0,NOT RUN — batch stopped,,,,,

@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "ready_manifest": "/app/data/lake/benchmark/e1/tier_l/tier-l-ready.manifest.json",
+  "official_quarantine": "/app/data/lake/benchmark/e1/tier_l/quarantine/events",
+  "rows": {
+    "bronze": 109950743,
+    "silver": 109820004,
+    "quarantine": 130739
+  },
+  "quarantine_sha256": "7072f3bab2e86b139710e468e71ef1d9f499c2348933d1b27ab47d02b421dd7a",
+  "preservation_pass": true
+}

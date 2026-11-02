@@ -1,0 +1,17 @@
+Spark Executor Command: "/opt/java/openjdk/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=37109" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@a68f91559f87:37109" "--executor-id" "0" "--hostname" "172.19.0.5" "--cores" "2" "--app-id" "app-20261030063651-0000" "--worker-url" "spark://Worker@172.19.0.5:37423" "--resourceProfileId" "0"
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/30 06:36:53 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 84@58ff0ea50c81
+26/10/30 06:36:53 INFO SignalUtils: Registering signal handler for TERM
+26/10/30 06:36:53 INFO SignalUtils: Registering signal handler for HUP
+26/10/30 06:36:53 INFO SignalUtils: Registering signal handler for INT
+26/10/30 06:36:53 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/30 06:36:53 INFO SecurityManager: Changing view acls to: root
+26/10/30 06:36:53 INFO SecurityManager: Changing modify acls to: root
+26/10/30 06:36:53 INFO SecurityManager: Changing view acls groups to: 
+26/10/30 06:36:53 INFO SecurityManager: Changing modify acls groups to: 
+26/10/30 06:36:53 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/30 06:36:54 INFO TransportClientFactory: Successfully created connection to a68f91559f87/172.19.0.2:37109 after 99 ms (0 ms spent in bootstraps)
+26/10/30 06:36:54 ERROR CoarseGrainedExecutorBackend: RECEIVED SIGNAL TERM
+ion to a68f91559f87/172.19.0.2:37109 after 99 ms (0 ms spent in bootstraps)

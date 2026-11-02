@@ -1,0 +1,49 @@
+{
+  "dataset_id": "BasketLake-REES46-L-task06a-final-q1",
+  "paths": {
+    "bronze": "/app/data/lake/benchmark/e1/tier_l/bronze/events",
+    "silver": "/app/data/lake/benchmark/e1/tier_l/silver/events",
+    "quarantine": "/app/data/lake/benchmark/e1/tier_l/quarantine/events"
+  },
+  "rows": {
+    "bronze": 109950743,
+    "silver": 109820004,
+    "quarantine": 130739
+  },
+  "source_months": [
+    "2019-10",
+    "2019-11"
+  ],
+  "spark_version": "3.5.4",
+  "schema_sha256": {
+    "bronze": "3ac4f8b05a206534c5da607ec369ac853b7dd6cfa8388c0596c52901a0ce18f1",
+    "silver": "d75ed958afdc6867d502b9186969b4c0066671977a51486e7b2222b416dbd40c",
+    "quarantine": "f2c738e17481446ee692224c8137d7ee19f707507f768626dd3fff9b22205980"
+  },
+  "content_checksums": {
+    "bronze": "9700ea71dc3b9c9d332d9396ba9d356361eae49da051db9737dc3fbf207a5ce0",
+    "silver": "e28995523a708449127485cd94c434abac1403dffd6dd6e639908ea42a077aa8",
+    "quarantine": "7072f3bab2e86b139710e468e71ef1d9f499c2348933d1b27ab47d02b421dd7a"
+  },
+  "monetary": {
+    "bronze": {
+      "purchases": 1659788,
+      "revenue": 505152392.76999843
+    },
+    "silver": {
+      "purchases": 1659703,
+      "revenue": 505126293.4400004
+    },
+    "quarantine": {
+      "purchases": 85,
+      "revenue": 26099.33
+    }
+  },
+  "application_ids": {
+    "quarantine": "app-20261031063308-0003",
+    "DQ": "app-20261031065148-0004",
+    "original_silver": "app-20261030180919-0002"
+  },
+  "scope": "Handoff summary; original READY retained in dataset archive",
+  "historical_full_DQ_passed": 26
+}

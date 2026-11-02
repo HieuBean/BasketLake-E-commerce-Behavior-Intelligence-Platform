@@ -1,0 +1,130 @@
+Spark Executor Command: "/opt/java/openjdk/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1536M" "-Dspark.driver.port=32893" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "-Djava.io.tmpdir=/spark-local/task06b/java" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@a0dde0b964a7:32893" "--executor-id" "2" "--hostname" "172.19.0.4" "--cores" "1" "--app-id" "app-20261031172341-0000" "--worker-url" "spark://Worker@172.19.0.4:45909" "--resourceProfileId" "0"
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/31 17:26:55 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 217@1e6f0366a536
+26/10/31 17:26:55 INFO SignalUtils: Registering signal handler for TERM
+26/10/31 17:26:55 INFO SignalUtils: Registering signal handler for HUP
+26/10/31 17:26:55 INFO SignalUtils: Registering signal handler for INT
+26/10/31 17:26:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/31 17:26:56 INFO SecurityManager: Changing view acls to: root
+26/10/31 17:26:56 INFO SecurityManager: Changing modify acls to: root
+26/10/31 17:26:56 INFO SecurityManager: Changing view acls groups to: 
+26/10/31 17:26:56 INFO SecurityManager: Changing modify acls groups to: 
+26/10/31 17:26:56 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/31 17:26:56 INFO TransportClientFactory: Successfully created connection to a0dde0b964a7/172.19.0.3:32893 after 59 ms (0 ms spent in bootstraps)
+26/10/31 17:26:56 INFO SecurityManager: Changing view acls to: root
+26/10/31 17:26:56 INFO SecurityManager: Changing modify acls to: root
+26/10/31 17:26:56 INFO SecurityManager: Changing view acls groups to: 
+26/10/31 17:26:56 INFO SecurityManager: Changing modify acls groups to: 
+26/10/31 17:26:56 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/31 17:26:56 INFO TransportClientFactory: Successfully created connection to a0dde0b964a7/172.19.0.3:32893 after 3 ms (0 ms spent in bootstraps)
+26/10/31 17:26:56 INFO DiskBlockManager: Created local directory at /spark-local/spark-11045883-0d94-4713-992e-169cafbcd4fc/executor-466a7ef1-1ec3-47f8-859b-466d26be2a2a/blockmgr-5b764f0c-2ba6-4eec-9684-d2bbc18b471d
+26/10/31 17:26:56 INFO MemoryStore: MemoryStore started with capacity 741.6 MiB
+26/10/31 17:26:56 INFO CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@a0dde0b964a7:32893
+26/10/31 17:26:56 INFO WorkerWatcher: Connecting to worker spark://Worker@172.19.0.4:45909
+26/10/31 17:26:56 INFO TransportClientFactory: Successfully created connection to /172.19.0.4:45909 after 4 ms (0 ms spent in bootstraps)
+26/10/31 17:26:56 INFO WorkerWatcher: Successfully connected to spark://Worker@172.19.0.4:45909
+26/10/31 17:26:56 INFO ResourceUtils: ==============================================================
+26/10/31 17:26:56 INFO ResourceUtils: No custom resources configured for spark.executor.
+26/10/31 17:26:56 INFO ResourceUtils: ==============================================================
+26/10/31 17:26:56 INFO CoarseGrainedExecutorBackend: Successfully registered with driver
+26/10/31 17:26:56 INFO Executor: Starting executor ID 2 on host 172.19.0.4
+26/10/31 17:26:56 INFO Executor: OS info Linux, 6.18.54.1-microsoft-standard-WSL2, amd64
+26/10/31 17:26:56 INFO Executor: Java version 11.0.25
+26/10/31 17:26:56 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38813.
+26/10/31 17:26:56 INFO NettyBlockTransferService: Server created on 172.19.0.4:38813
+26/10/31 17:26:56 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/31 17:26:56 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(2, 172.19.0.4, 38813, None)
+26/10/31 17:26:56 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(2, 172.19.0.4, 38813, None)
+26/10/31 17:26:56 INFO BlockManager: Initialized BlockManager: BlockManagerId(2, 172.19.0.4, 38813, None)
+26/10/31 17:26:56 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/31 17:26:56 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@15001601 for default.
+26/10/31 17:26:56 INFO CoarseGrainedExecutorBackend: Got assigned task 1462
+26/10/31 17:26:56 INFO Executor: Running task 58.1 in stage 8.0 (TID 1462)
+26/10/31 17:26:56 INFO MapOutputTrackerWorker: Updating epoch to 2 and clearing cache
+26/10/31 17:26:56 INFO TorrentBroadcast: Started reading broadcast variable 9 with 1 pieces (estimated total size 4.0 MiB)
+26/10/31 17:26:57 INFO TransportClientFactory: Successfully created connection to a0dde0b964a7/172.19.0.3:34759 after 2 ms (0 ms spent in bootstraps)
+26/10/31 17:26:57 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 12.2 KiB, free 741.6 MiB)
+26/10/31 17:26:57 INFO TorrentBroadcast: Reading broadcast variable 9 took 78 ms
+26/10/31 17:26:57 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 38.2 KiB, free 741.6 MiB)
+26/10/31 17:26:57 INFO CodeGenerator: Code generated in 223.680412 ms
+26/10/31 17:26:57 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-09/part-01021-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 0-67108864, partition values: [18209]
+26/10/31 17:26:57 INFO TorrentBroadcast: Started reading broadcast variable 8 with 1 pieces (estimated total size 4.0 MiB)
+26/10/31 17:26:57 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 36.4 KiB, free 741.5 MiB)
+26/10/31 17:26:57 INFO TorrentBroadcast: Reading broadcast variable 8 took 11 ms
+26/10/31 17:26:57 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 386.5 KiB, free 741.1 MiB)
+26/10/31 17:26:58 INFO MemoryStore: Block rdd_22_58 stored as values in memory (estimated size 46.0 B, free 741.1 MiB)
+26/10/31 17:26:58 INFO Executor: 1 block locks were not released by task 58.1 in stage 8.0 (TID 1462)
+[rdd_22_58]
+26/10/31 17:26:58 INFO Executor: Finished task 58.1 in stage 8.0 (TID 1462). 1709 bytes result sent to driver
+26/10/31 17:26:58 INFO CoarseGrainedExecutorBackend: Got assigned task 1463
+26/10/31 17:26:58 INFO Executor: Running task 57.1 in stage 8.0 (TID 1463)
+26/10/31 17:26:58 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-28/part-00455-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 67108864-134217728, partition values: [18228]
+26/10/31 17:27:01 INFO CodecPool: Got brand-new decompressor [.snappy]
+26/10/31 17:27:05 INFO MemoryStore: Block rdd_22_57 stored as values in memory (estimated size 38.0 MiB, free 703.2 MiB)
+26/10/31 17:27:05 INFO Executor: 1 block locks were not released by task 57.1 in stage 8.0 (TID 1463)
+[rdd_22_57]
+26/10/31 17:27:05 INFO Executor: Finished task 57.1 in stage 8.0 (TID 1463). 1709 bytes result sent to driver
+26/10/31 17:27:05 INFO CoarseGrainedExecutorBackend: Got assigned task 1467
+26/10/31 17:27:05 INFO Executor: Running task 59.1 in stage 8.0 (TID 1467)
+26/10/31 17:27:05 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-09/part-01021-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 67108864-134217728, partition values: [18209]
+26/10/31 17:27:15 INFO MemoryStore: Block rdd_22_59 stored as values in memory (estimated size 37.9 MiB, free 665.3 MiB)
+26/10/31 17:27:15 INFO Executor: 1 block locks were not released by task 59.1 in stage 8.0 (TID 1467)
+[rdd_22_59]
+26/10/31 17:27:15 INFO Executor: Finished task 59.1 in stage 8.0 (TID 1467). 1709 bytes result sent to driver
+26/10/31 17:27:15 INFO CoarseGrainedExecutorBackend: Got assigned task 1470
+26/10/31 17:27:15 INFO Executor: Running task 63.0 in stage 8.0 (TID 1470)
+26/10/31 17:27:15 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-05/part-00717-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 0-67108864, partition values: [18205]
+26/10/31 17:27:15 INFO MemoryStore: Block rdd_22_63 stored as values in memory (estimated size 46.0 B, free 665.3 MiB)
+26/10/31 17:27:15 INFO Executor: 1 block locks were not released by task 63.0 in stage 8.0 (TID 1470)
+[rdd_22_63]
+26/10/31 17:27:15 INFO Executor: Finished task 63.0 in stage 8.0 (TID 1470). 1623 bytes result sent to driver
+26/10/31 17:27:15 INFO CoarseGrainedExecutorBackend: Got assigned task 1471
+26/10/31 17:27:15 INFO Executor: Running task 64.0 in stage 8.0 (TID 1471)
+26/10/31 17:27:15 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-05/part-00717-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 67108864-134217728, partition values: [18205]
+26/10/31 17:27:25 INFO MemoryStore: Block rdd_22_64 stored as values in memory (estimated size 37.8 MiB, free 627.5 MiB)
+26/10/31 17:27:25 INFO Executor: 1 block locks were not released by task 64.0 in stage 8.0 (TID 1471)
+[rdd_22_64]
+26/10/31 17:27:25 INFO Executor: Finished task 64.0 in stage 8.0 (TID 1471). 1709 bytes result sent to driver
+26/10/31 17:27:25 INFO CoarseGrainedExecutorBackend: Got assigned task 1473
+26/10/31 17:27:25 INFO Executor: Running task 66.0 in stage 8.0 (TID 1473)
+26/10/31 17:27:25 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 67108864-134217728, partition values: [18216]
+26/10/31 17:27:25 INFO MemoryStore: Block rdd_22_66 stored as values in memory (estimated size 46.0 B, free 627.5 MiB)
+26/10/31 17:27:25 INFO Executor: 1 block locks were not released by task 66.0 in stage 8.0 (TID 1473)
+[rdd_22_66]
+26/10/31 17:27:25 INFO Executor: Finished task 66.0 in stage 8.0 (TID 1473). 1623 bytes result sent to driver
+26/10/31 17:27:25 INFO CoarseGrainedExecutorBackend: Got assigned task 1474
+26/10/31 17:27:25 INFO Executor: Running task 67.0 in stage 8.0 (TID 1474)
+26/10/31 17:27:25 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 134217728-201326592, partition values: [18216]
+26/10/31 17:27:30 INFO MemoryStore: Block rdd_22_67 stored as values in memory (estimated size 37.8 MiB, free 589.7 MiB)
+26/10/31 17:27:30 INFO Executor: 1 block locks were not released by task 67.0 in stage 8.0 (TID 1474)
+[rdd_22_67]
+26/10/31 17:27:30 INFO Executor: Finished task 67.0 in stage 8.0 (TID 1474). 1709 bytes result sent to driver
+26/10/31 17:27:30 INFO CoarseGrainedExecutorBackend: Got assigned task 1477
+26/10/31 17:27:30 INFO Executor: Running task 70.0 in stage 8.0 (TID 1477)
+26/10/31 17:27:30 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 335544320-402653184, partition values: [18216]
+26/10/31 17:27:30 INFO MemoryStore: Block rdd_22_70 stored as values in memory (estimated size 46.0 B, free 589.7 MiB)
+26/10/31 17:27:30 INFO Executor: 1 block locks were not released by task 70.0 in stage 8.0 (TID 1477)
+[rdd_22_70]
+26/10/31 17:27:30 INFO Executor: Finished task 70.0 in stage 8.0 (TID 1477). 1623 bytes result sent to driver
+26/10/31 17:27:30 INFO CoarseGrainedExecutorBackend: Got assigned task 1478
+26/10/31 17:27:30 INFO Executor: Running task 71.0 in stage 8.0 (TID 1478)
+26/10/31 17:27:30 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-16/part-00640-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 402653184-469762048, partition values: [18216]
+26/10/31 17:27:38 INFO MemoryStore: Block rdd_22_71 stored as values in memory (estimated size 37.7 MiB, free 552.1 MiB)
+26/10/31 17:27:38 INFO Executor: 1 block locks were not released by task 71.0 in stage 8.0 (TID 1478)
+[rdd_22_71]
+26/10/31 17:27:38 INFO Executor: Finished task 71.0 in stage 8.0 (TID 1478). 1709 bytes result sent to driver
+26/10/31 17:27:38 INFO CoarseGrainedExecutorBackend: Got assigned task 1482
+26/10/31 17:27:38 INFO Executor: Running task 75.0 in stage 8.0 (TID 1482)
+26/10/31 17:27:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-21/part-00442-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 0-67108864, partition values: [18221]
+26/10/31 17:27:38 INFO MemoryStore: Block rdd_22_75 stored as values in memory (estimated size 46.0 B, free 552.1 MiB)
+26/10/31 17:27:38 INFO Executor: 1 block locks were not released by task 75.0 in stage 8.0 (TID 1482)
+[rdd_22_75]
+26/10/31 17:27:38 INFO Executor: Finished task 75.0 in stage 8.0 (TID 1482). 1623 bytes result sent to driver
+26/10/31 17:27:38 INFO CoarseGrainedExecutorBackend: Got assigned task 1483
+26/10/31 17:27:38 INFO Executor: Running task 76.0 in stage 8.0 (TID 1483)
+26/10/31 17:27:38 INFO FileScanRDD: Reading File path: file:///app/data/lake/benchmark/e1/tier_l/silver/events/event_date=2019-11-21/part-00442-435a8c35-5b89-44a4-860a-a7e29b1a473f.c000.snappy.parquet, range: 67108864-134217728, partition values: [18221]
+26/10/31 17:27:44 INFO CoarseGrainedExecutorBackend: Driver commanded a shutdown
+26/10/31 17:27:44 ERROR CoarseGrainedExecutorBackend: RECEIVED SIGNAL TERM
+tdown

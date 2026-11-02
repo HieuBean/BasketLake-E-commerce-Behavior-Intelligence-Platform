@@ -1,0 +1,19 @@
+﻿{
+    "status":  "FAILED",
+    "pid":  24824,
+    "started_utc":  "2026-10-31T17:52:53.1554847Z",
+    "steps":  [
+                  {
+                      "exit_code":  0,
+                      "name":  "analysis"
+                  },
+                  {
+                      "exit_code":  0,
+                      "name":  "charts"
+                  }
+              ],
+    "error":  "26/10/31 18:32:58 INFO SparkContext: Running Spark version 3.5.4",
+    "finished_utc":  "2026-10-31T18:32:58.0336381Z",
+    "C_free":  123165380608,
+    "E_free":  209533317120
+}

@@ -1,0 +1,147 @@
+{
+  "fraction": 0.01,
+  "seed": 42,
+  "rows": 1099456,
+  "warmup_values": [
+    {
+      "category_l1": "electronics",
+      "revenue": 3858834.5000000014,
+      "purchase_count": 9228
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 525246.0100000004,
+      "purchase_count": 4092
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 322714.13,
+      "purchase_count": 1717
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 227845.89999999988,
+      "purchase_count": 590
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 45239.639999999985,
+      "purchase_count": 227
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 28095.890000000007,
+      "purchase_count": 211
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 23710.719999999998,
+      "purchase_count": 193
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 19856.890000000003,
+      "purchase_count": 245
+    },
+    {
+      "category_l1": "kids",
+      "revenue": 12847.31,
+      "purchase_count": 104
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 9833.97,
+      "purchase_count": 29
+    },
+    {
+      "category_l1": "accessories",
+      "revenue": 1867.73,
+      "purchase_count": 41
+    },
+    {
+      "category_l1": "medicine",
+      "revenue": 89.35,
+      "purchase_count": 2
+    },
+    {
+      "category_l1": "stationery",
+      "revenue": 45.08,
+      "purchase_count": 5
+    }
+  ],
+  "oracle_values": [
+    {
+      "category_l1": "apparel",
+      "revenue": 19856.890000000003,
+      "purchase_count": 245
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 28095.890000000003,
+      "purchase_count": 211
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 525246.0100000001,
+      "purchase_count": 4092
+    },
+    {
+      "category_l1": "stationery",
+      "revenue": 45.08,
+      "purchase_count": 5
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 23710.719999999998,
+      "purchase_count": 193
+    },
+    {
+      "category_l1": "kids",
+      "revenue": 12847.31,
+      "purchase_count": 104
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 45239.63999999999,
+      "purchase_count": 227
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 227845.89999999988,
+      "purchase_count": 590
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 322714.12999999995,
+      "purchase_count": 1717
+    },
+    {
+      "category_l1": "electronics",
+      "revenue": 3858834.500000001,
+      "purchase_count": 9228
+    },
+    {
+      "category_l1": "accessories",
+      "revenue": 1867.73,
+      "purchase_count": 41
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 9833.970000000001,
+      "purchase_count": 29
+    },
+    {
+      "category_l1": "medicine",
+      "revenue": 89.35,
+      "purchase_count": 2
+    }
+  ],
+  "preparation_and_warmup_s": 182.54957483599992,
+  "cached_columns": [
+    "event_type",
+    "category_l1",
+    "price"
+  ],
+  "validation_only": false,
+  "timing": "Method B: sample count and one warmup excluded"
+}

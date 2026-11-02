@@ -1,0 +1,22 @@
+{
+  "sha256": "7072f3bab2e86b139710e468e71ef1d9f499c2348933d1b27ab47d02b421dd7a",
+  "files": {
+    "._SUCCESS.crc": {
+      "bytes": 8,
+      "sha256": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d"
+    },
+    "_SUCCESS": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reject_rule=R7/.part-00954-c1edc23e-7b13-494d-8308-ddbc7bf7d254.c000.snappy.parquet.crc": {
+      "bytes": 39172,
+      "sha256": "62a0e668ca8da6cf79676686f2b0e4cb969811e2e3dde884d41299fe3117cd8d"
+    },
+    "reject_rule=R7/part-00954-c1edc23e-7b13-494d-8308-ddbc7bf7d254.c000.snappy.parquet": {
+      "bytes": 5012706,
+      "sha256": "24ae6b1210781c97a7764c4a0b8fb6eaa447427bd82b1ece3e6c6b76164e6156"
+    }
+  },
+  "method": "canonical relative-path/size/file-SHA256 mapping"
+}

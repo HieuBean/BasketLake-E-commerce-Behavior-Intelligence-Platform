@@ -315,3 +315,4 @@ E5-088199fc90,unknown,2026-10-24T06:56:49,E5_spark_cluster_frac100,spark_cluster
 E6_correctness_S,unknown,2026-10-24T07:01:19,E6,duckdb_oracle,,S,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True
 E6_correctness_S,unknown,2026-10-24T07:17:23,E6,duckdb_oracle,,S,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True
 E6_correctness_M,unknown,2026-10-24T07:51:56,E6,duckdb_oracle,,M,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True
+PIPE_silver_S_1793343824,unknown,2026-10-30T07:03:44,PIPE_silver,spark,3.5.4,S,1060392,0,0,0.0,200,True,32.366,0,0,0,0,True,in=1060438;quarantine=46

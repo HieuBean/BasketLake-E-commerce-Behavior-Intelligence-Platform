@@ -1,0 +1,31 @@
+== Parsed Logical Plan ==
+Aggregate [count(1) AS count#1348L]
++- Project [event_type#2, category_l1#6, price#12]
+   +- Filter (cast(pmod(xxhash64(42, brand#10, brand_missing#11, category_code#5, category_id#4L, category_l1#6, category_l2#7, category_l3#8, category_missing#9, event_date#22, event_hour#1, event_ts#0, event_type#2, ingest_ts#21, out_of_month#18, price#12, price_valid#13, product_id#3L, session_generated#17, session_id#16, source_file#19, source_month#20, user_id#14L, user_session#15, 42), cast(1000000 as bigint)) as double) < 1000000.0)
+      +- Relation [event_ts#0,event_hour#1,event_type#2,product_id#3L,category_id#4L,category_code#5,category_l1#6,category_l2#7,category_l3#8,category_missing#9,brand#10,brand_missing#11,price#12,price_valid#13,user_id#14L,user_session#15,session_id#16,session_generated#17,out_of_month#18,source_file#19,source_month#20,ingest_ts#21,event_date#22] parquet
+
+== Analyzed Logical Plan ==
+count: bigint
+Aggregate [count(1) AS count#1348L]
++- Project [event_type#2, category_l1#6, price#12]
+   +- Filter (cast(pmod(xxhash64(42, brand#10, brand_missing#11, category_code#5, category_id#4L, category_l1#6, category_l2#7, category_l3#8, category_missing#9, event_date#22, event_hour#1, event_ts#0, event_type#2, ingest_ts#21, out_of_month#18, price#12, price_valid#13, product_id#3L, session_generated#17, session_id#16, source_file#19, source_month#20, user_id#14L, user_session#15, 42), cast(1000000 as bigint)) as double) < 1000000.0)
+      +- Relation [event_ts#0,event_hour#1,event_type#2,product_id#3L,category_id#4L,category_code#5,category_l1#6,category_l2#7,category_l3#8,category_missing#9,brand#10,brand_missing#11,price#12,price_valid#13,user_id#14L,user_session#15,session_id#16,session_generated#17,out_of_month#18,source_file#19,source_month#20,ingest_ts#21,event_date#22] parquet
+
+== Optimized Logical Plan ==
+Aggregate [count(1) AS count#1348L]
++- Project
+   +- InMemoryRelation [event_type#2, category_l1#6, price#12], StorageLevel(disk, memory, 1 replicas)
+         +- *(1) Project [event_type#2, category_l1#6, price#12]
+            +- *(1) Filter (cast(pmod(xxhash64(42, brand#10, brand_missing#11, category_code#5, category_id#4L, category_l1#6, category_l2#7, category_l3#8, category_missing#9, event_date#22, event_hour#1, event_ts#0, event_type#2, ingest_ts#21, out_of_month#18, price#12, price_valid#13, product_id#3L, session_generated#17, session_id#16, source_file#19, source_month#20, user_id#14L, user_session#15, 42), 1000000) as double) < 1000000.0)
+               +- FileScan parquet [event_ts#0,event_hour#1,event_type#2,product_id#3L,category_id#4L,category_code#5,category_l1#6,category_l2#7,category_l3#8,category_missing#9,brand#10,brand_missing#11,price#12,price_valid#13,user_id#14L,user_session#15,session_id#16,session_generated#17,out_of_month#18,source_file#19,source_month#20,ingest_ts#21,event_date#22] Batched: false, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/app/data/lake/benchmark/e1/tier_l/silver/events], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<event_ts:timestamp,event_hour:int,event_type:string,product_id:bigint,category_id:bigint,c...
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=false
++- HashAggregate(keys=[], functions=[count(1)], output=[count#1348L])
+   +- Exchange SinglePartition, ENSURE_REQUIREMENTS, [plan_id=1320]
+      +- HashAggregate(keys=[], functions=[partial_count(1)], output=[count#1396L])
+         +- InMemoryTableScan
+               +- InMemoryRelation [event_type#2, category_l1#6, price#12], StorageLevel(disk, memory, 1 replicas)
+                     +- *(1) Project [event_type#2, category_l1#6, price#12]
+                        +- *(1) Filter (cast(pmod(xxhash64(42, brand#10, brand_missing#11, category_code#5, category_id#4L, category_l1#6, category_l2#7, category_l3#8, category_missing#9, event_date#22, event_hour#1, event_ts#0, event_type#2, ingest_ts#21, out_of_month#18, price#12, price_valid#13, product_id#3L, session_generated#17, session_id#16, source_file#19, source_month#20, user_id#14L, user_session#15, 42), 1000000) as double) < 1000000.0)
+                           +- FileScan parquet [event_ts#0,event_hour#1,event_type#2,product_id#3L,category_id#4L,category_code#5,category_l1#6,category_l2#7,category_l3#8,category_missing#9,brand#10,brand_missing#11,price#12,price_valid#13,user_id#14L,user_session#15,session_id#16,session_generated#17,out_of_month#18,source_file#19,source_month#20,ingest_ts#21,event_date#22] Batched: false, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/app/data/lake/benchmark/e1/tier_l/silver/events], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<event_ts:timestamp,event_hour:int,event_type:string,product_id:bigint,category_id:bigint,c...

@@ -13,7 +13,7 @@
 |----|-----|-------------|------------|-------------|
 | M1 | Hiếu | Hạ tầng + Docker + Bronze | E2, E7 | Chương 1, 4, Phụ lục |
 | M2 | *(điền tên)* | Silver — làm sạch R1–R9, DQ report | E3 | Chương 3, 5 (DQ) |
-| M3 | *(điền tên)* | Gold — sessionization, dim/fact | E1, E4 | Chương 5 (proc), 6 (perf) |
+| M3 | Tea | Gold — sessionization, dim/fact | E1 hoàn tất; E4 chưa chạy | Chương 5 (proc), 6 (perf) |
 | M4 | *(điền tên)* | Analytics — KPI, Funnel, Cohort | Phân tích, biểu đồ | Chương 7 (demo) |
 | M5 | *(điền tên)* | Analytics — RFM, KMeans, Baseline | E5, E6 | Chương 2 (lý thuyết), 6 |
 
@@ -109,10 +109,11 @@ make plots              # sinh biểu đồ → docs/figures/
 
 ```bash
 # Tất cả E1–E7
-make experiments TIER=L
+# Legacy aggregate target: chưa tương thích CLI E1 mới; xem hướng dẫn M3 bên dưới.
+# make experiments TIER=L
 
 # Từng thí nghiệm (khuyến nghị — dễ debug hơn)
-make experiment-e1 TIER=L   # scale data
+# E1: dùng CLI và profile đã kiểm chứng trong docs/M3_HANDOFF.md
 make experiment-e2 TIER=M   # scale resource
 make experiment-e3 TIER=M   # format comparison
 make experiment-e4 TIER=M   # tuning (shuffle, AQE, skew, join)
@@ -222,10 +223,10 @@ bigdata-ecom/
 
 | Thí nghiệm | Mô tả | Kết quả chính |
 |------------|-------|---------------|
-| E1 — Scale data | Wall time khi tăng từ 1%→100% dữ liệu | *(điền)* |
+| E1 — Scale data | Compute-only, cached sample, 1%→100% Silver L | 18/18 runs PASS; median 17.205→26.212 s với 1.099→109.820 triệu events. Không phải thời gian end-to-end. [M3 handoff](docs/M3_HANDOFF.md). |
 | E2 — Scale resource | Speedup: local[1]→local[4]→cluster | *(điền)* |
 | E3 — Format | CSV vs Parquet snappy vs zstd | *(điền)* |
-| E4 — Tuning | Shuffle partitions, AQE, skew salting | *(điền)* |
+| E4 — Tuning | Shuffle partitions, AQE, skew salting | NOT RUN — ngoài phạm vi Gold/Tier L/E1 đã nghiệm thu; không đánh dấu COMPLETE. |
 | E5 — Crossover | Điểm giao Pandas/DuckDB/Spark | Trong phép đo thời gian truy vấn tier M, Spark Local vượt DuckDB ở 100% (0.982 s so với 1.459 s), còn ở 50% thì chậm hơn; chưa xác định ngưỡng chính xác. Spark Cluster chưa vượt baseline. Xem [báo cáo M5](docs/baocao_chuong2_chuong6_m5.md). |
 | E6 — Correctness | Lệch KPI oracle vs Spark | Tier S và M: mỗi tier đạt 3/3 KPI trong ngưỡng 0.1% ở độ chính xác đã lưu. |
 | E7 — MapReduce | Số intermediate pairs: combiner giảm X% | *(điền)* |
@@ -261,6 +262,16 @@ bigdata-ecom/
 ---
 
 ## Troubleshooting
+
+**M3:** Gold/Tier L/E1 đã nghiệm thu; xem [hướng dẫn an toàn và tái lập](docs/M3_HANDOFF.md)
+và [biên bản bàn giao](docs/M3_SUMMARY.md). Target Makefile E1 cũ chỉ truyền
+`--tier`, thiếu `--git-sha`/Silver path/profile; không dùng target đó cho formal Tier L.
+Môi trường M3 thực đo là Spark **3.5.4** trong Docker, trong khi requirements host
+hiện ghim PySpark3.5.3; chưa sửa dependency chung. Các fixture runners M3 dùng Spark
+đã có trong container, không yêu cầu cài pytest/numpy trên host.
+OOM preparation đã được khắc phục bằng projection **sau** full-schema hash và reader
+settings cố định, không tăng RAM. Không áp dụng khuyến nghị tăng RAM chung để tự đổi
+profile E1 đã chốt; xem báo cáo Task06B để giữ phép so sánh hợp lệ.
 
 | Lỗi | Nguyên nhân | Cách sửa |
 |-----|------------|----------|

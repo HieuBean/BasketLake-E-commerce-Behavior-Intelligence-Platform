@@ -1,0 +1,101 @@
+{
+  "status": "RUNNING",
+  "application_id": "app-20261031175204-0001",
+  "points": [
+    {
+      "fraction": 0.25,
+      "pass": true,
+      "reference": {
+        "rows": 27460414,
+        "purchases": 415599,
+        "revenue": 126441544.69999987
+      },
+      "duration_s": 365.6307216739997,
+      "preparation_s": 210.78955306099988
+    },
+    {
+      "fraction": 1.0,
+      "pass": true,
+      "reference": {
+        "rows": 109820004,
+        "purchases": 1659703,
+        "revenue": 505126293.4400004
+      },
+      "duration_s": 406.64699854699984,
+      "preparation_s": 253.27402002600002
+    }
+  ],
+  "resources": {
+    "spark.master": "spark://spark-master:7077",
+    "spark.executor.cores": "1",
+    "spark.executor.memory": "1536m",
+    "spark.driver.memory": "2g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "1024",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.dynamicAllocation.enabled": "false",
+    "spark.sql.session.timeZone": "Etc/UTC",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.sql.parquet.enableVectorizedReader": "false",
+    "spark.sql.parquet.columnarReaderBatchSize": "512",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "1000",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.eventLog.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark_version": "3.5.4",
+    "application_id": "app-20261031175204-0001",
+    "driver_max_heap_bytes": 2147483648,
+    "workers": [
+      {
+        "id": "worker-20261031170336-172.19.0.4-45909",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1536
+      },
+      {
+        "id": "worker-20261031170336-172.19.0.5-37049",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 1,
+        "memoryused": 1536
+      }
+    ],
+    "alive_workers": 2
+  },
+  "source_columns": [
+    "event_ts",
+    "event_hour",
+    "event_type",
+    "product_id",
+    "category_id",
+    "category_code",
+    "category_l1",
+    "category_l2",
+    "category_l3",
+    "category_missing",
+    "brand",
+    "brand_missing",
+    "price",
+    "price_valid",
+    "user_id",
+    "user_session",
+    "session_id",
+    "session_generated",
+    "out_of_month",
+    "source_file",
+    "source_month",
+    "ingest_ts",
+    "event_date"
+  ],
+  "original_plan_source": "/opt/spark-events/app-20261031172341-0000",
+  "row_groups": {
+    "count": 103,
+    "max_compressed_bytes": 135720022,
+    "max_uncompressed_bytes": 154452847,
+    "total_rows": 109820004
+  }
+}

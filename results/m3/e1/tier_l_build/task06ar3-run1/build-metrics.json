@@ -1,0 +1,21 @@
+{
+  "started_utc": "2026-10-30T14:21:22.672556",
+  "status": "FAILED",
+  "persist_dedupe": false,
+  "application_id": "app-20261030142119-0003",
+  "effective_spark_conf": {
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.executor.memory": "1536m",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.master": "spark://spark-master:7077",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.driver.memory": "2g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "1024",
+    "spark.executor.cores": "1"
+  },
+  "metrics_path": "/app/results/m3/e1/tier_l_build/task06ar3-run1/build-metrics.json",
+  "error": "Py4JError('An error occurred while calling o508.parquet')",
+  "elapsed_seconds": 3172.0921714119995,
+  "completed_utc": "2026-10-30T15:14:14.585385"
+}

@@ -1,0 +1,268 @@
+{
+  "status": "PASS",
+  "stage": "build",
+  "application_id": "app-20261031063308-0003",
+  "spark_version": "3.5.4",
+  "started_utc": "2026-10-31T06:33:10.941312+00:00",
+  "effective_conf": {
+    "spark.dynamicAllocation.enabled": "false",
+    "spark.eventLog.enabled": "true",
+    "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Djava.io.tmpdir=/spark-local/task06a-final/java",
+    "spark.app.startTime": "1793428387989",
+    "spark.sql.ansi.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.driver.host": "a0dde0b964a7",
+    "spark.executor.memory": "1536m",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.app.id": "app-20261031063308-0003",
+    "spark.sql.parquet.compression.codec": "snappy",
+    "spark.master": "spark://spark-master:7077",
+    "spark.serializer.objectStreamReset": "100",
+    "spark.local.dir": "/spark-local",
+    "spark.executorEnv.TMPDIR": "/spark-local/task06a-final/python",
+    "spark.submit.deployMode": "client",
+    "spark.app.name": "m3-L-final-build",
+    "spark.sql.warehouse.dir": "file:/opt/spark/work-dir/spark-warehouse",
+    "spark.ui.enabled": "true",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.executor.id": "driver",
+    "spark.executorEnv.TEMP": "/spark-local/task06a-final/python",
+    "spark.executorEnv.TMP": "/spark-local/task06a-final/python",
+    "spark.app.submitTime": "1793428387394",
+    "spark.rdd.compress": "True",
+    "spark.driver.memory": "2g",
+    "spark.cores.max": "2",
+    "spark.sql.shuffle.partitions": "1024",
+    "spark.submit.pyFiles": "",
+    "spark.executor.cores": "1",
+    "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Djava.io.tmpdir=/spark-local/task06a-final/java",
+    "spark.driver.port": "45321",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.executorEnv.PYTHONDONTWRITEBYTECODE": "1",
+    "spark.history.fs.logDirectory": "file:///opt/spark-events"
+  },
+  "bronze_rows": 109950743,
+  "quarantine_rows": 130739,
+  "quarantine_schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "name": "event_time",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "event_type",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "product_id",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_id",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "category_code",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "brand",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "price",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "user_id",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "user_session",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "source_file",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "ingest_ts",
+        "type": "timestamp",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "source_month",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "reject_reason",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "reject_rule",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      }
+    ]
+  },
+  "rejects": [
+    {
+      "reject_rule": "R7",
+      "reject_reason": "duplicate_row",
+      "count": 130739
+    }
+  ],
+  "silver_branch_materialized": false,
+  "config": {
+    "paths": {
+      "raw": "/app/data/raw",
+      "bronze": "/app/data/lake/benchmark/e1/tier_l/bronze/events",
+      "silver": "/app/data/lake/benchmark/e1/tier_l/silver/events",
+      "quarantine": "/app/data/lake/benchmark/e1/tier_l/quarantine/events",
+      "gold": "/app/data/lake/benchmark/e1/tier_l/gold",
+      "results": "/app/results/m3/e1/tier_l_build"
+    },
+    "tiers": {
+      "L": {
+        "months": [
+          "2019-10",
+          "2019-11"
+        ]
+      }
+    },
+    "spark": {
+      "shuffle_partitions": 200,
+      "broadcast_threshold_bytes": 10485760,
+      "aqe_enabled": true
+    },
+    "cleaning": {
+      "valid_event_types": [
+        "view",
+        "cart",
+        "purchase",
+        "remove_from_cart"
+      ],
+      "session_gap_minutes": 30,
+      "price_min": 0.0
+    },
+    "analytics": {
+      "rfm_as_of": "2019-11-30",
+      "kmeans_k_range": [
+        "2",
+        "10"
+      ],
+      "kmeans_seed": 42,
+      "kmeans_max_iter": 20
+    }
+  },
+  "raw_provenance": [
+    {
+      "path": "/app/data/raw/2019-Oct.csv",
+      "bytes": 5668612855,
+      "gzip_magic": false,
+      "extension_magic_mismatch": false,
+      "header": [
+        "event_time",
+        "event_type",
+        "product_id",
+        "category_id",
+        "category_code",
+        "brand",
+        "price",
+        "user_id",
+        "user_session"
+      ],
+      "first_row_columns": 9,
+      "header_sample_valid": true,
+      "full_file_validation": "NOT RUN; header/sample only",
+      "sample_event_months": [
+        "2019-10"
+      ],
+      "sample_category_l1": [
+        "accessories",
+        "apparel",
+        "appliances",
+        "auto",
+        "computers",
+        "construction",
+        "country_yard",
+        "electronics",
+        "furniture",
+        "kids",
+        "medicine",
+        "sport",
+        "stationery"
+      ],
+      "mtime_ns": 1575915690000000000,
+      "sha256": "fedd938409b5f836ec89b39c861b13dad99fc7cd9beb1fddd97a2d50488b5b80"
+    },
+    {
+      "path": "/app/data/raw/2019-Nov.csv",
+      "bytes": 9006762395,
+      "gzip_magic": false,
+      "extension_magic_mismatch": false,
+      "header": [
+        "event_time",
+        "event_type",
+        "product_id",
+        "category_id",
+        "category_code",
+        "brand",
+        "price",
+        "user_id",
+        "user_session"
+      ],
+      "first_row_columns": 9,
+      "header_sample_valid": true,
+      "full_file_validation": "NOT RUN; header/sample only",
+      "sample_event_months": [
+        "2019-11"
+      ],
+      "sample_category_l1": [
+        "accessories",
+        "apparel",
+        "appliances",
+        "auto",
+        "computers",
+        "construction",
+        "electronics",
+        "furniture",
+        "kids",
+        "medicine",
+        "sport"
+      ],
+      "mtime_ns": 1575914856000000000,
+      "sha256": "addd9a27ed99abdece368019ebfba19568972c7fcbe949db3484aab8a3bcffec"
+    }
+  ],
+  "finished_utc": "2026-10-31T06:51:40.326395+00:00",
+  "elapsed_seconds": 1109.4460068970002
+}

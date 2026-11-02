@@ -68,7 +68,9 @@ switch ($Command.ToLower()) {
     }
     "e1" {
         Write-Host "==> Chạy Thí nghiệm E1 (Scale Data)..." -ForegroundColor Green
-        Invoke-Expression "$SPARK_SUBMIT /app/experiments/e1_scale_data.py --tier $Tier"
+        $gitSha = try { (git rev-parse --short HEAD).Trim() } catch { "HEAD" }
+        if (-not $gitSha) { $gitSha = "HEAD" }
+        Invoke-Expression "$SPARK_SUBMIT /app/experiments/e1_scale_data.py --tier $Tier --git-sha $gitSha"
     }
     "e2" {
         Write-Host "==> Chạy Thí nghiệm E2 (Amdahl Speedup)..." -ForegroundColor Green

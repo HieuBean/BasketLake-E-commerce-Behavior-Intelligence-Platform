@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-31T10:03:26.195358+00:00",
+  "source": "/app/data/lake/benchmark/e1/tier_l/recovery/task06a-final-q1/quarantine/events",
+  "destination": "/app/data/lake/benchmark/e1/tier_l/quarantine/events",
+  "method": "Windows same-volume os.rename, no overwrite",
+  "quarantine_sha256": "7072f3bab2e86b139710e468e71ef1d9f499c2348933d1b27ab47d02b421dd7a"
+}
