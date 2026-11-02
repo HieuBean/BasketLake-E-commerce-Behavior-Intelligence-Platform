@@ -1,8 +1,13 @@
-param([string]$CacheRoot='E:\DevCaches\BasketLake')
+param([string]$CacheRoot)
 $ErrorActionPreference='Stop'
 $projectRoot=[IO.Path]::GetFullPath((Split-Path $PSScriptRoot -Parent))
-if ($projectRoot -notmatch '^(?i)E:\\' -or $CacheRoot -notmatch '^(?i)E:\\') {throw 'Project and cache must be on E'}
-$routes=[ordered]@{TEMP=(Join-Path $projectRoot '.tmp');TMP=(Join-Path $projectRoot '.tmp');TMPDIR=(Join-Path $projectRoot '.tmp');PIP_CACHE_DIR=(Join-Path $CacheRoot 'pip');PYTHONPYCACHEPREFIX=(Join-Path $CacheRoot 'pycache');SPARK_LOCAL_DIRS='E:\SparkTemp\host-driver'}
+$projectDrive = Split-Path $projectRoot -Qualifier
+if (-not $CacheRoot) {
+    if (Test-Path 'E:\') { $CacheRoot = 'E:\DevCaches\BasketLake' }
+    else { $CacheRoot = Join-Path $projectDrive '\DevCaches\BasketLake' }
+}
+$sparkLocalDirs = if (Test-Path 'E:\SparkTemp') { 'E:\SparkTemp\host-driver' } else { Join-Path $projectRoot '.tmp\spark-local' }
+$routes=[ordered]@{TEMP=(Join-Path $projectRoot '.tmp');TMP=(Join-Path $projectRoot '.tmp');TMPDIR=(Join-Path $projectRoot '.tmp');PIP_CACHE_DIR=(Join-Path $CacheRoot 'pip');PYTHONPYCACHEPREFIX=(Join-Path $CacheRoot 'pycache');SPARK_LOCAL_DIRS=$sparkLocalDirs}
 foreach($target in @($routes.Values)+@((Join-Path $CacheRoot 'pytest'),(Join-Path $projectRoot '.tmp\java'),(Join-Path $projectRoot '.tmp\checkpoints'))) {
     $cursor=[IO.Path]::GetFullPath($target)
     while($cursor) {

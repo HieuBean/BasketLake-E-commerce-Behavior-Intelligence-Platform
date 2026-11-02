@@ -10,8 +10,6 @@ x-spark-common: &spark-common
     - SPARK_WORKER_MEMORY=${SPARK_WORKER_MEMORY:-2G}
     - SPARK_WORKER_CORES=${SPARK_WORKER_CORES:-2}
     - PYTHONPATH=/app
-    - SPARK_LOCAL_DIRS=/spark-local
-    - SPARK_WORKER_DIR=/spark-work
   volumes:
     - ../:/app                           # mount toàn bộ repo vào /app (bao gồm data/)
     - spark-events:/opt/spark-events
@@ -27,7 +25,6 @@ services:
     user: root
     environment:
       - PYTHONPATH=/app
-      - SPARK_LOCAL_DIRS=/spark-local
     ports:
       - "8080:8080"    # Spark Master UI
       - "7077:7077"    # Spark submit endpoint
@@ -35,30 +32,17 @@ services:
       - ../:/app
       - spark-events:/opt/spark-events
       - ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
-      - E:/SparkTemp/master/local:/spark-local
     command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master", "--ip", "0.0.0.0", "--port", "7077", "--webui-port", "8080"]
 
   spark-worker-1:
     <<: *spark-common
     container_name: spark-worker-1
-    volumes:
-      - ../:/app
-      - spark-events:/opt/spark-events
-      - ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
-      - E:/SparkTemp/worker-1/local:/spark-local
-      - E:/SparkTemp/worker-1/work:/spark-work
     ports:
       - "8081:8081"
 
   spark-worker-2:
     <<: *spark-common
     container_name: spark-worker-2
-    volumes:
-      - ../:/app
-      - spark-events:/opt/spark-events
-      - ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
-      - E:/SparkTemp/worker-2/local:/spark-local
-      - E:/SparkTemp/worker-2/work:/spark-work
     ports:
       - "8082:8082"
 
