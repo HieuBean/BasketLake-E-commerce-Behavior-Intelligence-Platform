@@ -154,7 +154,7 @@ test-invariants:
 
 lint:
 	$(COMPOSE) exec spark-master bash -c \
-		"cd /app && python3 -m ruff check src/ experiments/ tests/"
+		"cd /app && ruff check src/ experiments/ tests/"
 
 # ---------- Dọn dẹp ----------
 

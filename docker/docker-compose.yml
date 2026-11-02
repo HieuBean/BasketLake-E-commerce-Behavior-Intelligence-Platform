@@ -1,10 +1,17 @@
 # =============================================================================
 # Spark standalone cluster: 1 master + 2 workers + History Server
-# Image: apache/spark:3.5.4 (chính thức từ Apache)
+# Base image: apache/spark:3.5.4 (chính thức từ Apache)
+#
+# Dùng `build:` thay vì kéo thẳng image gốc: image gốc KHÔNG có pytest,
+# matplotlib, duckdb... nên `make test` / `make plots` trong container sẽ fail.
+# Dockerfile cài các gói đó lên trên base image.
 # =============================================================================
 
 x-spark-common: &spark-common
-  image: apache/spark:3.5.4
+  build:
+    context: .
+    dockerfile: Dockerfile
+  image: basketlake-spark:3.5.4
   user: root                             # quyền ghi vào /app/data/lake
   environment:
     - SPARK_WORKER_MEMORY=${SPARK_WORKER_MEMORY:-2G}
@@ -20,13 +27,16 @@ x-spark-common: &spark-common
 
 services:
   spark-master:
-    image: apache/spark:3.5.4
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: basketlake-spark:3.5.4
     container_name: spark-master
     user: root
     environment:
       - PYTHONPATH=/app
     ports:
-      - "8080:8080"    # Spark Master UI
+      - "8089:8080"    # Spark Master UI (host 8089 vì 8080 hay bị tiến trình khác chiếm)
       - "7077:7077"    # Spark submit endpoint
     volumes:
       - ../:/app
@@ -47,7 +57,10 @@ services:
       - "8082:8082"
 
   spark-history:
-    image: apache/spark:3.5.4
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: basketlake-spark:3.5.4
     container_name: spark-history
     user: root
     environment:

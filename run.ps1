@@ -110,7 +110,7 @@ switch ($Command.ToLower()) {
     }
     "lint" {
         Write-Host "==> Chạy Ruff Linter..." -ForegroundColor Green
-        Invoke-Expression "$COMPOSE exec spark-master python3 -m ruff check src/ experiments/ tests/"
+        Invoke-Expression "$COMPOSE exec spark-master ruff check src/ experiments/ tests/"
     }
     default {
         Write-Host @"
