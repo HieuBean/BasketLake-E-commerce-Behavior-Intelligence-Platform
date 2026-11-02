@@ -70,7 +70,7 @@ graph TD
     end
 
     subgraph Compute ["Tầng Tính Toán (Apache Spark Standalone Cluster)"]
-        Master["spark-master<br/>(Driver / Cluster Manager: 8080, 7077)"]
+        Master["spark-master<br/>(Driver / Cluster Manager: 8089, 7077)"]
         Worker1["spark-worker-1<br/>(2 Cores, 2GB RAM)"]
         Worker2["spark-worker-2<br/>(2 Cores, 2GB RAM)"]
         History["spark-history<br/>(Event Logs UI: 18080)"]
@@ -162,7 +162,7 @@ docker compose -f docker/docker-compose.yml up -d
 docker compose -f docker/docker-compose.yml ps
 
 # Truy cập giao diện trực quan:
-# - Spark Master UI:  http://localhost:8080 (Kiểm tra 2 Workers đã kết nối)
+# - Spark Master UI:  http://localhost:8089 (Kiểm tra 2 Workers đã kết nối)
 # - History Server:   http://localhost:18080
 ```
 

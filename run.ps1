@@ -22,7 +22,7 @@ $PYSPARK_PATH = "/app:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.
 switch ($Command.ToLower()) {
     "up" {
         Invoke-Expression "$COMPOSE up -d"
-        Write-Host "`nSpark Master UI : http://localhost:8080" -ForegroundColor Cyan
+        Write-Host "`nSpark Master UI : http://localhost:8089" -ForegroundColor Cyan
         Write-Host "History Server  : http://localhost:18080`n" -ForegroundColor Cyan
     }
     "down" {

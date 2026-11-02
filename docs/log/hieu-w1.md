@@ -19,7 +19,7 @@ Khởi tạo cụm Spark gồm 1 Master, 2 Workers và 1 History Server. Cần m
 Chọn `apache/spark:3.5.3` vì Bitnami đã chuyển chính sách phân phối một số image Spark cũ sang kho lưu trữ riêng, trong khi image chính thức của Apache Spark hoạt động ổn định và có sẵn trên Docker Hub.
 
 **Chi tiết cấu hình**:
-- `spark-master`: cổng UI 8080, cluster port 7077.
+- `spark-master`: cổng UI 8089, cluster port 7077.
 - `spark-worker-1` & `spark-worker-2`: mỗi worker cấp 2 Cores, 2GB RAM.
 - `spark-history`: cổng UI 18080.
 - Volume: bind mount `../:/app` để chia sẻ toàn bộ code và data lake.

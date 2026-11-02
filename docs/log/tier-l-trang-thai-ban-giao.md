@@ -157,7 +157,8 @@ Tôi đã tăng lên `6G` → **tệ hơn**, vì Docker VM chỉ được cấp 
 
 **Đã sửa**: `docker-compose.yml` đổi sang `"8089:8080"`.
 → Spark Master UI giờ ở **http://localhost:8089** (không còn 8080).
-⚠️ Cần cập nhật README và mọi tài liệu đang ghi `localhost:8080`.
+✅ Đã cập nhật toàn bộ tài liệu ghi `localhost:8080` → `8089`
+(Makefile, run.ps1, README, phan-cong-nhom.md, báo cáo M1, nhật ký hieu-w1).
 
 ---
 

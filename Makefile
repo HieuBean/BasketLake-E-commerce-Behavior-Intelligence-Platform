@@ -41,7 +41,7 @@ help:
 up:
 	$(COMPOSE) up -d
 	@echo ""
-	@echo "Spark Master UI : http://localhost:8080"
+	@echo "Spark Master UI : http://localhost:8089"
 	@echo "History Server  : http://localhost:18080"
 	@echo ""
 
