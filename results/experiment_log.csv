@@ -1,4 +1,4 @@
-﻿run_id,git_sha,timestamp,experiment,engine,engine_version,tier,row_count,cores,executors,ram_gb,shuffle_partitions,aqe_enabled,wall_time_s,shuffle_read_bytes,shuffle_write_bytes,spill_bytes,peak_ram_bytes,success,notes
+run_id,git_sha,timestamp,experiment,engine,engine_version,tier,row_count,cores,executors,ram_gb,shuffle_partitions,aqe_enabled,wall_time_s,shuffle_read_bytes,shuffle_write_bytes,spill_bytes,peak_ram_bytes,success,notes
 PIPE_silver_S_1791976986,unknown,2026-10-14T11:23:06,PIPE_silver,spark,3.5.3,S,1060392,0,0,0.0,200,True,30.616,0,0,0,0,True,in=1060438;quarantine=46
 E3_csv_Q1-run1-d6b9fa,unknown,2026-10-14T11:23:50,E3_csv_Q1,spark_csv,3.5.3,S,3,0,0,0.0,4,True,2.557,0,0,0,0,True,
 E3_csv_Q2-run1-0fdf16,unknown,2026-10-14T11:23:53,E3_csv_Q2,spark_csv,3.5.3,S,13,0,0,0.0,4,True,2.422,0,0,0,0,True,
@@ -316,3 +316,4 @@ E6_correctness_S,unknown,2026-10-24T07:01:19,E6,duckdb_oracle,,S,0,0,0,0.0,200,T
 E6_correctness_S,unknown,2026-10-24T07:17:23,E6,duckdb_oracle,,S,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True
 E6_correctness_M,unknown,2026-10-24T07:51:56,E6,duckdb_oracle,,M,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True
 PIPE_silver_S_1793343824,unknown,2026-10-30T07:03:44,PIPE_silver,spark,3.5.4,S,1060392,0,0,0.0,200,True,32.366,0,0,0,0,True,in=1060438;quarantine=46
+PIPE_silver_L_1793558002,unknown,2026-11-01T18:33:22,PIPE_silver,spark,3.5.4,L,109820004,0,0,0.0,200,True,1184.865,0,0,0,0,True,in=109950743;quarantine=130739
