@@ -317,3 +317,88 @@ E6_correctness_S,unknown,2026-10-24T07:17:23,E6,duckdb_oracle,,S,0,0,0,0.0,200,T
 E6_correctness_M,unknown,2026-10-24T07:51:56,E6,duckdb_oracle,,M,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True
 PIPE_silver_S_1793343824,unknown,2026-10-30T07:03:44,PIPE_silver,spark,3.5.4,S,1060392,0,0,0.0,200,True,32.366,0,0,0,0,True,in=1060438;quarantine=46
 PIPE_silver_L_1793558002,unknown,2026-11-01T18:33:22,PIPE_silver,spark,3.5.4,L,109820004,0,0,0.0,200,True,1184.865,0,0,0,0,True,in=109950743;quarantine=130739
+E2_local_1-run1-26fb4a,unknown,2026-11-07T17:47:03,E2_local_1,spark,,s,13,0,0,0.0,200,True,47.336,0,0,0,0,True,
+E2_local_1-run2-a2db98,unknown,2026-11-07T17:47:55,E2_local_1,spark,,s,13,0,0,0.0,200,True,51.673,0,0,0,0,True,
+E2_local_1-run3-a54e92,unknown,2026-11-07T17:48:40,E2_local_1,spark,,s,13,0,0,0.0,200,True,45.145,0,0,0,0,True,
+E2_local_2-run1-723456,unknown,2026-11-07T17:49:00,E2_local_2,spark,,s,13,0,0,0.0,200,True,19.381,0,0,0,0,True,
+E2_local_2-run2-d0587d,unknown,2026-11-07T17:49:15,E2_local_2,spark,,s,13,0,0,0.0,200,True,15.511,0,0,0,0,True,
+E2_local_2-run3-21602f,unknown,2026-11-07T17:49:37,E2_local_2,spark,,s,13,0,0,0.0,200,True,22.139,0,0,0,0,True,
+E2_local_4-run1-987069,unknown,2026-11-07T17:49:53,E2_local_4,spark,,s,13,0,0,0.0,200,True,15.518,0,0,0,0,True,
+E2_local_4-run2-0dd270,unknown,2026-11-07T17:50:11,E2_local_4,spark,,s,13,0,0,0.0,200,True,17.543,0,0,0,0,True,
+E2_local_4-run3-c627f3,unknown,2026-11-07T17:50:25,E2_local_4,spark,,s,13,0,0,0.0,200,True,13.864,0,0,0,0,True,
+E2_local_star-run1-520feb,unknown,2026-11-07T17:50:38,E2_local_star,spark,,s,13,0,0,0.0,200,True,13.219,0,0,0,0,True,
+E2_local_star-run2-06b619,unknown,2026-11-07T17:50:47,E2_local_star,spark,,s,13,0,0,0.0,200,True,8.446,0,0,0,0,True,
+E2_local_star-run3-bae727,unknown,2026-11-07T17:50:54,E2_local_star,spark,,s,13,0,0,0.0,200,True,7.516,0,0,0,0,True,
+E2_cluster-run1-e5db51,unknown,2026-11-07T17:51:09,E2_cluster,spark,,s,13,0,0,0.0,200,True,14.457,0,0,0,0,True,
+E2_cluster-run2-caf83d,unknown,2026-11-07T17:51:22,E2_cluster,spark,,s,13,0,0,0.0,200,True,12.423,0,0,0,0,True,
+E2_cluster-run3-8d474a,unknown,2026-11-07T17:51:35,E2_cluster,spark,,s,13,0,0,0.0,200,True,12.812,0,0,0,0,True,
+E7_no_combiner,unknown,2026-11-13T04:42:10,E7,python_mr,,M,0,0,0,0.0,200,True,8.502,0,0,0,0,True,intermediate_pairs=18470
+E7_with_combiner,unknown,2026-11-13T04:42:15,E7,python_mr,,M,0,0,0,0.0,200,True,5.76,0,0,0,0,True,intermediate_pairs=1016
+E4_T1_sp50-run1-51edde,unknown,2026-11-13T04:43:05,E4_T1_sp50,spark,,S,5476,0,0,0.0,200,True,2.344,0,0,0,0,True,"shuffle_partitions=50,aqe=false"
+E4_T1_sp50-run2-57ed45,unknown,2026-11-13T04:43:05,E4_T1_sp50,spark,,S,5476,0,0,0.0,200,True,0.864,0,0,0,0,True,"shuffle_partitions=50,aqe=false"
+E4_T1_sp50-run3-0f85cf,unknown,2026-11-13T04:43:06,E4_T1_sp50,spark,,S,5476,0,0,0.0,200,True,0.681,0,0,0,0,True,"shuffle_partitions=50,aqe=false"
+E4_T1_sp100-run1-4e956f,unknown,2026-11-13T04:43:07,E4_T1_sp100,spark,,S,5476,0,0,0.0,200,True,0.961,0,0,0,0,True,"shuffle_partitions=100,aqe=false"
+E4_T1_sp100-run2-ecb620,unknown,2026-11-13T04:43:08,E4_T1_sp100,spark,,S,5476,0,0,0.0,200,True,0.72,0,0,0,0,True,"shuffle_partitions=100,aqe=false"
+E4_T1_sp100-run3-c2b41b,unknown,2026-11-13T04:43:09,E4_T1_sp100,spark,,S,5476,0,0,0.0,200,True,0.697,0,0,0,0,True,"shuffle_partitions=100,aqe=false"
+E4_T1_sp200-run1-f7429d,unknown,2026-11-13T04:43:10,E4_T1_sp200,spark,,S,5476,0,0,0.0,200,True,1.061,0,0,0,0,True,"shuffle_partitions=200,aqe=false"
+E4_T1_sp200-run2-540758,unknown,2026-11-13T04:43:11,E4_T1_sp200,spark,,S,5476,0,0,0.0,200,True,0.909,0,0,0,0,True,"shuffle_partitions=200,aqe=false"
+E4_T1_sp200-run3-86aa47,unknown,2026-11-13T04:43:11,E4_T1_sp200,spark,,S,5476,0,0,0.0,200,True,0.691,0,0,0,0,True,"shuffle_partitions=200,aqe=false"
+E4_T1_sp400-run1-7eceaf,unknown,2026-11-13T04:43:13,E4_T1_sp400,spark,,S,5476,0,0,0.0,200,True,1.206,0,0,0,0,True,"shuffle_partitions=400,aqe=false"
+E4_T1_sp400-run2-e1a3f3,unknown,2026-11-13T04:43:14,E4_T1_sp400,spark,,S,5476,0,0,0.0,200,True,1.136,0,0,0,0,True,"shuffle_partitions=400,aqe=false"
+E4_T1_sp400-run3-b305a3,unknown,2026-11-13T04:43:15,E4_T1_sp400,spark,,S,5476,0,0,0.0,200,True,1.224,0,0,0,0,True,"shuffle_partitions=400,aqe=false"
+E4_T1_sp800-run1-476e54,unknown,2026-11-13T04:43:17,E4_T1_sp800,spark,,S,5476,0,0,0.0,200,True,2.313,0,0,0,0,True,"shuffle_partitions=800,aqe=false"
+E4_T1_sp800-run2-afa367,unknown,2026-11-13T04:43:19,E4_T1_sp800,spark,,S,5476,0,0,0.0,200,True,1.766,0,0,0,0,True,"shuffle_partitions=800,aqe=false"
+E4_T1_sp800-run3-a76bfd,unknown,2026-11-13T04:43:21,E4_T1_sp800,spark,,S,5476,0,0,0.0,200,True,2.086,0,0,0,0,True,"shuffle_partitions=800,aqe=false"
+E4_T2_aqeoff-run1-6e4fd7,unknown,2026-11-13T04:43:22,E4_T2_aqeoff,spark,,S,5476,0,0,0.0,200,True,0.799,0,0,0,0,True,"shuffle_partitions=200,aqe=False"
+E4_T2_aqeoff-run2-6448c8,unknown,2026-11-13T04:43:23,E4_T2_aqeoff,spark,,S,5476,0,0,0.0,200,True,0.722,0,0,0,0,True,"shuffle_partitions=200,aqe=False"
+E4_T2_aqeoff-run3-0d25e4,unknown,2026-11-13T04:43:23,E4_T2_aqeoff,spark,,S,5476,0,0,0.0,200,True,0.706,0,0,0,0,True,"shuffle_partitions=200,aqe=False"
+E4_T2_aqeon-run1-423171,unknown,2026-11-13T04:43:24,E4_T2_aqeon,spark,,S,5476,0,0,0.0,200,True,0.235,0,0,0,0,True,"shuffle_partitions=200,aqe=True"
+E4_T2_aqeon-run2-c7e90a,unknown,2026-11-13T04:43:24,E4_T2_aqeon,spark,,S,5476,0,0,0.0,200,True,0.195,0,0,0,0,True,"shuffle_partitions=200,aqe=True"
+E4_T2_aqeon-run3-1389fb,unknown,2026-11-13T04:43:24,E4_T2_aqeon,spark,,S,5476,0,0,0.0,200,True,0.232,0,0,0,0,True,"shuffle_partitions=200,aqe=True"
+E4_T3_broadcast-run1-aa0287,unknown,2026-11-13T04:43:25,E4_T3_broadcast,spark,,S,0,0,0,0.0,200,True,0.134,0,0,0,0,False,"[AMBIGUOUS_REFERENCE] Reference `brand` is ambiguous, could be: [`brand`, `brand`]."
+E4_T3_broadcast-run2-33a31d,unknown,2026-11-13T04:43:25,E4_T3_broadcast,spark,,S,0,0,0,0.0,200,True,0.02,0,0,0,0,False,"[AMBIGUOUS_REFERENCE] Reference `brand` is ambiguous, could be: [`brand`, `brand`]."
+E4_T3_broadcast-run3-ebb618,unknown,2026-11-13T04:43:25,E4_T3_broadcast,spark,,S,0,0,0,0.0,200,True,0.032,0,0,0,0,False,"[AMBIGUOUS_REFERENCE] Reference `brand` is ambiguous, could be: [`brand`, `brand`]."
+E4_T3_sortmerge-run1-99b0e6,unknown,2026-11-13T04:43:25,E4_T3_sortmerge,spark,,S,0,0,0,0.0,200,True,0.027,0,0,0,0,False,"[AMBIGUOUS_REFERENCE] Reference `brand` is ambiguous, could be: [`brand`, `brand`]."
+E4_T3_sortmerge-run2-a3d939,unknown,2026-11-13T04:43:25,E4_T3_sortmerge,spark,,S,0,0,0,0.0,200,True,0.022,0,0,0,0,False,"[AMBIGUOUS_REFERENCE] Reference `brand` is ambiguous, could be: [`brand`, `brand`]."
+E4_T3_sortmerge-run3-82a230,unknown,2026-11-13T04:43:25,E4_T3_sortmerge,spark,,S,0,0,0,0.0,200,True,0.023,0,0,0,0,False,"[AMBIGUOUS_REFERENCE] Reference `brand` is ambiguous, could be: [`brand`, `brand`]."
+E4_T4_no_salt-run1-0ded9c,unknown,2026-11-13T04:43:26,E4_T4_no_salt,spark,,S,5476,0,0,0.0,200,True,0.918,0,0,0,0,True,"salt=none,buckets=0"
+E4_T4_no_salt-run2-898729,unknown,2026-11-13T04:43:27,E4_T4_no_salt,spark,,S,5476,0,0,0.0,200,True,0.681,0,0,0,0,True,"salt=none,buckets=0"
+E4_T4_no_salt-run3-7309b8,unknown,2026-11-13T04:43:27,E4_T4_no_salt,spark,,S,5476,0,0,0.0,200,True,0.716,0,0,0,0,True,"salt=none,buckets=0"
+E4_T4_salt20-run1-391990,unknown,2026-11-13T04:43:28,E4_T4_salt20,spark,,S,5476,0,0,0.0,200,True,0.653,0,0,0,0,True,"salt=random,buckets=20"
+E4_T4_salt20-run2-f3a46a,unknown,2026-11-13T04:43:29,E4_T4_salt20,spark,,S,5476,0,0,0.0,200,True,0.545,0,0,0,0,True,"salt=random,buckets=20"
+E4_T4_salt20-run3-5629fa,unknown,2026-11-13T04:43:29,E4_T4_salt20,spark,,S,5476,0,0,0.0,200,True,0.599,0,0,0,0,True,"salt=random,buckets=20"
+E4_T1_sp50-run1-da7e58,unknown,2026-11-13T04:45:40,E4_T1_sp50,spark,,S,5476,0,0,0.0,200,True,1.085,0,0,0,0,True,"shuffle_partitions=50,aqe=false"
+E4_T1_sp50-run2-501817,unknown,2026-11-13T04:45:41,E4_T1_sp50,spark,,S,5476,0,0,0.0,200,True,0.471,0,0,0,0,True,"shuffle_partitions=50,aqe=false"
+E4_T1_sp50-run3-01b602,unknown,2026-11-13T04:45:41,E4_T1_sp50,spark,,S,5476,0,0,0.0,200,True,0.331,0,0,0,0,True,"shuffle_partitions=50,aqe=false"
+E4_T1_sp100-run1-21efb2,unknown,2026-11-13T04:45:41,E4_T1_sp100,spark,,S,5476,0,0,0.0,200,True,0.477,0,0,0,0,True,"shuffle_partitions=100,aqe=false"
+E4_T1_sp100-run2-608f7e,unknown,2026-11-13T04:45:42,E4_T1_sp100,spark,,S,5476,0,0,0.0,200,True,0.4,0,0,0,0,True,"shuffle_partitions=100,aqe=false"
+E4_T1_sp100-run3-924fbc,unknown,2026-11-13T04:45:42,E4_T1_sp100,spark,,S,5476,0,0,0.0,200,True,0.433,0,0,0,0,True,"shuffle_partitions=100,aqe=false"
+E4_T1_sp200-run1-f46b94,unknown,2026-11-13T04:45:43,E4_T1_sp200,spark,,S,5476,0,0,0.0,200,True,0.655,0,0,0,0,True,"shuffle_partitions=200,aqe=false"
+E4_T1_sp200-run2-7676fa,unknown,2026-11-13T04:45:44,E4_T1_sp200,spark,,S,5476,0,0,0.0,200,True,0.557,0,0,0,0,True,"shuffle_partitions=200,aqe=false"
+E4_T1_sp200-run3-fb4206,unknown,2026-11-13T04:45:44,E4_T1_sp200,spark,,S,5476,0,0,0.0,200,True,0.581,0,0,0,0,True,"shuffle_partitions=200,aqe=false"
+E4_T1_sp400-run1-7ffa9b,unknown,2026-11-13T04:45:45,E4_T1_sp400,spark,,S,5476,0,0,0.0,200,True,1.048,0,0,0,0,True,"shuffle_partitions=400,aqe=false"
+E4_T1_sp400-run2-1253a5,unknown,2026-11-13T04:45:46,E4_T1_sp400,spark,,S,5476,0,0,0.0,200,True,0.928,0,0,0,0,True,"shuffle_partitions=400,aqe=false"
+E4_T1_sp400-run3-16a435,unknown,2026-11-13T04:45:47,E4_T1_sp400,spark,,S,5476,0,0,0.0,200,True,0.972,0,0,0,0,True,"shuffle_partitions=400,aqe=false"
+E4_T1_sp800-run1-c63039,unknown,2026-11-13T04:45:49,E4_T1_sp800,spark,,S,5476,0,0,0.0,200,True,2.006,0,0,0,0,True,"shuffle_partitions=800,aqe=false"
+E4_T1_sp800-run2-2b90cc,unknown,2026-11-13T04:45:51,E4_T1_sp800,spark,,S,5476,0,0,0.0,200,True,1.497,0,0,0,0,True,"shuffle_partitions=800,aqe=false"
+E4_T1_sp800-run3-f3fe66,unknown,2026-11-13T04:45:52,E4_T1_sp800,spark,,S,5476,0,0,0.0,200,True,1.429,0,0,0,0,True,"shuffle_partitions=800,aqe=false"
+E4_T2_aqeoff-run1-710066,unknown,2026-11-13T04:45:53,E4_T2_aqeoff,spark,,S,5476,0,0,0.0,200,True,0.448,0,0,0,0,True,"shuffle_partitions=200,aqe=False"
+E4_T2_aqeoff-run2-9198bc,unknown,2026-11-13T04:45:53,E4_T2_aqeoff,spark,,S,5476,0,0,0.0,200,True,0.419,0,0,0,0,True,"shuffle_partitions=200,aqe=False"
+E4_T2_aqeoff-run3-49edb9,unknown,2026-11-13T04:45:53,E4_T2_aqeoff,spark,,S,5476,0,0,0.0,200,True,0.471,0,0,0,0,True,"shuffle_partitions=200,aqe=False"
+E4_T2_aqeon-run1-c536ec,unknown,2026-11-13T04:45:54,E4_T2_aqeon,spark,,S,5476,0,0,0.0,200,True,0.185,0,0,0,0,True,"shuffle_partitions=200,aqe=True"
+E4_T2_aqeon-run2-374f19,unknown,2026-11-13T04:45:54,E4_T2_aqeon,spark,,S,5476,0,0,0.0,200,True,0.158,0,0,0,0,True,"shuffle_partitions=200,aqe=True"
+E4_T2_aqeon-run3-b8d378,unknown,2026-11-13T04:45:54,E4_T2_aqeon,spark,,S,5476,0,0,0.0,200,True,0.126,0,0,0,0,True,"shuffle_partitions=200,aqe=True"
+E4_T3_broadcast-run1-410769,unknown,2026-11-13T04:45:55,E4_T3_broadcast,spark,,S,730,0,0,0.0,200,True,1.092,0,0,0,0,True,join=broadcast
+E4_T3_broadcast-run2-d2220d,unknown,2026-11-13T04:45:56,E4_T3_broadcast,spark,,S,730,0,0,0.0,200,True,0.532,0,0,0,0,True,join=broadcast
+E4_T3_broadcast-run3-0ef9a1,unknown,2026-11-13T04:45:56,E4_T3_broadcast,spark,,S,730,0,0,0.0,200,True,0.485,0,0,0,0,True,join=broadcast
+E4_T3_sortmerge-run1-4b64d2,unknown,2026-11-13T04:45:58,E4_T3_sortmerge,spark,,S,730,0,0,0.0,200,True,1.495,0,0,0,0,True,join=sort_merge
+E4_T3_sortmerge-run2-5fc18b,unknown,2026-11-13T04:45:59,E4_T3_sortmerge,spark,,S,730,0,0,0.0,200,True,1.092,0,0,0,0,True,join=sort_merge
+E4_T3_sortmerge-run3-60cd8f,unknown,2026-11-13T04:46:00,E4_T3_sortmerge,spark,,S,730,0,0,0.0,200,True,0.974,0,0,0,0,True,join=sort_merge
+E4_T4_no_salt-run1-9df034,unknown,2026-11-13T04:46:01,E4_T4_no_salt,spark,,S,5476,0,0,0.0,200,True,0.576,0,0,0,0,True,"salt=none,buckets=0"
+E4_T4_no_salt-run2-2e4911,unknown,2026-11-13T04:46:01,E4_T4_no_salt,spark,,S,5476,0,0,0.0,200,True,0.416,0,0,0,0,True,"salt=none,buckets=0"
+E4_T4_no_salt-run3-be46cb,unknown,2026-11-13T04:46:01,E4_T4_no_salt,spark,,S,5476,0,0,0.0,200,True,0.404,0,0,0,0,True,"salt=none,buckets=0"
+E4_T4_salt20-run1-e67fa2,unknown,2026-11-13T04:46:02,E4_T4_salt20,spark,,S,5476,0,0,0.0,200,True,0.414,0,0,0,0,True,"salt=random,buckets=20"
+E4_T4_salt20-run2-1a166a,unknown,2026-11-13T04:46:02,E4_T4_salt20,spark,,S,5476,0,0,0.0,200,True,0.429,0,0,0,0,True,"salt=random,buckets=20"
+E4_T4_salt20-run3-2f1547,unknown,2026-11-13T04:46:03,E4_T4_salt20,spark,,S,5476,0,0,0.0,200,True,0.401,0,0,0,0,True,"salt=random,buckets=20"
+PIPE_silver_S_1794545751,unknown,2026-11-13T04:55:51,PIPE_silver,spark,3.5.4,S,1060392,0,0,0.0,200,True,45.737,0,0,0,0,True,in=1060438;quarantine=46
+E6_correctness_S,unknown,2026-11-13T05:29:35,E6,duckdb_oracle,,S,0,0,0,0.0,200,True,0.0,0,0,0,0,True,All metrics within 0.1% tolerance: True

@@ -64,9 +64,10 @@ def job_group_by_product(df: DataFrame) -> int:
 
 def job_broadcast_join(silver: DataFrame, dim_product: DataFrame) -> int:
     """Join fact (purchases) × dim_product với broadcast hint."""
-    purchases = silver.filter(F.col("event_type") == "purchase")
+    purchases = silver.filter(F.col("event_type") == "purchase").select("product_id", "price")
+    dim = dim_product.select("product_id", "brand")
     return (
-        purchases.join(F.broadcast(dim_product), on="product_id", how="left")
+        purchases.join(F.broadcast(dim), on="product_id", how="left")
                  .groupBy("brand")
                  .agg(F.sum("price").alias("revenue"))
                  .count()
@@ -76,9 +77,10 @@ def job_broadcast_join(silver: DataFrame, dim_product: DataFrame) -> int:
 def job_sort_merge_join(silver: DataFrame, dim_product: DataFrame, spark: SparkSession) -> int:
     """Sort-Merge join: tắt broadcast bằng cách set threshold = -1."""
     spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1")
-    purchases = silver.filter(F.col("event_type") == "purchase")
+    purchases = silver.filter(F.col("event_type") == "purchase").select("product_id", "price")
+    dim = dim_product.select("product_id", "brand")
     result = (
-        purchases.join(dim_product, on="product_id", how="left")
+        purchases.join(dim, on="product_id", how="left")
                  .groupBy("brand")
                  .agg(F.sum("price").alias("revenue"))
                  .count()
