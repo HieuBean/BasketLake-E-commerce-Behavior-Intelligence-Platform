@@ -1,4 +1,4 @@
-# DQ report — Silver (tier S)
+# DQ report — Silver (tier L)
 
 | Luật | Tên | Hành động | Dòng vào | Dòng ra | Bị loại | Tỷ lệ loại | Gắn cờ | Tỷ lệ cờ | Thời gian |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
