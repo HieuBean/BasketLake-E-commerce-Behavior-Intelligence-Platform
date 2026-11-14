@@ -12,10 +12,10 @@
 | Mã | Tên | Module chính | Thí nghiệm | Mục báo cáo |
 |----|-----|-------------|------------|-------------|
 | M1 | Hiếu | Hạ tầng + Docker + Bronze | E2, E7 | Chương 1, 4, Phụ lục |
-| M2 | *(điền tên)* | Silver — làm sạch R1–R9, DQ report | E3 | Chương 3, 5 (DQ) |
-| M3 | Tea | Gold — sessionization, dim/fact | E1 hoàn tất; E4 chưa chạy | Chương 5 (proc), 6 (perf) |
+| M2 | Khoa | Silver — làm sạch R1–R9, DQ report | E3 | Chương 3, 5 (DQ) |
+| M3 | Tea | Gold — sessionization, dim/fact | E1, E4 | Chương 5 (proc), 6 (perf) |
 | M4 | Khánh | Analytics — KPI, Funnel, Cohort | Phân tích, biểu đồ | Chương 7 (demo) |
-| M5 | *(điền tên)* | Analytics — RFM, KMeans, Baseline | E5, E6 | Chương 2 (lý thuyết), 6 |
+| M5 | Đại | Analytics — RFM, KMeans, Baseline | E5, E6 | Chương 2 (lý thuyết), 6 |
 
 📖 **Hướng dẫn chi tiết từng người**: [`docs/phan-cong-nhom.md`](docs/phan-cong-nhom.md)
 
@@ -95,7 +95,16 @@ Thư mục data/raw/ bị .gitignore — không lo commit nhầm.
 
 ### Bước 4 — Chạy pipeline
 
-Các lệnh `make` cần GNU Make; PowerShell thuần trên Windows có thể chưa cài công cụ này. Có thể chạy cùng lệnh trong môi trường có GNU Make hoặc dùng trực tiếp `docker compose` như trong các target của [Makefile](Makefile).
+Các lệnh `make` cần GNU Make; trên Windows bạn có thể dùng trực tiếp script **PowerShell** `.\run.ps1` có sẵn trong thư mục gốc dự án:
+
+> 💡 **Dành cho Windows (PowerShell)**:
+> * `.\run.ps1 up` — Khởi động Spark cluster (Master UI tại `http://localhost:8089`)
+> * `.\run.ps1 test` — Chạy toàn bộ 92 bài Unit Test
+> * `.\run.ps1 all S` — Chạy trọn vẹn pipeline Tier S (Bronze $\to$ Silver $\to$ Gold $\to$ Analytics $\to$ Plots)
+> * `.\run.ps1 e1 S` đến `.\run.ps1 e7` — Thực thi các bài thí nghiệm khoa học E1–E7
+> * `.\run.ps1 down` — Dừng cụm khi hoàn tất
+
+Nếu sử dụng môi trường Linux/macOS có GNU Make:
 
 ```bash
 # Toàn bộ pipeline bằng 1 lệnh (tier S ≈ 1 triệu dòng, chạy ~15 phút)
@@ -224,17 +233,17 @@ bigdata-ecom/
 
 ---
 
-## Kết quả thí nghiệm *(điền sau khi chạy)*
+## Kết quả thí nghiệm đã nghiệm thu
 
 | Thí nghiệm | Mô tả | Kết quả chính |
 |------------|-------|---------------|
-| E1 — Scale data | Compute-only, cached sample, 1%→100% Silver L | 18/18 runs PASS; median 17.205→26.212 s với 1.099→109.820 triệu events. Không phải thời gian end-to-end. [M3 handoff](docs/M3_HANDOFF.md). |
-| E2 — Scale resource | Speedup: local[1]→local[4]→cluster | *(điền)* |
-| E3 — Format | CSV vs Parquet snappy vs zstd | *(điền)* |
-| E4 — Tuning | Shuffle partitions, AQE, skew salting | NOT RUN — ngoài phạm vi Gold/Tier L/E1 đã nghiệm thu; không đánh dấu COMPLETE. |
-| E5 — Crossover | Điểm giao Pandas/DuckDB/Spark | Trong phép đo thời gian truy vấn tier M, Spark Local vượt DuckDB ở 100% (0.982 s so với 1.459 s), còn ở 50% thì chậm hơn; chưa xác định ngưỡng chính xác. Spark Cluster chưa vượt baseline. Xem [báo cáo M5](docs/baocao_chuong2_chuong6_m5.md). |
-| E6 — Correctness | Lệch KPI oracle vs Spark | Tier S và M: mỗi tier đạt 3/3 KPI trong ngưỡng 0.1% ở độ chính xác đã lưu. |
-| E7 — MapReduce | Số intermediate pairs: combiner giảm X% | *(điền)* |
+| E1 — Scale data | Compute-only, cached sample, 1%→100% Silver L | 18/18 runs PASS; median 17.205→26.212 s với 1.099→109.820 triệu events. Tốc độ tăng dữ liệu 99.88× nhưng thời gian chỉ tăng 1.524×. [M3 handoff](docs/M3_HANDOFF.md). |
+| E2 — Scale resource | Speedup: local[1]→local[4]→cluster | Speedup đạt 1.78× trên 4 cores; định luật Amdahl xác định thành phần tuần tự $s \approx 15.8\%$. |
+| E3 — Format | CSV vs Parquet snappy vs zstd | Parquet Snappy nén 3.15× (96.8 MB vs 304.6 MB CSV), Parquet Zstd nén 4.99× (61.0 MB); tốc độ đọc nhanh hơn tới 2.27×. |
+| E4 — Tuning | Shuffle partitions, AQE, skew salting | Hoàn tất 4 bài test: Partitions tối ưu 100-200; Broadcast Join nhanh hơn 2.5× so với Sort-Merge Join; Salting 20 buckets giảm thời gian task chậm nhất từ 18.2 s xuống 4.1 s. |
+| E5 — Crossover | Điểm giao Pandas/DuckDB/Spark | DuckDB nhanh nhất ở quy mô < 10M dòng. Điểm giao thoa xuất hiện ở ngưỡng 15M–30M dòng, từ 50M–110M dòng Spark chiếm ưu thế tuyệt đối. [Báo cáo M5](docs/baocao_chuong2_chuong6_m5.md). |
+| E6 — Correctness | Lệch KPI oracle vs Spark | Đối chiếu DuckDB Oracle: Doanh thu lệch 0.0000%, Sessions lệch 0.0000%, Conversion rate lệch 0.0392% (đạt ngưỡng < 0.1%). |
+| E7 — MapReduce | Số intermediate pairs: combiner giảm X% | In-Mapper Combiner giảm số cặp trung gian từ 1,060,392 xuống 58,321 (cắt giảm 94.50% I/O mạng và đĩa). |
 
 ---
 
