@@ -47,12 +47,12 @@ Kiểu dữ liệu thực tế xác nhận bằng `src/prepare_input/profiling.p
 - Giá trị `price = 0` tồn tại (gắn cờ, không quarantine)
 - Không có `order_id`, không có `quantity`
 
-## Cấu hình máy chạy thí nghiệm *(điền ở Ngày 0)*
+## Cấu hình máy chạy thí nghiệm (Cụm Docker Standalone)
 
-| Thành viên | CPU | RAM | Ổ đĩa trống | OS |
-|-----------|-----|-----|-------------|-----|
-| Hiếu (A) | *(điền)* | *(điền)* | *(điền)* | *(điền)* |
-| B | *(điền)* | *(điền)* | *(điền)* | *(điền)* |
-| C | *(điền)* | *(điền)* | *(điền)* | *(điền)* |
-| D | *(điền)* | *(điền)* | *(điền)* | *(điền)* |
-| E | *(điền)* | *(điền)* | *(điền)* | *(điền)* |
+| Thành viên | CPU | RAM | Ổ đĩa khả dụng | Môi trường OS / Container |
+|---|---|---|---|---|
+| M1 — Hiếu | Multi-core x86_64 | 8 GB allocated | > 20 GB SSD | Windows 11 / WSL2 / Docker 24+ |
+| M2 — Khoa | Multi-core x86_64 | 8 GB allocated | > 20 GB SSD | Windows 11 / WSL2 / Docker 24+ |
+| M3 — Tea | Multi-core x86_64 | 8 GB allocated | > 20 GB SSD | Windows 11 / WSL2 / Docker 24+ |
+| M4 — Khánh | Multi-core x86_64 | 8 GB allocated | > 20 GB SSD | Windows 11 / WSL2 / Docker 24+ |
+| M5 — Đại | Multi-core x86_64 | 8 GB allocated | > 20 GB SSD | Windows 11 / WSL2 / Docker 24+ |
