@@ -1,0 +1,164 @@
+{
+  "run_id": "E1-06bfa0fbe5dc452da2bf5a69230aefb8",
+  "fraction": 0.25,
+  "seed": 42,
+  "actual_input_rows": 265635,
+  "success": true,
+  "throughput_rows_s": 1076753.9882057374,
+  "cache_status": "MEMORY_AND_DISK materialized; warmup complete; OS cache uncontrolled",
+  "checksum": "7ca9f1670069d101252a84b36ae525206a14cf3ddcaccfabe5a1a211c29fae46",
+  "error": "",
+  "metrics": {
+    "shuffle_read_bytes": 43308,
+    "shuffle_write_bytes": 22208,
+    "spill_bytes": 0,
+    "memory_bytes_spilled": 0,
+    "executor_run_time_ms": 962,
+    "jvm_gc_time_ms": 48,
+    "failed_tasks": 0,
+    "status": "measured",
+    "source": "Spark REST; completed stages in measured job group",
+    "job_group": "E1-06bfa0fbe5dc452da2bf5a69230aefb8",
+    "job_ids": [
+      84,
+      83,
+      82,
+      81
+    ],
+    "stage_attempts": [
+      [
+        147,
+        0
+      ],
+      [
+        149,
+        0
+      ],
+      [
+        151,
+        0
+      ],
+      [
+        154,
+        0
+      ]
+    ],
+    "peak_ram_bytes": null,
+    "pre_run_stage_watermark": 146
+  },
+  "spark_config": {
+    "spark.master": "local[*]",
+    "spark.executor.cores": null,
+    "spark.executor.memory": null,
+    "spark.driver.memory": null,
+    "spark.cores.max": null,
+    "spark.sql.shuffle.partitions": "200",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.adaptive.coalescePartitions.enabled": "true",
+    "spark.dynamicAllocation.enabled": null,
+    "spark.sql.session.timeZone": "Etc/UTC",
+    "spark.sql.files.maxPartitionBytes": "134217728b",
+    "spark.sql.parquet.enableVectorizedReader": "true",
+    "spark.sql.parquet.columnarReaderBatchSize": "4096",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "10000",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.eventLog.enabled": "true",
+    "spark.eventLog.dir": "file:///opt/spark-events",
+    "spark_version": "3.5.4",
+    "application_id": "local-1794550284975",
+    "driver_max_heap_bytes": 1073741824,
+    "workers": [
+      {
+        "id": "worker-20261113042711-172.20.0.5-46347",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 0,
+        "memoryused": 0
+      },
+      {
+        "id": "worker-20261113042711-172.20.0.4-35587",
+        "state": "ALIVE",
+        "cores": 2,
+        "memory": 2048,
+        "coresused": 0,
+        "memoryused": 0
+      }
+    ],
+    "alive_workers": 2
+  },
+  "started_utc": "2026-11-13T06:11:51.387447Z",
+  "wall_time_s": 0.24669980599992414,
+  "values": [
+    {
+      "category_l1": "electronics",
+      "revenue": 1176666.8699999999,
+      "purchase_count": 2742
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 133571.4,
+      "purchase_count": 1078
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 93225.04,
+      "purchase_count": 472
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 76837.84000000003,
+      "purchase_count": 189
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 8249.92,
+      "purchase_count": 37
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 6730.589999999999,
+      "purchase_count": 60
+    },
+    {
+      "category_l1": "kids",
+      "revenue": 4683.71,
+      "purchase_count": 33
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 4645.660000000001,
+      "purchase_count": 40
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 4155.71,
+      "purchase_count": 51
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 2278.0299999999997,
+      "purchase_count": 8
+    },
+    {
+      "category_l1": "accessories",
+      "revenue": 491.36,
+      "purchase_count": 11
+    },
+    {
+      "category_l1": "medicine",
+      "revenue": 40.93,
+      "purchase_count": 1
+    },
+    {
+      "category_l1": "stationery",
+      "revenue": 9.24,
+      "purchase_count": 1
+    }
+  ],
+  "output_rows": 13,
+  "purchase_count": 4723,
+  "revenue": 1511586.2999999998,
+  "application_id": "local-1794550284975",
+  "finished_utc": "2026-11-13T06:11:51.718675Z"
+}

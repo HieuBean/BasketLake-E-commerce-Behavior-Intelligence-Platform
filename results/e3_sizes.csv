@@ -1,6 +1,6 @@
 tier,label,format,codec,partitioned,rows,files,size_bytes,size_mb,write_time_s,ratio_vs_csv
-S,csv,csv,none,False,1060392,2,318291928,303.55,5.886,1.0
-S,parquet_snappy,parquet,snappy,False,1060392,2,97365029,92.85,5.508,3.27
-S,parquet_snappy_p,parquet,snappy,True,1060392,31,100088742,95.45,8.955,3.18
-S,parquet_zstd,parquet,zstd,False,1060392,2,58797358,56.07,4.69,5.41
-S,parquet_zstd_p,parquet,zstd,True,1060392,31,62878749,59.97,7.412,5.06
+L,csv,csv,none,False,1060392,31,319360092,304.57,10.863,1.0
+L,parquet_snappy,parquet,snappy,False,1060392,31,101543505,96.84,12.773,3.15
+L,parquet_snappy_p,parquet,snappy,True,1060392,31,101541767,96.84,12.604,3.15
+L,parquet_zstd,parquet,zstd,False,1060392,31,63999148,61.03,8.017,4.99
+L,parquet_zstd_p,parquet,zstd,True,1060392,31,64048274,61.08,6.898,4.99

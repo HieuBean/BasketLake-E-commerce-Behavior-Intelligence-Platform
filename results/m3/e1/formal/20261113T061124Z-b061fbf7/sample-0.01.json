@@ -1,0 +1,107 @@
+{
+  "fraction": 0.01,
+  "seed": 42,
+  "rows": 10616,
+  "warmup_values": [
+    {
+      "category_l1": "electronics",
+      "revenue": 42187.659999999996,
+      "purchase_count": 86
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 5501.22,
+      "purchase_count": 29
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 5492.099999999999,
+      "purchase_count": 41
+    },
+    {
+      "category_l1": "computers",
+      "revenue": 3420.1400000000003,
+      "purchase_count": 7
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 1426.01,
+      "purchase_count": 2
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 428.07,
+      "purchase_count": 5
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 321.5,
+      "purchase_count": 1
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 165.08999999999997,
+      "purchase_count": 3
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 129.85,
+      "purchase_count": 1
+    }
+  ],
+  "oracle_values": [
+    {
+      "category_l1": "computers",
+      "revenue": 3420.1400000000003,
+      "purchase_count": 7
+    },
+    {
+      "category_l1": "auto",
+      "revenue": 129.85,
+      "purchase_count": 1
+    },
+    {
+      "category_l1": "unknown",
+      "revenue": 5492.099999999999,
+      "purchase_count": 41
+    },
+    {
+      "category_l1": "apparel",
+      "revenue": 428.07,
+      "purchase_count": 5
+    },
+    {
+      "category_l1": "appliances",
+      "revenue": 5501.22,
+      "purchase_count": 29
+    },
+    {
+      "category_l1": "furniture",
+      "revenue": 1426.01,
+      "purchase_count": 2
+    },
+    {
+      "category_l1": "electronics",
+      "revenue": 42187.659999999996,
+      "purchase_count": 86
+    },
+    {
+      "category_l1": "construction",
+      "revenue": 165.08999999999997,
+      "purchase_count": 3
+    },
+    {
+      "category_l1": "sport",
+      "revenue": 321.5,
+      "purchase_count": 1
+    }
+  ],
+  "preparation_and_warmup_s": 3.9552071759999308,
+  "cached_columns": [
+    "event_type",
+    "category_l1",
+    "price"
+  ],
+  "validation_only": false,
+  "timing": "Method B: sample count and one warmup excluded"
+}
