@@ -1,0 +1,5 @@
+cluster,user_count,median_recency,median_frequency,median_monetary,segment_name
+1,904,41,2,504.42,VIP / Champions
+3,6936,51,1,254.11,At Risk / Can't Lose (Nguy cơ rời bỏ)
+2,5400,36,1,224.61,New / Promising (Khách mới tiềm năng)
+0,4006,46,1,42.21,Hibernating (Ngủ đông / Không hoạt động)
